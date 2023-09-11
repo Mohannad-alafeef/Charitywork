@@ -25,7 +25,21 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+             "src/assets/assetsTwo/css/open-iconic-bootstrap.min.css",
+             "src/assets/assetsTwo/css/animate.css",
+             "src/assets/assetsTwo/css/owl.carousel.min.css",
+             "src/assets/assetsTwo/css/owl.theme.default.min.css",
+             "src/assets/assetsTwo/css/magnific-popup.css",
+             "src/assets/assetsTwo/css/aos.css",
+             "src/assets/assetsTwo/css/ionicons.min.css",
+             "src/assets/assetsTwo/css/bootstrap-datepicker.css",
+             "src/assets/assetsTwo/css/jquery.timepicker.css",
+             "src/assets/assetsTwo/css/flaticon.css",
+             "src/assets/assetsTwo/css/icomoon.css",
+             "src/assets/assetsTwo/css/fancybox.min.css",
+             "src/assets/assetsTwo/css/bootstrap.css",
+             "src/assets/assetsTwo/css/style.css"
             ],
             "scripts": []
           },
@@ -89,10 +103,32 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/assetsTwo/js/jquery.min.js" ,
+              "src/assets/assetsTwo/js/jquery-migrate-3.0.1.min.js" ,
+              "src/assets/assetsTwo/js/popper.min.js" ,
+              "src/assets/assetsTwo/js/bootstrap.min.js" ,
+              "src/assets/assetsTwo/js/jquery.easing.1.3.js" ,
+              "src/assets/assetsTwo/js/jquery.waypoints.min.js" ,
+              "src/assets/assetsTwo/js/jquery.stellar.min.js" ,
+              "src/assets/assetsTwo/js/owl.carousel.min.js" ,
+              "src/assets/assetsTwo/js/jquery.magnific-popup.min.js" ,
+              "src/assets/assetsTwo/js/bootstrap-datepicker.js" ,
+
+              "src/assets/assetsTwo/js/jquery.fancybox.min.js" ,
+                
+              "src/assets/assetsTwo/js/aos.js" ,
+              "src/assets/assetsTwo/js/jquery.animateNumber.min.js" ,
+              "src/assets/assetsTwo/https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false" ,
+              "src/assets/assetsTwo/js/google-map.js" ,
+              "src/assets/assetsTwo/js/main.js" 
+            ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
