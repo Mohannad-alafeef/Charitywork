@@ -6,6 +6,7 @@
 $(document).ready(function($) {
 
 	"use strict";
+	console.log("main ready");
 
 	$(window).stellar({
     responsive: false,
