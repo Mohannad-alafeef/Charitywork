@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import {SharedModule} from './shared/shared.module';
 import { AboutUSComponent } from './about-us/about-us.component';
 import{FormsModule}from'@angular/forms';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AboutUSComponent
+    AboutUSComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
