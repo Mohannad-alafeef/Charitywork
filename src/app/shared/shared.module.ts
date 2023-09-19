@@ -1,12 +1,14 @@
-import { NgModule } from '@angular/core';
+import {  NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminSidebarComponent } from './admin-sidebar/admin-sidebar.component';
 import { NgxApexchartsModule } from 'ngx-apexcharts';
 import { NgChartsModule } from 'ng2-charts';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { NgChartsModule } from 'ng2-charts';
     FormsModule,
     NgxApexchartsModule,
     NgChartsModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   exports:
   [
@@ -30,7 +34,9 @@ import { NgChartsModule } from 'ng2-charts';
     AdminSidebarComponent,
     NgxApexchartsModule,
     NgChartsModule
+    HttpClientModule,
+    ReactiveFormsModule
+  ],
   
-  ]
 })
 export class SharedModule { }

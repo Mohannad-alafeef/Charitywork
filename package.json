@@ -24,8 +24,11 @@
     "g": "^2.0.1",
     "ng2-charts": "^5.0.3",
     "ngx-apexcharts": "^0.3.3",
+    "bootstrap-icons": "^1.11.1",
+    "ngx-owl-carousel-o": "^16.0.0",
     "owl.carousel": "^2.3.4",
     "rxjs": "~7.8.0",
+    "swiper": "^10.2.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },
