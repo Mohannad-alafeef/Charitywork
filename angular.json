@@ -36,25 +36,39 @@
               "src/assets/assetsTwo/css/icomoon.css",
               "src/assets/assetsTwo/css/fancybox.min.css",
               "src/assets/assetsTwo/css/bootstrap.css",
+              "src/assets/AdminAssets/vendor/bootstrap/css/bootstrap.min.css",
+              "src/assets/AdminAssets/vendor/bootstrap-icons/bootstrap-icons.css",
+              "src/assets/AdminAssets/vendor/simple-datatables/style.css",
+              "src/assets/AdminAssets/vendor/boxicons/css/boxicons.min.css",
+              "src/assets/AdminAssets/vendor/quill/quill.snow.css",
+              "src/assets/AdminAssets/vendor/quill/quill.bubble.css",
+              "src/assets/AdminAssets/vendor/remixicon/remixicon.css",
+              "src/assets/AdminAssets/css/style.css"
               "node_modules/swiper/swiper-bundle.min.css",
               "src/assets/assetsTwo/css/style.css"
             ],
             "scripts": [
               "src/assets/assetsTwo/js/jquery.min.js",
               "src/assets/assetsTwo/js/jquery-migrate-3.0.1.min.js",
-
               "src/assets/assetsTwo/js/jquery.easing.1.3.js",
               "src/assets/assetsTwo/js/jquery.waypoints.min.js",
               "src/assets/assetsTwo/js/jquery.stellar.min.js",
               "src/assets/assetsTwo/js/jquery.magnific-popup.min.js",
-
               "src/assets/assetsTwo/js/jquery.fancybox.min.js",
-
               "src/assets/assetsTwo/js/jquery.animateNumber.min.js",
               "src/assets/assetsTwo/js/aos.js",
               "src/assets/assetsTwo/js/popper.min.js",
-
               "src/assets/assetsTwo/js/owl.carousel.min.js",
+              "src/assets/AdminAssets/vendor/apexcharts/apexcharts.min.js",
+              "src/assets/AdminAssets/vendor/bootstrap/js/bootstrap.bundle.min.js",
+              "src/assets/AdminAssets/vendor/chart.js/chart.umd.js",
+              "src/assets/AdminAssets/vendor/echarts/echarts.min.js",
+              "src/assets/AdminAssets/vendor/quill/quill.min.js",
+              "src/assets/AdminAssets/vendor/simple-datatables/simple-datatables.js",
+              "src/assets/AdminAssets/vendor/tinymce/tinymce.min.js",
+              "src/assets/AdminAssets/vendor/php-email-form/validate.js",
+              "src/assets/AdminAssets/js/main.js",              
+              "./node_modules/apexcharts/dist/apexcharts.min.js"
               "node_modules/swiper/swiper-bundle.min.js",
               "src/assets/assetsTwo/js/main.js",
               "src/assets/assetsTwo/js/swiper.js"

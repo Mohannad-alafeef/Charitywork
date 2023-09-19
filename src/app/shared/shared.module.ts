@@ -4,22 +4,25 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminSidebarComponent } from './admin-sidebar/admin-sidebar.component';
+import { NgxApexchartsModule } from 'ngx-apexcharts';
+import { NgChartsModule } from 'ng2-charts';
 import { HttpClientModule } from '@angular/common/http';
-
-// Import the library
-
 
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    AdminSidebarComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
+    NgxApexchartsModule,
+    NgChartsModule
     HttpClientModule,
     ReactiveFormsModule
   ],
@@ -28,9 +31,11 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     FooterComponent,
     FormsModule,
+    AdminSidebarComponent,
+    NgxApexchartsModule,
+    NgChartsModule
     HttpClientModule,
     ReactiveFormsModule
-  
   ],
   
 })
