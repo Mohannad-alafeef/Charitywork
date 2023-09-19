@@ -557,7 +557,9 @@ textarea.form-control {
 
 .person-donate img {
   border-radius: 7px;
-  width: 180px;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
   margin-bottom: 20px; }
 
 .person-donate h2 {
