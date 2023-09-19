@@ -22,7 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule,
     FormsModule,
     NgxApexchartsModule,
-    NgChartsModule
+    NgChartsModule,
     HttpClientModule,
     ReactiveFormsModule
   ],
@@ -33,7 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     AdminSidebarComponent,
     NgxApexchartsModule,
-    NgChartsModule
+    NgChartsModule,
     HttpClientModule,
     ReactiveFormsModule
   ],
