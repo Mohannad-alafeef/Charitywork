@@ -20,6 +20,8 @@
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
               "src/styles.css",
               "src/assets/assetsTwo/css/open-iconic-bootstrap.min.css",
               "src/assets/assetsTwo/css/animate.css",
@@ -34,6 +36,7 @@
               "src/assets/assetsTwo/css/icomoon.css",
               "src/assets/assetsTwo/css/fancybox.min.css",
               "src/assets/assetsTwo/css/bootstrap.css",
+              "node_modules/swiper/swiper-bundle.min.css",
               "src/assets/assetsTwo/css/style.css"
             ],
             "scripts": [
@@ -52,8 +55,9 @@
               "src/assets/assetsTwo/js/popper.min.js",
 
               "src/assets/assetsTwo/js/owl.carousel.min.js",
-
-              "src/assets/assetsTwo/js/main.js"
+              "node_modules/swiper/swiper-bundle.min.js",
+              "src/assets/assetsTwo/js/main.js",
+              "src/assets/assetsTwo/js/swiper.js"
             ]
           },
           "configurations": {
