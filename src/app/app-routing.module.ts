@@ -4,11 +4,7 @@ import { authorizationGuard } from './authorization.guard';
 
 
 const routes: Routes = [
-  {
-    //http://localhost:4200/
-    path: '',
-    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
-  },
+
   {
     //http://localhost:4200/
     path: 'home',
