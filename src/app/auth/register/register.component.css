@@ -1,0 +1,24 @@
+main {
+    background-image: url('src/assets/assetsTwo/images/bg_1.jpg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center; 
+  }
+
+  .mat-typography .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+   
+  }
+  
+  .mat-typography .example-full-width {
+    width: 100%;
+   
+  }
+  .gender-container {
+    display: flex;
+    justify-content: space-between; /* Align items horizontally with space between */
+  }
+  
+  
