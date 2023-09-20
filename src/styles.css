@@ -1,6 +1,13 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* @import "~bootstrap-icons/font/bootstrap-icons.css";
 
 
 .testimonial-item {
@@ -80,7 +87,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   opacity: 0.3;
 } */
 
-@media (max-width: 1199px) {
+/* @media (max-width: 1199px) {
   .swiper-slide-active {
     opacity: 1;
   }
@@ -95,5 +102,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     opacity: 1;
     transform: scale(1.12);
   }
+
 }
 
+}  */
