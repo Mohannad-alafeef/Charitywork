@@ -15,6 +15,7 @@ export class HomeService {
   charityObj:any=[];
   charityRecentObj:any=[];
   paymentsObj:any=[];
+  numberOfCharities:number =0;
   constructor(private http: HttpClient) {}
 
   getAboutPage() {
@@ -42,7 +43,10 @@ export class HomeService {
   getCharities() {
      this.http.get('https://localhost:7081/api/charity').subscribe({
       next:(res:any)=>{
-        this.charityObj = res
+        
+        res = res.filter((x:any)=>x.isAccepted==Const.Accepted);
+        this.numberOfCharities = res.length;
+        this.charityObj = res.slice(0,7);
         this.charityRecentObj = res.slice(0,3)
       }
     });
@@ -50,7 +54,7 @@ export class HomeService {
   getUserTest() {
      this.http.get('https://localhost:7081/api/testimonial').subscribe({
       next:(res:any)=>{
-        this.userTestObj = res
+        this.userTestObj = res.slice(0,6);
         
       }
     });
