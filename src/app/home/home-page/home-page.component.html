@@ -25,7 +25,7 @@
       <div class="col-md-6 pr-5">
         <div class="block-48">
           <span class="block-48-text-1">Served Over</span>
-          <div class="block-48-counter ftco-number" data-number="10000">
+          <div class="block-48-counter ftco-number" attr.data-number="{{home.numberOfCharities}}">
             0
           </div>
           <span class="block-48-text-1 mb-4 d-block"
@@ -128,7 +128,7 @@
                   <div class="progress custom-progress-success">
                     <div class="progress-bar bg-primary" role="progressbar" [ngStyle]="{'width':calcPercent(obj.payments,obj.donationGoal)+'%'}" attr.aria-valuenow="{{calcPercent(obj.payments,obj.donationGoal)}}" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <span class="fund-raised d-block h6">${{getTotalPayment(obj.payments)}} raised of ${{obj.donationGoal}}</span>
+                  <span class="fund-raised d-block h6">{{getTotalPayment(obj.payments)|currency:'USD':true:'1.0-0'}} raised of {{obj.donationGoal|currency:'USD':true:'1.0-0'}}</span>
                 </div>
               </div>
             </ng-template>
@@ -167,10 +167,10 @@
           <div class="donate-info">
             <h2>{{obj.user.firstName}} {{obj.user.lastName}}</h2>
             
-            <p>
-              Donated <span class="text-success">${{obj.amount}}</span> <br />
-              <em>for</em>
-              <a href="#" class="link-underline fundraise-item"
+            <p class="h5">
+              Donated <span class="text-success">{{obj.amount|currency:'USD':true:'1.0-0'}}</span> <br />
+              <em> for </em>
+              <a  class="link-underline fundraise-item"
                 >{{obj.charity.charityName}}</a
               >
             </p>
@@ -230,28 +230,30 @@
       <div class="col-md-12 block-11">
         <owl-carousel-o [options]="testOption" class="testimonial-carousel">
           <ng-template carouselSlide *ngFor="let obj of home.userTestObj">
-            <div class="owl-item">
-              <div class="card">
-                  <div class="img-card">
-                      <img src="../../assets/Images/{{obj.user.imagePath}}"
-                          alt="">
-                  </div>
-                  <div class="testimonial mt-4 mb-2">
-                    {{obj.content}}
-                  </div>
-                  <div class="stars">
-                    <ng-container *ngFor="let s of [].constructor(5);let i = index">
-  
-                      <i class="bi bi-star-fill" *ngIf="i<obj.rate"></i>
-                      <i class="bi bi-star" *ngIf="i>=obj.rate"></i>
-                    </ng-container>
-                    
-                  </div>
-                  <div class="name">
-                    {{obj.user.firstName}} {{obj.user.lastName}}
-                  </div>
+            <div class="card">
+              <div class="content">
+
+                <div class="img-card">
+                    <img src="../../assets/Images/{{obj.user.imagePath}}"
+                        alt="">
+                </div>
+                <div class="testimonial mt-4 mb-2">
+                  {{obj.content}}
+                </div>
+                <div class="stars">
+                  <ng-container *ngFor="let s of [].constructor(5);let i = index">
+
+                    <i class="bi bi-star-fill" *ngIf="i<obj.rate"></i>
+                    <i class="bi bi-star" *ngIf="i>=obj.rate"></i>
+                  </ng-container>
+                  
+                </div>
+                <div class="name">
+                  {{obj.user.firstName}} {{obj.user.lastName}}
+                </div>
               </div>
-          </div>
+            </div>
+            
           </ng-template>
         </owl-carousel-o>
        

@@ -18,41 +18,43 @@
     <div class="container-fluid">
       <div class="row mb-5">
         <div class="col-md-12 text-center">
-          <h2>{{home.testObj.title}}</h2>
+          <h1>{{home.testObj.text}}</h1>
         </div>
       </div>
       <div class="container-fluid">
         <!-- <div class="row"> -->
     
-        <div class="col-md-12 block-11">
-          <owl-carousel-o [options]="testOption" class="testimonial-carousel">
-            <ng-template carouselSlide *ngFor="let obj of home.userTestObj">
-              <div class="swiper-slide">
-                <div class="testimonial-item">
-                  <div class="stars">
-                    <ng-container *ngFor="let s of [].constructor(5);let i = index">
-  
-                      <i class="bi bi-star-fill" *ngIf="i<obj.rate"></i>
-                      <i class="bi bi-star" *ngIf="i>=obj.rate"></i>
-                    </ng-container>
-                    
-                  </div>
-                  <p>
-                  {{obj.content}}
-                  </p>
-                  <div class="profile mt-auto">
-                    <img src="../../assets/Images/{{obj.user.imagePath}}" style="object-fit: cover;width: 90px;height: 90px;border-radius: 50%;
-                    border: 4px solid #fff;
-                    margin: 0 auto;" >
-                    <h3>{{obj.user.firstName}} {{obj.user.lastName}}</h3>
-                    
+          <div class="col-md-12 block-11">
+            <owl-carousel-o [options]="testOption" class="testimonial-carousel">
+              <ng-template carouselSlide *ngFor="let obj of home.userTestObj">
+                <div class="card">
+                  <div class="content">
+    
+                    <div class="img-card">
+                        <img src="../../assets/Images/{{obj.user.imagePath}}"
+                            alt="">
+                    </div>
+                    <div class="testimonial mt-4 mb-2">
+                      {{obj.content}}
+                    </div>
+                    <div class="stars">
+                      <ng-container *ngFor="let s of [].constructor(5);let i = index">
+    
+                        <i class="bi bi-star-fill" *ngIf="i<obj.rate"></i>
+                        <i class="bi bi-star" *ngIf="i>=obj.rate"></i>
+                      </ng-container>
+                      
+                    </div>
+                    <div class="name">
+                      {{obj.user.firstName}} {{obj.user.lastName}}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </ng-template>
-          </owl-carousel-o>
-         
-        </div>
+                
+              </ng-template>
+            </owl-carousel-o>
+           
+          </div>
         <!-- </div> -->
       </div>
       
