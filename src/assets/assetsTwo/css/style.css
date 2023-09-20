@@ -6,6 +6,8 @@ body {
   font-weight: 300;
   color: #555555; }
 
+
+
 a {
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
@@ -487,11 +489,12 @@ textarea.form-control {
     box-shadow: 0 4px 30px -5px black;
     border-radius: 7px; }
   .featured-donate h2, .featured-section h2 {
-    color: #fff; }
+    color: #000; }
   .featured-donate p, .featured-section p {
-    color: #fff; }
+    font-size: 1.3rem;
+    color: #000; }
   .featured-donate .featured-text, .featured-section .featured-text {
-    color: #fff;
+    color: #000;
     text-transform: uppercase;
     letter-spacing: .2em; }
   .featured-donate .donation-time, .featured-section .donation-time {
@@ -500,8 +503,9 @@ textarea.form-control {
     font-style: italic;
     font-size: 15px; }
   .featured-donate .fund-raised, .featured-section .fund-raised {
-    font-weight: 900;
-    color: #fff; }
+    font-weight: 200;
+    font-size: 1.2rem;
+    color: #000; }
   .featured-donate.overlay-color, .featured-donate.overlay-color-2, .featured-section.overlay-color, .featured-section.overlay-color-2 {
     position: relative; }
     .featured-donate.overlay-color:before, .featured-donate.overlay-color-2:before, .featured-section.overlay-color:before, .featured-section.overlay-color-2:before {
@@ -518,31 +522,33 @@ textarea.form-control {
 
 .form-volunteer h2 {
   font-size: 25px;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  color: #000;
+ }
 
 .form-volunteer label {
-  color: #fff; }
+  color: black; }
 
 .form-volunteer .form-control {
-  border: 2px solid #fff;
+  border: 2px solid black;
   background: none !important;
   margin-bottom: 10px;
-  color: #fff !important; }
+  color: black !important; }
   .form-volunteer .form-control::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
-    color: #fff;
+    color: rgb(111, 111, 111);
     font-style: italic; }
   .form-volunteer .form-control::-moz-placeholder {
     /* Firefox 19+ */
-    color: #fff;
+    color: rgb(111, 111, 111);
     font-style: italic; }
   .form-volunteer .form-control:-ms-input-placeholder {
     /* IE 10+ */
-    color: #fff;
+    color: rgb(111, 111, 111);
     font-style: italic; }
   .form-volunteer .form-control:-moz-placeholder {
     /* Firefox 18- */
-    color: #fff;
+    color: rgb(111, 111, 111);
     font-style: italic; }
 
 .custom-progress {
@@ -628,7 +634,7 @@ textarea.form-control {
   padding: 8em 0;
   color: #fff; }
   .footer .heading-section {
-    font-size: 20px;
+    font-size: 30px;
     text-transform: uppercase;
     margin-bottom: 40px;
     letter-spacing: .1em;
@@ -1607,6 +1613,9 @@ textarea.form-control {
     margin-bottom: 20px; }
   .block-30 .lead {
     color: #fff; }
+    .container .lead{
+      font-size: x-large;
+    }
 
 .block-23 ul, .block-23 ul li {
   padding: 0;
