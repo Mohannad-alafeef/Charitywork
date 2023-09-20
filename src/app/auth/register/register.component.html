@@ -14,7 +14,7 @@
                 </div>
 
                 <mat-dialog-content class="mat-typography">
-                  <form [formGroup]="CreateAccountForm" class="example-form">
+                  <form enctype="multipart/form-data" [formGroup]="CreateAccountForm" class="example-form">
                     <!-- Personal Data Inputs -->
                     <mat-form-field class="example-full-width" *ngIf="showPersonalData">
                       <mat-label>First Name</mat-label>
