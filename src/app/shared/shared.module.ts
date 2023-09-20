@@ -1,10 +1,12 @@
-import { NgModule } from '@angular/core';
+import {  NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule  } from '@angular/forms';
+import { AdminSidebarComponent } from './admin-sidebar/admin-sidebar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxApexchartsModule } from 'ngx-apexcharts';
+import { NgChartsModule } from 'ng2-charts';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {HttpClientModule}from '@angular/common/http';
@@ -15,10 +17,12 @@ import {MatSelectModule} from '@angular/material/select';
 
 
 
+
 @NgModule({
   declarations: [
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    AdminSidebarComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +35,9 @@ import {MatSelectModule} from '@angular/material/select';
     HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    NgxApexchartsModule,
+    NgChartsModule
   ],
   exports:
   [
@@ -45,8 +51,12 @@ import {MatSelectModule} from '@angular/material/select';
     HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    AdminSidebarComponent,
+    NgxApexchartsModule,
+    NgChartsModule
+  ],
+
   
-  ]
 })
 export class SharedModule { }
