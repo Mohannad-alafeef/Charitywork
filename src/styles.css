@@ -1,4 +1,7 @@
-@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 
 .testimonial-item {
   box-sizing: content-box;
@@ -93,3 +96,4 @@
     transform: scale(1.12);
   }
 }
+

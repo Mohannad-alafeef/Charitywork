@@ -3,11 +3,18 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminSidebarComponent } from './admin-sidebar/admin-sidebar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxApexchartsModule } from 'ngx-apexcharts';
 import { NgChartsModule } from 'ng2-charts';
-import { HttpClientModule } from '@angular/common/http';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {HttpClientModule}from '@angular/common/http';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+
 
 
 
@@ -21,21 +28,33 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     RouterModule,
     FormsModule,
-    NgxApexchartsModule,
-    NgChartsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
     HttpClientModule,
-    ReactiveFormsModule
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    NgxApexchartsModule,
+    NgChartsModule
   ],
   exports:
   [
     NavbarComponent,
     FooterComponent,
     FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
+    HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
     AdminSidebarComponent,
     NgxApexchartsModule,
-    NgChartsModule,
-    HttpClientModule,
-    ReactiveFormsModule
+    NgChartsModule
   ],
 
   
