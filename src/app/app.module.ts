@@ -1,9 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
+import { FormsModule } from '@angular/forms';
+import { AuthModule } from './auth/auth.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from 'src/Interceptor/token.interceptor';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -12,9 +19,26 @@ import { SharedModule } from './shared/shared.module';
   declarations: [
     AppComponent,
     
+    
   ],
-  imports: [BrowserModule, AppRoutingModule, SharedModule],
-  providers: [],
+  imports: [
+     BrowserModule,
+     BrowserAnimationsModule,
+     ToastrModule.forRoot(),
+     AppRoutingModule, 
+     SharedModule, 
+     FormsModule,
+     AuthModule,
+     HttpClientModule
+  ],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokenInterceptor, 
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent],
+
 })
 export class AppModule {}
