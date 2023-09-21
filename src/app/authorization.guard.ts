@@ -19,7 +19,7 @@ export const authorizationGuard: CanActivateFn = (route, state) => {
   return true;
   }else {
     toaster.warning('this page for admin');
-    router.navigate(['home/contact']);
+    router.navigate(['admin']);
     return false;
     }
     }
