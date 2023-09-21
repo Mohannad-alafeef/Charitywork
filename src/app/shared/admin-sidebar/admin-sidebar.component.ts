@@ -7,13 +7,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-sidebar.component.css']
 })
 export class AdminSidebarComponent {
+  user :any={} ;
+  constructor(private route : Router){
+    const userString = localStorage.getItem('user');
 
-  constructor(private route : Router){}
-  userName:any=localStorage.getItem('userName');
-  firstName:any=localStorage.getItem('firstName');
-  lastName:any=localStorage.getItem('lastName');
-  ImagePath:any=localStorage.getItem('ImagePath');
-  
+    if (userString) {
+      this.user = JSON.parse(userString);
+    }
+  }
+
+
 
   logout(){
     localStorage.clear();
