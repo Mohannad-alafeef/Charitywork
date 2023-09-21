@@ -1,5 +1,6 @@
 <app-navbar></app-navbar>
 
+<!-- Home Section -->
 <div class="block-31" style="position: relative">
   <div class="">
     <div
@@ -17,14 +18,14 @@
     </div>
   </div>
 </div>
-
+<!-- About Section -->
 <div class="site-section section-counter">
   <div class="container">
     <div class="row">
       <div class="col-md-6 pr-5">
         <div class="block-48">
           <span class="block-48-text-1">Served Over</span>
-          <div class="block-48-counter ftco-number" data-number="10000">
+          <div class="block-48-counter ftco-number" attr.data-number="{{home.numberOfCharities}}">
             0
           </div>
           <span class="block-48-text-1 mb-4 d-block"
@@ -43,7 +44,7 @@
     </div>
   </div>
 </div>
-
+<!-- Goals Section -->
 <div class="site-section border-top">
   <div class="container">
     <div class="row">
@@ -51,8 +52,8 @@
         <div class="media block-6">
           <div class="icon"><span class="ion-ios-bulb"></span></div>
           <div class="media-body">
-            <h3 class="heading">Our Mission</h3>
-            <p>
+            <h3 class="h2">Our Mission</h3>
+            <p class="h5">
               A small river named Duden flows by their place and supplies it
               with the necessary regelialia.
             </p>
@@ -65,8 +66,8 @@
         <div class="media block-6">
           <div class="icon"><span class="ion-ios-cash"></span></div>
           <div class="media-body">
-            <h3 class="heading">Make Donations</h3>
-            <p>
+            <h3 class="h2">Make Donations</h3>
+            <p class="h5">
               A small river named Duden flows by their place and supplies it
               with the necessary regelialia.
             </p>
@@ -79,8 +80,8 @@
         <div class="media block-6">
           <div class="icon"><span class="ion-ios-contacts"></span></div>
           <div class="media-body">
-            <h3 class="heading">We Need Volunteers</h3>
-            <p>
+            <h3 class="h2">We Need Volunteers</h3>
+            <p class="h5">
               A small river named Duden flows by their place and supplies it
               with the necessary regelialia.
             </p>
@@ -91,7 +92,8 @@
     </div>
   </div>
 </div>
-<!-- .site-section -->
+<!-- Charity Section -->
+
 
 <div class="site-section fund-raisers bg-light">
   <div class="container">
@@ -108,6 +110,7 @@
   </div>
 
   <div class="container-fluid">
+   
 
     <!-- <div class="row"> -->
       
@@ -117,15 +120,15 @@
             <ng-template carouselSlide *ngFor="let obj of home.charityObj">
               
               <div class="card fundraise-item">
-                <a href="#"><img class="card-img-top" src="../../../assets/Images/{{obj.imagePath}}" alt="Image placeholder"></a>
+                <a ><img class="card-img-top" src="../../../assets/Images/{{obj.imagePath}}" alt="Image placeholder"></a>
                 <div class="card-body">
-                  <h3 class="card-title"><a href="#">{{obj.charityName}}</a></h3>
-                  <p class="card-text">{{obj.mission}}</p>
+                  <h3 class="card-title"><a >{{obj.charityName}}</a></h3>
+                  <p class="card-text h6">{{obj.mission}}</p>
              
                   <div class="progress custom-progress-success">
                     <div class="progress-bar bg-primary" role="progressbar" [ngStyle]="{'width':calcPercent(obj.payments,obj.donationGoal)+'%'}" attr.aria-valuenow="{{calcPercent(obj.payments,obj.donationGoal)}}" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <span class="fund-raised d-block">${{getTotalPayment(obj.payments)}} raised of ${{obj.donationGoal}}</span>
+                  <span class="fund-raised d-block h6">{{getTotalPayment(obj.payments)|currency:'USD':true:'1.0-0'}} raised of {{obj.donationGoal|currency:'USD':true:'1.0-0'}}</span>
                 </div>
               </div>
             </ng-template>
@@ -138,7 +141,7 @@
     <!-- </div> -->
   </div>
 </div>
-<!-- .section -->
+<!-- Donation section -->
 
 <div class="site-section fund-raisers">
   <div class="container">
@@ -164,10 +167,10 @@
           <div class="donate-info">
             <h2>{{obj.user.firstName}} {{obj.user.lastName}}</h2>
             
-            <p>
-              Donated <span class="text-success">${{obj.amount}}</span> <br />
-              <em>for</em>
-              <a href="#" class="link-underline fundraise-item"
+            <p class="h5">
+              Donated <span class="text-success">{{obj.amount|currency:'USD':true:'1.0-0'}}</span> <br />
+              <em> for </em>
+              <a  class="link-underline fundraise-item"
                 >{{obj.charity.charityName}}</a
               >
             </p>
@@ -179,13 +182,13 @@
     </div>
   </div>
 </div>
-<!-- .section -->
+<!-- .static section -->
 
 <div
   class="featured-section overlay-color-2"
   style="background-image: url('../../assets/assetsTwo/images/bg_3.jpg')"
 >
-  <div class="container">
+  <div class="container static">
     <div class="row">
       <div class="col-md-6">
         <img
@@ -196,10 +199,10 @@
       </div>
 
       <div class="col-md-6 pl-md-5">
-        <span class="featured-text d-block mb-3">Success Stories</span>
-        <h2>
+        <h2 class="featured-text d-block mb-3">Success Stories</h2>
+        <h3>
           Water Is Life. We Successfuly Provide Clean Water in South East Asia
-        </h2>
+        </h3>
         <p class="mb-3">
           Far far away, behind the word mountains, far from the countries
           Vokalia and Consonantia, there live the blind texts.
@@ -220,14 +223,23 @@
         <h2>{{home.testObj.title}}</h2>
       </div>
     </div>
+  
     <div class="container-fluid">
       <!-- <div class="row"> -->
   
       <div class="col-md-12 block-11">
         <owl-carousel-o [options]="testOption" class="testimonial-carousel">
           <ng-template carouselSlide *ngFor="let obj of home.userTestObj">
-            <div class="swiper-slide">
-              <div class="testimonial-item">
+            <div class="card">
+              <div class="content">
+
+                <div class="img-card">
+                    <img src="../../assets/Images/{{obj.user.imagePath}}"
+                        alt="">
+                </div>
+                <div class="testimonial mt-4 mb-2">
+                  {{obj.content}}
+                </div>
                 <div class="stars">
                   <ng-container *ngFor="let s of [].constructor(5);let i = index">
 
@@ -236,18 +248,12 @@
                   </ng-container>
                   
                 </div>
-                <p>
-                {{obj.content}}
-                </p>
-                <div class="profile mt-auto">
-                  <img src="../../assets/Images/{{obj.user.imagePath}}" style="object-fit: cover;width: 90px;height: 90px;border-radius: 50%;
-                  border: 4px solid #fff;
-                  margin: 0 auto;" >
-                  <h3>{{obj.user.firstName}} {{obj.user.lastName}}</h3>
-                  
+                <div class="name">
+                  {{obj.user.firstName}} {{obj.user.lastName}}
                 </div>
               </div>
             </div>
+            
           </ng-template>
         </owl-carousel-o>
        

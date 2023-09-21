@@ -12,19 +12,23 @@ declare function counter(): any;
 })
 export class HomePageComponent implements OnInit,AfterViewInit {
   testOption:OwlOptions = {
-    items: 3,
-    margin: 10,
-    dots: false,
-    loop: true,
     autoplay: true,
-    autoplayTimeout: 5000,
-    autoplayHoverPause: false,
-    center: true,
-    nav: true,
-    navText:[
-        '<span class="ion-md-arrow-back">',
-        '<span class="ion-md-arrow-forward">',
-      ],
+        autoplayTimeout: 3000,
+        autoplayHoverPause: false,
+        items: 1,
+        stagePadding: 0,
+        center: true,
+        nav: false,
+        margin: 50,
+        dots: true,
+        loop: true,
+        responsive: {
+            0: { items: 1 },
+            480: { items: 1 },
+            768: { items: 2 },
+            991: { items: 3 },
+            1200: { items: 4 }
+        }
   }
 
   customOptions: OwlOptions = {
@@ -34,26 +38,15 @@ export class HomePageComponent implements OnInit,AfterViewInit {
       loop: false,
       stagePadding: 0,
       margin: 30,
-      nav: true,
-      dots:false,
-      navText: [
-        '<span class="ion-md-arrow-back">',
-        '<span class="ion-md-arrow-forward">',
-      ],
+      dots:true,
+      autoWidth:false,
       responsive: {
-        600: {
-          stagePadding: 0,
-          items: 1,
-        },
-        800: {
-          stagePadding: 0,
-          items: 2,
-        },
-        1000: {
-          stagePadding: 300,
-          items: 3,
-        },
-      },
+        0: { items: 1 },
+        480: { items: 1 },
+        768: { items: 2 },
+        991: { items: 3 },
+        1200: { items: 4 }
+    }
   }
   contactForm:FormGroup=new FormGroup({
     senderName: new FormControl(null,[Validators.required]),

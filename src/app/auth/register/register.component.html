@@ -1,0 +1,135 @@
+<main>
+  <div class="container">
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 col-md-6 d-flex flex-column align-items-center justify-content-center">
+            <a class="navbar-brand">GiveHope</a>
+            <br>
+            <div class="card mb-3">
+              <div class="card-body">
+                <div class="pt-4 pb-2">
+                  <h1 class="card-title text-center pb-0 fs-4">Create an Account</h1>
+                  <h5 class="text-center small">Enter your personal details to create an account</h5>
+                </div>
+
+                <mat-dialog-content class="mat-typography">
+                  <form enctype="multipart/form-data" [formGroup]="CreateAccountForm" class="example-form">
+                    <!-- Personal Data Inputs -->
+                    <mat-form-field class="example-full-width" *ngIf="showPersonalData">
+                      <mat-label>First Name</mat-label>
+                      <input type="text" matInput formControlName="FirstName">
+                      <mat-error *ngIf="CreateAccountForm.controls['FirstName'].hasError('required')">
+                        Fist Name is required
+                      </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" *ngIf="showPersonalData">
+                      <mat-label>Last Name </mat-label>
+                      <input type="text" matInput formControlName="LastName">
+                      <mat-error *ngIf="CreateAccountForm.controls['LastName'].hasError('required')">
+                        Last Name is required
+                      </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" *ngIf="showPersonalData">
+                      <mat-label>Date Of Birth </mat-label>
+                      <input type="date" matInput formControlName="DateOfBirth">
+                      <mat-error *ngIf="CreateAccountForm.controls['DateOfBirth'].hasError('required')">
+                        Date Of Birth is required
+                      </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" *ngIf="showPersonalData">
+                      <mat-label>Address </mat-label>
+                      <input type="text" matInput formControlName="Address">
+                      <mat-error *ngIf="CreateAccountForm.controls['Address'].hasError('required')">
+                        Address is required
+                      </mat-error>
+                    </mat-form-field>
+
+                    <div *ngIf="showPersonalData" class="gender-container">
+                      <div>
+                        <mat-form-field>
+                          <mat-label>Gender</mat-label>
+                          <mat-select formControlName="Gender">
+                            <mat-option *ngFor="let Gender of Genders" [value]="Gender.value">
+                              {{ Gender.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div class="gender-image-container">
+                        <img [src]="genderImages[CreateAccountForm.value.Gender || 'male']" alt="Gender Image" width="100">
+                      </div>
+                    </div>
+                    
+                    <!-- Continue button // additional inputs -->
+                    <button class="btn btn-primary w-100" style="color: white;" mat-button (click)="showAdditionalDataSection()" *ngIf="showPersonalData">Continue</button>
+
+                    <!-- Additional Data Inputs -->
+                    <div *ngIf="showAdditionalData">
+                      <mat-form-field class="example-full-width">
+                        <mat-label>User Name</mat-label>
+                        <input type="text" matInput formControlName="UserName">
+                        <mat-error *ngIf="CreateAccountForm.controls['UserName'].hasError('required')">
+                          User Name is required
+                        </mat-error>
+                      </mat-form-field>
+
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Password </mat-label>
+                        <input type="password" matInput formControlName="Password">
+                        <mat-error *ngIf="CreateAccountForm.controls['Password'].hasError('required')">
+                          Password is required
+                        </mat-error>
+                      </mat-form-field>
+
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Email </mat-label>
+                        <input type="email" matInput formControlName="Email">
+                        <mat-error *ngIf="CreateAccountForm.controls['Email'].hasError('required')">
+                          Email is required
+                        </mat-error>
+                      </mat-form-field>
+
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Phone </mat-label>
+                        <input type="text" matInput formControlName="Phone">
+                        <mat-error *ngIf="CreateAccountForm.controls['Phone'].hasError('required')">
+                          Phone is required
+                        </mat-error>
+                      </mat-form-field>
+
+                      <!-- <div class="card-body" style="color: rgb(145, 140, 140); background-color: rgb(247, 247, 247); padding: 10px;">
+                        <h3 style="color: rgb(145, 140, 140);">Profile Image</h3>
+                        <input type="file" #file formControlName="ImagePath" (change)="uploadImage(file.files)">
+                      </div>-->
+                    </div> 
+                     
+                    <div class="col-12" *ngIf="showAdditionalData">
+                      <div class="form-check"><br>
+                        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
+                        <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
+                        <div class="invalid-feedback">You must agree before submitting.</div>
+                      </div>
+                    </div>
+
+                    <mat-dialog-actions align="end" *ngIf="showAdditionalData"><br>
+                      <button class="btn btn-primary w-100 " style="color: white;" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="CreateAccountBtn()">Create Account</button>
+                    </mat-dialog-actions>
+
+                    <div class="col-12"><br>
+                      <h5 class="small mb-0">Already have an account? <a href="pages-login.html">Log in</a></h5>
+                    </div>
+                  </form>
+                </mat-dialog-content>
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>

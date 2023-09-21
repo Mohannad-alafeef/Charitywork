@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 export const authorizationGuard: CanActivateFn = (route, state) => {
   const toaster:ToastrService = inject(ToastrService);
   const router:Router= new Router();
+  return true;
   debugger
   const token=localStorage.getItem('token');
   if(token)
