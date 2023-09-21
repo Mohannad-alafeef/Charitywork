@@ -14,6 +14,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import { UserSidebarComponent } from './user-sidebar/user-sidebar.component';
 
 
 
@@ -22,7 +23,8 @@ import {MatSelectModule} from '@angular/material/select';
   declarations: [
     NavbarComponent,
     FooterComponent,
-    AdminSidebarComponent
+    AdminSidebarComponent,
+    UserSidebarComponent
   ],
   imports: [
     CommonModule,
@@ -54,7 +56,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatSelectModule,
     AdminSidebarComponent,
     NgxApexchartsModule,
-    NgChartsModule
+    NgChartsModule,
+    UserSidebarComponent
   ],
 
   

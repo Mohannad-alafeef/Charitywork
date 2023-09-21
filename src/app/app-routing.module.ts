@@ -18,6 +18,11 @@ const routes: Routes = [
     path:'admin',
     loadChildren:()=>import('./admin/admin.module').then(module=>module.AdminModule),
     canActivate:[authorizationGuard]
+  },
+  {
+    path:'user',
+    loadChildren:()=>import('./user/user.module').then(module=>module.UserModule),
+    canActivate:[authorizationGuard]
   }
 ];
 

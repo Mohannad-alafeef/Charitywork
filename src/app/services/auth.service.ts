@@ -41,7 +41,14 @@ export class AuthService {
 
           let data: any = jwt_decode(responce.token);
           localStorage.setItem('user', JSON.stringify(data));
+
+          localStorage.setItem('userName',data.userName);
+          localStorage.setItem('firstName',data.firstName);
+          localStorage.setItem('lastName',data.lastName);
+          localStorage.setItem('ImagePath',data.ImagePath);
+
           debugger;
+
           if (data.roleId == Const.Admin) {
             this.toastr.success('Welcome On Admin Dashbaord');
             this.router.navigate(['admin']);
