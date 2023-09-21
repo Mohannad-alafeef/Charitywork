@@ -1,6 +1,7 @@
-import { AuthService } from './../../Services/auth.service';
+
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 import { Const } from 'src/app/shared/Const';
 
 @Component({
