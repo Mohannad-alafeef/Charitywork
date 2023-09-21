@@ -54,7 +54,7 @@ export class HomeService {
   getUserTest() {
      this.http.get('https://localhost:7081/api/testimonial').subscribe({
       next:(res:any)=>{
-        this.userTestObj = res.slice(0,6);
+        this.userTestObj = res.filter((x:any)=>x.isAccepted == Const.Accepted).slice(0,6);
         
       }
     });
