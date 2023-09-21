@@ -44,6 +44,12 @@
     object-fit: cover;
     border-radius: 6px;
 }
+.owl-carousel .owl-item .card-img-top {
+    height: 300px;
+ 
+    object-fit: cover;
+    border-radius: 6px;
+}
 
 .testimonial-carousel .owl-carousel .owl-item .card .name {
     position: absolute;
@@ -81,17 +87,14 @@
     width: 100%;
     text-align: center;
 }
-
-.testimonial-carousel .owl-theme .owl-dots .owl-dot span {
+ .owl-theme .owl-dots .owl-dot span {
   height: 13px;
   width: 13px;
     background: #f7ca44 !important;
     border-radius: 2px !important;
     opacity: 0.8;
 }
-
-.testimonial-carousel .owl-theme .owl-dots .owl-dot.active span,
-.testimonial-carousel .owl-theme .owl-dots .owl-dot:hover span {
+ .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
     height: 13px;
     width: 13px;
     opacity: 1;

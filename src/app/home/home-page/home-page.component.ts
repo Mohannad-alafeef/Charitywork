@@ -16,18 +16,17 @@ export class HomePageComponent implements OnInit,AfterViewInit {
         autoplayTimeout: 3000,
         autoplayHoverPause: false,
         items: 1,
-        stagePadding: 0,
         center: true,
         nav: false,
         margin: 50,
         dots: true,
         loop: true,
         responsive: {
-            0: { items: 1 },
-            480: { items: 1 },
-            768: { items: 2 },
-            991: { items: 3 },
-            1200: { items: 4 }
+            0: { items: 1,stagePadding:0 },
+            480: { items: 1,stagePadding:0 },
+            600: { items: 2,stagePadding:0 },
+            991: { items: 3,stagePadding:0 },
+            1500: { items: 4,stagePadding:100 }
         }
   }
 
@@ -43,7 +42,7 @@ export class HomePageComponent implements OnInit,AfterViewInit {
       responsive: {
         0: { items: 1 },
         480: { items: 1 },
-        768: { items: 2 },
+        600: { items: 2 },
         991: { items: 3 },
         1200: { items: 4 }
     }
