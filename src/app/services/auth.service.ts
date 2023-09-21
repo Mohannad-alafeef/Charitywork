@@ -15,7 +15,7 @@ export class AuthService {
   ) {}
   Login(email: any, password: any) {
     var body = {
-      username: email.value.toString(),
+      email: email.value.toString(),
       password: password.value.toString(),
     };
 
@@ -43,10 +43,10 @@ export class AuthService {
           debugger;
           if (data.roleId == '1') {
             this.toastr.success('Welcome On Admin Dashbaord');
-            this.router.navigate(['home/about']);
+            this.router.navigate(['admin']);
           } else if (data.roleId == '2') {
-            this.toastr.success('Welcome On Courses Page');
-            this.router.navigate(['home/contact']);
+            this.toastr.success('Welcome On User Dashbaord');
+            this.router.navigate(['user']);
           }
         },
         (err) => {
