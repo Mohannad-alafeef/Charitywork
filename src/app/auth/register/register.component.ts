@@ -38,25 +38,17 @@ export class RegisterComponent {
       Phone: ['', Validators.required],
       ImagePath: [''],
       loginId: [''],
-    },{updateOn: 'submit'}
-    );
+    });
   }
 
   showAdditionalData = false;
   showPersonalData = true;
-  
-  showPersonalDataSection ()
-  {this.showPersonalData = true; 
-  this.showAdditionalData = false;
-  }
 
   showAdditionalDataSection() {
     this.showPersonalData = false; // Hide Personal Data section
     this.showAdditionalData = true; // Show Additional Data section
   }
-
   CreateAccountBtn() {
-    debugger
     if (!this.CreateAccountForm.value.ImagePath) {
       const selectedGender = this.CreateAccountForm.value.Gender;
       this.CreateAccountForm.value.ImagePath =

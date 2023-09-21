@@ -6,14 +6,7 @@ function refresh() {
 
   ("use strict");
 
-  $(window).stellar({
-    responsive: false,
-    parallaxBackgrounds: true,
-    parallaxElements: true,
-    horizontalScrolling: false,
-    hideDistantElements: false,
-    scrollProperty: "scroll",
-  });
+
 
   // loader
   var loader = function () {
