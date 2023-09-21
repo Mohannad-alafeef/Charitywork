@@ -1,11 +1,11 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Const } from './shared/Const';
 
 export const authorizationGuard: CanActivateFn = (route, state) => {
   const toaster:ToastrService = inject(ToastrService);
   const router:Router= new Router();
-  return true;
   debugger
   const token=localStorage.getItem('token');
   if(token)
@@ -14,7 +14,7 @@ export const authorizationGuard: CanActivateFn = (route, state) => {
   {
   let user : any =localStorage.getItem('user');
   user=JSON.parse(user);
-  if(user.roleId=='1')
+  if(user.roleId==Const.Admin)
   {
   toaster.success('Welcome on Admin Dashbord')
   return true;

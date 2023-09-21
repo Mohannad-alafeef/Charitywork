@@ -1,5 +1,6 @@
 
 export enum Const{
+    Admin=1,
     User=2,
     Donation = 10,
     Payment = 11,

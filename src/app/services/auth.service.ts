@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
 import { ToastrService } from 'ngx-toastr';
+import { Const } from '../shared/Const';
 
 @Injectable({
   providedIn: 'root',
@@ -42,11 +43,12 @@ export class AuthService {
           localStorage.setItem('user', JSON.stringify(data));
 
           debugger;
-          if (data.roleId == '1') {
-            this.toastr.success('Welcome to Admin Dashbaord');
+
+          if (data.roleId == Const.Admin) {
+            this.toastr.success('Welcome On Admin Dashbaord');
             this.router.navigate(['admin']);
-          } else if (data.roleId == '2') {
-            this.toastr.success('Welcome  '+ data.firstName);
+          } else if (data.roleId == Const.User) {
+            this.toastr.success('Welcome On User Dashbaord');
             this.router.navigate(['user']);
           }
         },
