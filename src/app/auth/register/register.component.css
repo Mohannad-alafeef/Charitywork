@@ -1,5 +1,5 @@
 main {
-    background-image: url('src/assets/assetsTwo/images/bg_1.jpg'); 
+    background-image: url('src/assets/assetsTwo/images/bg_1.jpg');  
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center; 
@@ -20,5 +20,25 @@ main {
     display: flex;
     justify-content: space-between; /* Align items horizontally with space between */
   }
-  
-  
+
+  .form-label{color: black;  font-size: larger; margin-left: 10px; }
+  .text-danger{ margin: 20px;}
+  .form-control
+  {
+    border-radius: 20px;
+    border-width: 3px;
+    border-color: rgb(250, 208, 68);
+    width: 100%;
+  }
+  #Gender{    
+    border-radius: 20px;
+    border-width: 3px;
+    border-color: rgb(250, 208, 68);
+    width: 150px;
+    height: 40px;
+    margin-top: 20px;
+  }
+
+
+
+
