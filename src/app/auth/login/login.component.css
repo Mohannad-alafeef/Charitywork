@@ -1,0 +1,14 @@
+main {
+    background-image: url('../../../assets/Images/bg_1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+.valid-border {
+border-color: #28a745; 
+}
+
+
+.invalid-border {
+border-color: #dc3545; 
+}
