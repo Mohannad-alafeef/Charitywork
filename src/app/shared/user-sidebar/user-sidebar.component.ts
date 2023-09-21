@@ -2,12 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-admin-sidebar',
-  templateUrl: './admin-sidebar.component.html',
-  styleUrls: ['./admin-sidebar.component.css']
+  selector: 'app-user-sidebar',
+  templateUrl: './user-sidebar.component.html',
+  styleUrls: ['./user-sidebar.component.css']
 })
-export class AdminSidebarComponent {
-
+export class UserSidebarComponent {
   constructor(private route : Router){}
   userName:any=localStorage.getItem('userName');
   firstName:any=localStorage.getItem('firstName');

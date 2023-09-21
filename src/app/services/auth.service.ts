@@ -15,7 +15,7 @@ export class AuthService {
   ) {}
   Login(email: any, password: any) {
     var body = {
-      username: email.value.toString(),
+      email: email.value.toString(),
       password: password.value.toString(),
     };
 
@@ -40,13 +40,19 @@ export class AuthService {
 
           let data: any = jwt_decode(responce.token);
           localStorage.setItem('user', JSON.stringify(data));
+
+          localStorage.setItem('userName',data.userName);
+          localStorage.setItem('firstName',data.firstName);
+          localStorage.setItem('lastName',data.lastName);
+          localStorage.setItem('ImagePath',data.ImagePath);
+
           debugger;
           if (data.roleId == '1') {
-            this.toastr.success('Welcome On Admin Dashbaord');
-            this.router.navigate(['home/about']);
+            this.toastr.success('Welcome to Admin Dashbaord');
+            this.router.navigate(['admin']);
           } else if (data.roleId == '2') {
-            this.toastr.success('Welcome On Courses Page');
-            this.router.navigate(['home/contact']);
+            this.toastr.success('Welcome  '+ data.firstName);
+            this.router.navigate(['user']);
           }
         },
         (err) => {

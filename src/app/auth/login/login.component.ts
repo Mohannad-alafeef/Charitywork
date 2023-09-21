@@ -13,7 +13,7 @@ export class LoginComponent {
   constructor(private auth:AuthService){}
   email=new FormControl ('ex@example.com',[Validators.required,Validators.email]);
   Password=new FormControl('********',[Validators.required,Validators.minLength(8)]);
-
+  
   submit(){
     this.auth.Login(this.email,this.Password);
   }
