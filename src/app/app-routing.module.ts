@@ -10,6 +10,11 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
   {
+    //http://localhost:4200/
+    path: '',
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+  },
+  {
     path:'auth',
     loadChildren:()=>import('./auth/auth.module').then(m=>m.AuthModule)
     
