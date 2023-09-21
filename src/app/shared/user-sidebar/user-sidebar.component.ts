@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-admin-sidebar',
-  templateUrl: './admin-sidebar.component.html',
-  styleUrls: ['./admin-sidebar.component.css']
+  selector: 'app-user-sidebar',
+  templateUrl: './user-sidebar.component.html',
+  styleUrls: ['./user-sidebar.component.css']
 })
-export class AdminSidebarComponent {
+export class UserSidebarComponent {
   user :any={} ;
+  
   constructor(private route : Router){
     const userString = localStorage.getItem('user');
 
@@ -15,7 +16,7 @@ export class AdminSidebarComponent {
       this.user = JSON.parse(userString);
     }
   }
-
+ 
 
 
   logout(){
