@@ -11,6 +11,16 @@ import { Const } from 'src/app/shared/Const';
 })
 export class RegisterComponent {
   CreateAccountForm: FormGroup;
+  fnChanged=false;
+  lnChanged=false;
+  dobChanged=false;
+  adChanged=false;
+  genChanged=false;
+  unChanged=false;
+  passChanged=false;
+  emailChanged=false;
+  phoneChanged=false;
+  
 
   Genders = [
     { value: 'male', viewValue: 'Male' },
