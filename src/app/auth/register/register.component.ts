@@ -39,15 +39,7 @@ export class RegisterComponent {
       ImagePath: [''],
       loginId: [''],
     });
-  }
 
-  showAdditionalData = false;
-  showPersonalData = true;
-
-  showAdditionalDataSection() {
-    this.showPersonalData = false; // Hide Personal Data section
-    this.showAdditionalData = true; // Show Additional Data section
-  }
   CreateAccountBtn() {
     if (!this.CreateAccountForm.value.ImagePath) {
       const selectedGender = this.CreateAccountForm.value.Gender;
@@ -74,24 +66,5 @@ export class RegisterComponent {
       let form = new FormData();
       
     this.auth.register(this.loginData,this.personalData);
-
-    //  if(this.auth.CreateLogin(this.loginData))
-    //  {
-    //     this.personalData.firstName = this.CreateAccountForm.value.FirstName;
-    //     this.personalData.lastName = this.CreateAccountForm.value.LastName;
-    //     this.personalData.dateOfBirth = this.CreateAccountForm.value.DateOfBirth;
-    //     this.personalData.address = this.CreateAccountForm.value.Address;
-    //     this.personalData.gender = this.CreateAccountForm.value.Gender;
-    //     this.personalData.phone = this.CreateAccountForm.value.Phone;
-    //     this.personalData.email = this.CreateAccountForm.value.Email;
-
-    //     // Assign imagePath based on selected gender
-    //     const selectedGender = this.CreateAccountForm.value.Gender;
-    //     this.personalData.imagePath = this.genderImages[selectedGender] || this.genderImages.male;
-
-    //     console.log(this.personalData);
-
-    //     this.auth.CreateAccount(this.personalData);
-    //   }
   }
 }
