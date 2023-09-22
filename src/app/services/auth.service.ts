@@ -62,7 +62,8 @@ export class AuthService {
   loginId: any;
   async register(loginData: any,personalData:any) {
     //debugger
-
+    console.log(loginData);
+    
     let userLogin = new Promise((resolve,reject)=>{
       this.http
       .post('https://localhost:7081/api/login/createLogin', loginData)

@@ -39,7 +39,6 @@ export class RegisterComponent {
       ImagePath: [''],
       loginId: [''],
     });
-  }
 
   CreateAccountBtn() {
     if (!this.CreateAccountForm.value.ImagePath) {
