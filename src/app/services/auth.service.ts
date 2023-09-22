@@ -62,14 +62,17 @@ export class AuthService {
   loginId: any;
   async register(loginData: any,personalData:any) {
     //debugger
-    console.log(loginData);
+   // console.log(loginData);
     
     let userLogin = new Promise((resolve,reject)=>{
       this.http
       .post('https://localhost:7081/api/login/createLogin', loginData)
       .subscribe(
         (resp: any) => {
-          personalData.loginId = resp
+          debugger;
+          personalData.loginId = resp;
+          console.log(resp);
+          
           resolve(personalData)
           // this.loginId = resp.loginId;
           // //alert(' Success');
@@ -82,7 +85,9 @@ export class AuthService {
         }
       );
     })
-    userLogin.then(v=>{
+    await userLogin.then(v=>{
+      console.log(v);
+      
       this.createAccount(v);
       
     });
@@ -95,7 +100,6 @@ export class AuthService {
   createAccount(body: any) {
     debugger
     
-    body.loginId = this.loginId;
     this.http.post('https://localhost:7081/api/Account', body).subscribe(
       (resp: any) => {
         // console.log(resp);
