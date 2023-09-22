@@ -79,7 +79,7 @@
                   <div>
                     <div class="mb-2 example-full-width">
                       <label for="UserName">User Name</label>
-                      <input type="text" id="UserName" name="UserName" formControlName="UserName" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['UserName'].valid" [class.invalid-border]="CreateAccountForm.controls['UserName'].invalid" placeholder="User Name">
+                      <input type="text" id="UserName" name="UserName" formControlName="UserName" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['UserName'].valid" [class.invalid-border]="(isFormSubmitted||unChanged)&&CreateAccountForm.controls['UserName'].invalid" (input)="unChanged=true" placeholder="User Name">
                      <span *ngIf="(isFormSubmitted||unChanged) && CreateAccountForm.controls['UserName'].hasError('required')" class="error">User Name is required</span>
                      <span *ngIf="CreateAccountForm.controls['UserName'].hasError('userNameExist')" class="text-danger" >This User Name is already exist</span>
 
