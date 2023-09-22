@@ -24,6 +24,7 @@ export class RegisterComponent {
     male: './assets/Images/Male.png',
     female: './assets/Images/Female.png',
   };
+  isFormSubmitted = false;
 
   constructor(private fb: FormBuilder, public auth: AuthService) {
     this.CreateAccountForm = this.fb.group({
@@ -42,7 +43,12 @@ export class RegisterComponent {
   }
 
   CreateAccountBtn() {
-    if (!this.CreateAccountForm.value.ImagePath) {
+    this.isFormSubmitted = true;
+  
+    if (!this.CreateAccountForm.valid) {
+      return; 
+    }
+    else if (!this.CreateAccountForm.value.ImagePath) {
       const selectedGender = this.CreateAccountForm.value.Gender;
       this.CreateAccountForm.value.ImagePath =
         this.genderImages[selectedGender] || this.genderImages.default;

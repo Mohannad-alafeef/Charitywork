@@ -1,5 +1,3 @@
-
-
 <body>
   <main>
     <div class="container">
@@ -12,114 +10,98 @@
               <div class="gender-image-container text-center mb-3">
                 <img [src]="genderImages[CreateAccountForm.value.Gender || 'male']" alt="Gender Image" width="190px" height="180px">
               </div>
-              <div class="pt-4 pb-2">
+           
+              <div class=" pb-2">
                 <h1 class="card-title text-center pb-0 fs-4">Create an Account</h1>
                 <h5 class="text-center small">Enter your personal details to create an account</h5>
               </div>
             </div>
 
-
             <div class="col-lg-6 col-md-6">
-              <mat-dialog-content class="mat-typography">
+              <div class="mat-typography">
                 <form [formGroup]="CreateAccountForm" class="example-form">
                
-                  <div class="row">
+                  <div class="row  mb-2">
                     <div class="col-md-6">
-                      <mat-form-field class="example-full-width">
-                        <mat-label>First Name</mat-label>
-                        <input type="text" matInput formControlName="FirstName">
-                        <mat-error *ngIf="CreateAccountForm.controls['FirstName'].hasError('required')">
-                          First Name is required
-                        </mat-error>
-                      </mat-form-field>
+                      <div class="example-full-width">
+                        <label for="FirstName">First Name</label>
+                        <input type="text" id="FirstName" name="FirstName" formControlName="FirstName" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['FirstName'].valid" [class.invalid-border]="CreateAccountForm.controls['FirstName'].invalid" placeholder="First Name">
+                       <span *ngIf="isFormSubmitted && CreateAccountForm.controls['FirstName'].hasError('required')" class="error">First Name is required</span>
+                      </div>
                     </div>
                     <div class="col-md-6">
-                      <mat-form-field class="example-full-width">
-                        <mat-label>Last Name</mat-label>
-                        <input type="text" matInput formControlName="LastName">
-                        <mat-error *ngIf="CreateAccountForm.controls['LastName'].hasError('required')">
-                          Last Name is required
-                        </mat-error>
-                      </mat-form-field>
+                      <div class="example-full-width">
+                        <label for="LastName">Last Name</label>
+                        <input type="text" id="LastName" name="LastName" formControlName="LastName" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['LastName'].valid" [class.invalid-border]="CreateAccountForm.controls['LastName'].invalid" placeholder="Last Name">
+                       <span *ngIf="isFormSubmitted && CreateAccountForm.controls['LastName'].hasError('required')" class="error">Last Name is required</span>
+                      </div>
                     </div>
                   </div>
               
-                  <div class="row">
+                  <div class="row  mb-2">
                     <div class="col-md-6">
-                      <mat-form-field class="example-full-width">
-                        <mat-label>Date Of Birth</mat-label>
-                        <input type="date" matInput formControlName="DateOfBirth">
-                        <mat-error *ngIf="CreateAccountForm.controls['DateOfBirth'].hasError('required')">
-                          Date Of Birth is required
-                        </mat-error>
-                      </mat-form-field>
+                      <div class="example-full-width">
+                        <label for="DateOfBirth">Date Of Birth</label>
+                        <input type="date" id="DateOfBirth" name="DateOfBirth" formControlName="DateOfBirth" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['DateOfBirth'].valid" [class.invalid-border]="CreateAccountForm.controls['DateOfBirth'].invalid" placeholder="Date Of Birth">
+                       <span *ngIf="isFormSubmitted && CreateAccountForm.controls['DateOfBirth'].hasError('required')" class="error">Date Of Birth is required</span>
+                      </div>
                     </div>
                     <div class="col-md-6">
                       <div class="gender-container">
-                        <mat-form-field class="example-full-width">
-
-                          <mat-label>Gender</mat-label>
-                          <mat-select formControlName="Gender">
-                            <mat-option *ngFor="let Gender of Genders" [value]="Gender.value">
-                              {{ Gender.viewValue }}
-                            </mat-option>
-                          </mat-select>
-                        </mat-form-field>
+                        <div class="example-full-width">
+                          <label for="Gender">Gender</label>
+                          <select id="Gender" name="Gender" formControlName="Gender" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['Gender'].valid" [class.invalid-border]="CreateAccountForm.controls['Gender'].invalid" placeholder="Gender">
+                            <option *ngFor="let Gender of Genders" [value]="Gender.value">{{ Gender.viewValue }}</option>
+                          </select>
+                         <span *ngIf="isFormSubmitted && CreateAccountForm.controls['Gender'].hasError('required')" class="error">Gender is required</span>
+                        </div>
                       </div>
                     </div>
                   </div>
       
-                  <div class="row">
+                  <div class="row  mb-2">
                     <div class="col-md-6">
-                      <mat-form-field class="example-full-width">
-                        <mat-label>Address</mat-label>
-                        <input type="text" matInput formControlName="Address">
-                        <mat-error *ngIf="CreateAccountForm.controls['Address'].hasError('required')">
-                          Address is required
-                        </mat-error>
-                      </mat-form-field>
+                      <div class="example-full-width">
+                        <label for="Address">Address</label>
+                        <input type="text" id="Address" name="Address" formControlName="Address" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['Address'].valid" [class.invalid-border]="CreateAccountForm.controls['Address'].invalid" placeholder="Address">
+                       <span *ngIf="isFormSubmitted && CreateAccountForm.controls['Address'].hasError('required')" class="error">Address is required</span>
+                      </div>
                     </div>
                     <div class="col-md-6">
-                      <mat-form-field class="example-full-width">
-                        <mat-label>Phone Number</mat-label>
-                        <input type="text" matInput formControlName="Phone">
-                        <mat-error *ngIf="CreateAccountForm.controls['Phone'].hasError('required')">
-                          Phone Number is required
-                        </mat-error>
-                      </mat-form-field>
+                      <div class="example-full-width">
+                        <label for="Phone">Phone Number</label>
+                        <input type="text" id="Phone" name="Phone" formControlName="Phone" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['Phone'].valid" [class.invalid-border]="CreateAccountForm.controls['Phone'].invalid" placeholder="Phone Number">
+                       <span *ngIf="isFormSubmitted && CreateAccountForm.controls['Phone'].hasError('required')" class="error">Phone Number is required</span>
+                      </div>
                     </div>
                   </div>
                  
                   <div>
-                    <mat-form-field class="example-full-width">
-                      <mat-label>User Name</mat-label>
-                      <input type="text" matInput formControlName="UserName">
-                      <mat-error *ngIf="CreateAccountForm.controls['UserName'].hasError('required')">
-                        User Name is required
-                      </mat-error>
-                    </mat-form-field>
-                    <mat-form-field class="example-full-width">
-                      <mat-label>Password</mat-label>
-                      <input type="password" matInput formControlName="Password">
-                      <mat-error *ngIf="CreateAccountForm.controls['Password'].hasError('required')">
-                        Password is required
-                      </mat-error>
-                    </mat-form-field>
-                    <mat-form-field class="example-full-width">
-                      <mat-label>Email</mat-label>
-                      <input type="email" matInput formControlName="Email">
-                      <mat-error *ngIf="CreateAccountForm.controls['Email'].hasError('required')">
-                        Email is required
-                      </mat-error>
-                    </mat-form-field>
+                    <div class="mb-2 example-full-width">
+                      <label for="UserName">User Name</label>
+                      <input type="text" id="UserName" name="UserName" formControlName="UserName" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['UserName'].valid" [class.invalid-border]="CreateAccountForm.controls['UserName'].invalid" placeholder="User Name">
+                     <span *ngIf="isFormSubmitted && CreateAccountForm.controls['UserName'].hasError('required')" class="error">User Name is required</span>
+                    </div>
+                    <div class="mb-2 example-full-width">
+                      <label for="Password">Password</label>
+                      <input type="password" id="Password" name="Password" formControlName="Password" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['Password'].valid" [class.invalid-border]="CreateAccountForm.controls['Password'].invalid" placeholder="Password">
+                     <span *ngIf="isFormSubmitted && CreateAccountForm.controls['Password'].hasError('required')" class="error">Password is required</span>
+                     <span class="text-danger" *ngIf="CreateAccountForm.controls['Password'].hasError('minlength')">Please Enter a Strong password</span>
+                    
+                    </div>
+                    <div class="mb-2 example-full-width">
+                      <label for="Email">Email</label>
+                      <input type="email" id="Email" name="Email" formControlName="Email" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['Email'].valid" [class.invalid-border]="CreateAccountForm.controls['Email'].invalid" placeholder="Email">
+                     <span *ngIf="isFormSubmitted && CreateAccountForm.controls['Email'].hasError('required')" class="error">Email is required</span>
+                     <span class="text-danger" *ngIf="CreateAccountForm.controls['Email'].hasError('email')">Please enter a valid email address</span>
+                      
+                    </div>
                   </div>
-                  <mat-dialog-actions align="end"><br>
-                    <button class="btn btn-primary w-100" style="color: white;" mat-button
-                     [mat-dialog-close]="true" cdkFocusInitial [disabled]="!CreateAccountForm.valid"
-                     (click)="CreateAccountBtn()">Create Account</button>
-                  </mat-dialog-actions>
+                  <div align="end"><br>
+                    <button class="btn btn-primary w-100" style="color: white;" type="submit" [disabled]="!CreateAccountForm.valid" (click)="CreateAccountBtn()">Create Account</button>
+                  </div>
                 </form>
-              </mat-dialog-content>
+              </div>
               <hr>
             </div>
           </div>
@@ -128,4 +110,3 @@
     </div>
   </main>
 </body>
-
