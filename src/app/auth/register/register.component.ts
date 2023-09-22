@@ -39,6 +39,7 @@ export class RegisterComponent {
       ImagePath: [''],
       loginId: [''],
     });
+  }
 
   CreateAccountBtn() {
     if (!this.CreateAccountForm.value.ImagePath) {
@@ -46,6 +47,11 @@ export class RegisterComponent {
       this.CreateAccountForm.value.ImagePath =
         this.genderImages[selectedGender] || this.genderImages.default;
     }
+      const selectedGender = this.CreateAccountForm.value.Gender;
+      this.personalData.imagePath =
+        this.genderImages[selectedGender] || this.genderImages.male;
+        let form = new FormData();
+    
 
     this.loginData.userName = this.CreateAccountForm.value.UserName;
     this.loginData.password = this.CreateAccountForm.value.Password;
@@ -53,17 +59,15 @@ export class RegisterComponent {
     this.loginData.roleId = Const.User;
     this.personalData.firstName = this.CreateAccountForm.value.FirstName;
     this.personalData.lastName = this.CreateAccountForm.value.LastName;
-    this.personalData.dateOfBirth = this.CreateAccountForm.value.DateOfBirth;
+    this.personalData.loginDate = this.CreateAccountForm.value.DateOfBirth;
     this.personalData.address = this.CreateAccountForm.value.Address;
     this.personalData.gender = this.CreateAccountForm.value.Gender;
     this.personalData.phone = this.CreateAccountForm.value.Phone;
     this.personalData.email = this.CreateAccountForm.value.Email;
+    this.personalData.loginId = -1;
 
     // Assign imagePath based on selected gender
-    const selectedGender = this.CreateAccountForm.value.Gender;
-    this.personalData.imagePath =
-      this.genderImages[selectedGender] || this.genderImages.male;
-      let form = new FormData();
+    
       
     this.auth.register(this.loginData,this.personalData);
   }
