@@ -21,8 +21,8 @@ export class RegisterComponent {
   personalData: any = {};
 
   genderImages: any = {
-    male: './assets/assetsTwo/images/Male.png',
-    female: './assets/assetsTwo/images/Female.png',
+    male: './assets/Images/Male.png',
+    female: './assets/Images/Female.png',
   };
 
   constructor(private fb: FormBuilder, public auth: AuthService) {
@@ -48,9 +48,10 @@ export class RegisterComponent {
         this.genderImages[selectedGender] || this.genderImages.default;
     }
       const selectedGender = this.CreateAccountForm.value.Gender;
-      this.personalData.imagePath =
-        this.genderImages[selectedGender] || this.genderImages.male;
-        let form = new FormData();
+      let image:string = this.genderImages[selectedGender] || this.genderImages.male;
+      this.personalData.imagePath = image.slice(image.lastIndexOf('/')+1);
+        
+      //  let form = new FormData();
     
 
     this.loginData.userName = this.CreateAccountForm.value.UserName;
