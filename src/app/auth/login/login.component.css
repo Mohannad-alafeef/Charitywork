@@ -1,5 +1,6 @@
 main {
-    background-image: url('../../../assets/Images/bg_1.jpg');
+    /*background-image: url('../../../assets/Images/bg_1.jpg');*/
+    background-color: rgb(248, 247, 239);
     background-size: cover;
     background-repeat: no-repeat;
   }
