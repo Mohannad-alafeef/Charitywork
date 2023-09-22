@@ -45,10 +45,10 @@ export class AuthService {
           debugger;
 
           if (data.roleId == Const.Admin) {
-            this.toastr.success('Welcome On Admin Dashbaord');
+           // this.toastr.success('Welcome On Admin Dashbaord');
             this.router.navigate(['admin']);
           } else if (data.roleId == Const.User) {
-            this.toastr.success('Welcome On User Dashbaord');
+          //  this.toastr.success('Welcome On User Dashbaord');
             this.router.navigate(['user']);
           }
         },
@@ -98,13 +98,17 @@ export class AuthService {
   }
 
   createAccount(body: any) {
-    debugger
+    //debugger
     
     this.http.post('https://localhost:7081/api/Account', body).subscribe(
       (resp: any) => {
         // console.log(resp);
         //alert(' Success');
-        this.toastr.success('Success');
+        this.toastr.success('Success').onHidden.subscribe({
+          next:()=>{
+            this.router.navigate(['auth/login'])
+          }
+        });
       },
       (err) => {
         // alert('somthing wrong');
