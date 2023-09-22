@@ -10,11 +10,16 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  emailChanged=false;
+  passChanged=false;
+  formSubmitted=false;
   constructor(private auth:AuthService){}
-  email=new FormControl ('ex@example.com',[Validators.required]);
-  Password=new FormControl('********',[Validators.required,Validators.minLength(8)]);
+  email=new FormControl ('',[Validators.required]);
+  Password=new FormControl('',[Validators.required,Validators.minLength(8)]);
   
   submit(){
+    this.formSubmitted = true;
+    if(this.email.invalid||this.Password.invalid) return;
     this.auth.Login(this.email,this.Password);
   }
 
