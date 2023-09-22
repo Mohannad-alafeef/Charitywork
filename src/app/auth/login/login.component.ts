@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent {
   constructor(private auth:AuthService){}
-  email=new FormControl ('ex@example.com',[Validators.required,Validators.email]);
+  email=new FormControl ('ex@example.com',[Validators.required]);
   Password=new FormControl('********',[Validators.required,Validators.minLength(8)]);
   
   submit(){

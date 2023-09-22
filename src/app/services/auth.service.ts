@@ -53,9 +53,8 @@ export class AuthService {
           }
         },
         (err) => {
-          console.log(err);
-          this.toastr.error('Something wrong!!');
-          this.toastr.error(err.message);
+          this.toastr.error('invalid email , User Name or password ');
+          
         }
       );
   }
