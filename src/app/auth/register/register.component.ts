@@ -56,25 +56,46 @@ export class RegisterComponent implements OnInit{
     });
   }
 record:any=[{}];
+emailcheck:any=false;
+userNameCheck:any=false;
 
    checkEmailInRecords(records :any) {
+    
+debugger;
     for (const record of records) {
       if (record.email === this.CreateAccountForm.value.Email) {
-        return true; 
+        this.emailcheck = true; 
+        
       }
+      if (record.userName === this.CreateAccountForm.value.UserName)
+      {
+        this.userNameCheck=true;
+      }
+    
+     
     }
-    return false; 
+    if(this.userNameCheck||this.emailcheck)
+      return true;
+    else
+      return false; 
   }
 
   CreateAccountBtn() {
 
-//debugger;
+debugger;
     this.record=this.auth.account;
+
     if(this.checkEmailInRecords(this.record))
     {
       console.log("this email is exist");
-
-      this.CreateAccountForm.controls['Email'].setErrors({emailExist:true});
+      if(this.emailcheck){
+         this.CreateAccountForm.controls['Email'].setErrors({emailExist:true});
+         this.emailcheck=false;
+      }
+      if(this.userNameCheck){
+         this.CreateAccountForm.controls['UserName'].setErrors({userNameExist:true});
+         this.userNameCheck=false;
+      }
     }
     else
     {
