@@ -50,8 +50,7 @@ export class RegisterComponent {
       const selectedGender = this.CreateAccountForm.value.Gender;
       let image:string = this.genderImages[selectedGender] || this.genderImages.male;
       this.personalData.imagePath = image.slice(image.lastIndexOf('/')+1);
-        
-      //  let form = new FormData();
+
     
 
     this.loginData.userName = this.CreateAccountForm.value.UserName;
