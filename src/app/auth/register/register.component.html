@@ -94,7 +94,7 @@
                       <input type="email" id="Email" name="Email" formControlName="Email" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['Email'].valid" [class.invalid-border]="CreateAccountForm.controls['Email'].invalid" placeholder="Email">
                      <span *ngIf="isFormSubmitted && CreateAccountForm.controls['Email'].hasError('required')" class="error">Email is required</span>
                      <span class="text-danger" *ngIf="CreateAccountForm.controls['Email'].hasError('email')">Please enter a valid email address</span>
-                      
+                      <span *ngIf="CreateAccountForm.controls['Email'].hasError('emailExist')" class="text-danger" >this email is already exist</span>
                     </div>
                   </div>
                   <div align="end"><br>

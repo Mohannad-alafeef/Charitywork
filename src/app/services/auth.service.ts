@@ -14,6 +14,22 @@ export class AuthService {
     private router: Router,
     private toastr: ToastrService
   ) {}
+
+account:any=[{}];
+  getAllAccount()
+  {
+    debugger
+    this.http.get('https://localhost:7081/api/Login/GetAllLogin').subscribe(
+        (resp: any) => {
+          this.account=resp;
+          //console.log(this.account);
+        },(err) => {
+          //alert('somthing wrong');
+          console.log(err.status);
+          this.toastr.error('Error', err.status);
+        })
+  }
+
   Login(email: any, password: any) {
     var body = {
       email: email.value.toString(),
