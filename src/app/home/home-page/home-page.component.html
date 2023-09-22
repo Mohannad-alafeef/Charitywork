@@ -121,14 +121,14 @@
               
               <div class="card fundraise-item">
                 <a ><img class="card-img-top" src="../../../assets/Images/{{obj.imagePath}}" alt="Image placeholder"></a>
-                <div class="card-body">
+                <div class="card-body column-card h-100">
                   <h3 class="card-title"><a >{{obj.charityName}}</a></h3>
-                  <p class="card-text h6">{{obj.mission}}</p>
-             
+                  
+                  <span class="fund-raised d-block h6">{{getTotalPayment(obj.payments)|currency:'USD':true:'1.0-0'}} raised of {{obj.donationGoal|currency:'USD':true:'1.0-0'}}</span>
                   <div class="progress custom-progress-success">
                     <div class="progress-bar bg-primary" role="progressbar" [ngStyle]="{'width':calcPercent(obj.payments,obj.donationGoal)+'%'}" attr.aria-valuenow="{{calcPercent(obj.payments,obj.donationGoal)}}" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <span class="fund-raised d-block h6">{{getTotalPayment(obj.payments)|currency:'USD':true:'1.0-0'}} raised of {{obj.donationGoal|currency:'USD':true:'1.0-0'}}</span>
+                  <p class="card-text h6">{{obj.mission}}</p>
                 </div>
               </div>
             </ng-template>

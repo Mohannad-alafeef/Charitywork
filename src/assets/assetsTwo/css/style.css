@@ -590,6 +590,7 @@ textarea.form-control {
 .person-donate .donate-amount .amount {
   background: #28a745;
   color: #fff; }
+  
 
 .fundraise-item {
   -webkit-box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.1);
@@ -1978,3 +1979,6 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+.column-card{
+  
+}
