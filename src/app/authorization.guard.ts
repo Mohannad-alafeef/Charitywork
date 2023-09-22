@@ -13,7 +13,7 @@ export const authorizationGuard: CanActivateFn = (route, state) => {
     if (state.url.indexOf('admin') >= 0) {
       if (user.roleId == Const.Admin) {
        // toaster.success('Welcome on Admin Dashbord');
-        router.navigate(['admin']);
+        //router.navigate(['admin']);
         return true;
       } else {
         router.navigate(['auth/login']);
@@ -21,7 +21,7 @@ export const authorizationGuard: CanActivateFn = (route, state) => {
       }
     }else if(state.url.indexOf('user')){
       if(user.roleId == Const.User){
-        router.navigate(['user']);
+        //router.navigate(['user']);
         return true;
       }else{
         router.navigate(['auth/login']);
