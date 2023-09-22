@@ -1,133 +1,127 @@
-<main>
-  <div class="container ">
-    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
-      <div class="container">
-        <div class="row justify-content-center d-flex flex-column align-items-center justify-content-center"> 
-          <div class=" col-lg-6 ">
-            <div class="text-center">
+
+<body>
+  <main>
+    <div class="container">
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row registration-card ">
+
+            <div class="col-lg-6 col-md-6 d-flex flex-column align-items-center justify-content-center">
               <a class="navbar-brand">GiveHope</a>
-            </div>
-            <br>
-            <div class="card mb-3">
-              <div class="card-body">
-                <div class="pt-4 pb-2">
-                  <h1 class="card-title text-center pb-0 fs-4">Create New Account</h1>
-                </div>
-
-
-                  <form enctype="multipart/form-data" [formGroup]="CreateAccountForm" #localform="ngForm" class="example-form">
-                    <!-- Personal Data Inputs -->
-
-                    <div class="mb-3 " *ngIf="showPersonalData">
-                      <label class="form-label">First Name</label>
-                      <input class="form-control" type="text" formControlName="FirstName" 
-                      [class.is-invalid]="localform.submitted &&CreateAccountForm.get('FirstName')?.invalid" required>
-                      <div class="invalid-feedback"> FirstName is required</div>
-                    </div>
-
-                    <div class="mb-3" *ngIf="showPersonalData">
-                      <label class="form-label">Last Name </label>
-                      <input class="form-control" type="text"   formControlName="LastName"  [class.is-invalid]="localform.submitted &&CreateAccountForm.get('LastName')?.invalid"  required>
-                      <div class="invalid-feedback"> Last Name is required</div>
-                    
-                    </div>
-
-                    <div class=" mb-3" *ngIf="showPersonalData">
-                      <label class="form-label">Date Of Birth </label>
-                      <input class="form-control" type="date"   formControlName="DateOfBirth" [class.is-invalid]="localform.submitted &&CreateAccountForm.get('DateOfBirth')?.invalid"  required>
-                      <div class="invalid-feedback">Date Of Birth is required</div>
-                    </div>
-
-                    <div *ngIf="showPersonalData">
-                      <label class="form-label">Address </label>
-                      <input  class="form-control"  type="text"   formControlName="Address" [class.is-invalid]="localform.submitted &&CreateAccountForm.get('Address')?.invalid"  required>
-                      <div class="invalid-feedback">Address is required</div>
-                    
-                    </div>
-
-                    <div class="col-12 " *ngIf="showPersonalData" class="gender-container">
-                      <div>
-                        <label  class="form-label mt-2" for="Gender">Gender</label>
-                        <select  id="Gender" name="Gender"   formControlName="Gender">
-                          <option *ngFor="let gender of Genders" [value]="gender.value">{{ gender.viewValue }}</option>
-                        </select>
-                      </div>
-                      
-                      <div class="gender-image-container mt-0">
-                        <img [src]="genderImages[CreateAccountForm.value.Gender || 'male']" alt="Gender Image" width="100">
-                      </div>
-                    </div>
-                    
-                    <!-- Continue button // additional inputs -->
-                    <button class="btn btn-primary w-100" style="color: white;" (click)="showAdditionalDataSection()" *ngIf="showPersonalData">Continue</button>
-
-                    <!-- Additional Data Inputs -->
-                    <div *ngIf="showAdditionalData">
-                      <div class="mb-3" *ngIf="showAdditionalData">
-                        <label class="form-label">User Name</label>
-                        <input  class="form-control" type="text"   formControlName="UserName"  [class.is-invalid]="localform.submitted &&CreateAccountForm.get('UserName')?.invalid"  required>
-                        <div class="invalid-feedback">User Name is required</div>
-                      
-                     </div>
-
-                      <div class="mb-3" *ngIf="showAdditionalData">
-                        <label class="form-label">Password </label>
-                        <input class="form-control" type="password"   formControlName="Password" [class.is-invalid]="localform.submitted &&CreateAccountForm.get('Password')?.invalid"  required>
-                        <div class="invalid-feedback">Password is required</div>
-                      
-                      </div>
-
-                      <div class="mb-3" *ngIf="showAdditionalData">
-                        <label class="form-label">Email </label>
-                        <input class="form-control" type="email"   formControlName="Email" [class.is-invalid]="localform.submitted &&CreateAccountForm.get('Email')?.invalid"  required>
-                        <div class="invalid-feedback">Email is required</div>
-                      
-                      </div>
-
-                      <div class="mb-3" *ngIf="showAdditionalData">
-                        <label class="form-label">Phone </label>
-                        <input class="form-control" type="text"   formControlName="Phone" [class.is-invalid]="localform.submitted &&CreateAccountForm.get('Phone')?.invalid"  required>
-                        <div class="invalid-feedback">Phone is required</div>
-                      
-                      </div>
-
-                      <!-- <div class="card-body" style="color: rgb(145, 140, 140); background-color: rgb(247, 247, 247); padding: 10px;">
-                        <h3 style="color: rgb(145, 140, 140);">Profile Image</h3>
-                        <input type="file" #file formControlName="ImagePath" (change)="uploadImage(file.files)">
-                      </div>-->
-                    </div> 
-                     
-                    <!-- <div class="col-12" *ngIf="showAdditionalData">
-                      <div class="form-check"><br>
-                        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
-                        <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
-                        <div class="invalid-feedback">You must agree before submitting.</div>
-                      </div>
-                    </div> -->
-                    <div class="row">
-                      <div class="col-md-6">
-                        <button class="btn w-100" style="border-color:  rgb(250, 208, 68); color:black" (click)="showPersonalDataSection()" *ngIf="showAdditionalData">
-                          Back
-                        </button>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="custom-dialog-actions" *ngIf="showAdditionalData">
-                          <button class="btn btn-primary w-100" style="color: white;" (click)="CreateAccountBtn()">Create Account</button>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                <hr>
-                <div class="col-12 text-center">
-                  <h3 class="small mb-0">Already have an account?</h3>
-                  <a class="btn btn-primary w-50" style="color: white;" [routerLink]="['/login']">Login</a>
-                </div>
-                
+              <div class="gender-image-container text-center mb-3">
+                <img [src]="genderImages[CreateAccountForm.value.Gender || 'male']" alt="Gender Image" width="190px" height="180px">
+              </div>
+              <div class="pt-4 pb-2">
+                <h1 class="card-title text-center pb-0 fs-4">Create an Account</h1>
+                <h5 class="text-center small">Enter your personal details to create an account</h5>
               </div>
             </div>
+
+
+            <div class="col-lg-6 col-md-6">
+              <mat-dialog-content class="mat-typography">
+                <form [formGroup]="CreateAccountForm" class="example-form">
+               
+                  <div class="row">
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <mat-label>First Name</mat-label>
+                        <input type="text" matInput formControlName="FirstName">
+                        <mat-error *ngIf="CreateAccountForm.controls['FirstName'].hasError('required')">
+                          First Name is required
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Last Name</mat-label>
+                        <input type="text" matInput formControlName="LastName">
+                        <mat-error *ngIf="CreateAccountForm.controls['LastName'].hasError('required')">
+                          Last Name is required
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+              
+                  <div class="row">
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Date Of Birth</mat-label>
+                        <input type="date" matInput formControlName="DateOfBirth">
+                        <mat-error *ngIf="CreateAccountForm.controls['DateOfBirth'].hasError('required')">
+                          Date Of Birth is required
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="gender-container">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Gender</mat-label>
+                          <mat-select formControlName="Gender">
+                            <mat-option *ngFor="let Gender of Genders" [value]="Gender.value">
+                              {{ Gender.viewValue }}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <div class="row">
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Address</mat-label>
+                        <input type="text" matInput formControlName="Address">
+                        <mat-error *ngIf="CreateAccountForm.controls['Address'].hasError('required')">
+                          Address is required
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Phone Number</mat-label>
+                        <input type="text" matInput formControlName="Phone">
+                        <mat-error *ngIf="CreateAccountForm.controls['Phone'].hasError('required')">
+                          Phone Number is required
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                 
+                  <div>
+                    <mat-form-field class="example-full-width">
+                      <mat-label>User Name</mat-label>
+                      <input type="text" matInput formControlName="UserName">
+                      <mat-error *ngIf="CreateAccountForm.controls['UserName'].hasError('required')">
+                        User Name is required
+                      </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Password</mat-label>
+                      <input type="password" matInput formControlName="Password">
+                      <mat-error *ngIf="CreateAccountForm.controls['Password'].hasError('required')">
+                        Password is required
+                      </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Email</mat-label>
+                      <input type="email" matInput formControlName="Email">
+                      <mat-error *ngIf="CreateAccountForm.controls['Email'].hasError('required')">
+                        Email is required
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <mat-dialog-actions align="end"><br>
+                    <button class="btn btn-primary w-100" style="color: white;" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="CreateAccountBtn()">Create Account</button>
+                  </mat-dialog-actions>
+                </form>
+              </mat-dialog-content>
+              <hr>
+            </div>
           </div>
-         </div>
-      </div>
-    </section>
-  </div>
-</main> 
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+

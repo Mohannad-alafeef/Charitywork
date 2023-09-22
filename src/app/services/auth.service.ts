@@ -92,7 +92,7 @@ export class AuthService {
   }
 
   createAccount(body: any) {
-    // debugger
+    debugger
     
     body.loginId = this.loginId;
     this.http.post('https://localhost:7081/api/Account', body).subscribe(
