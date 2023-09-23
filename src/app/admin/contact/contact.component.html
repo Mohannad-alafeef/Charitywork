@@ -1,0 +1,56 @@
+<app-admin-sidebar></app-admin-sidebar>
+<main #main id="main" class="main">
+
+    <section  class="py-5">
+        <div class="container-fluid">
+           
+    
+    
+            <div class="row my-5" *ngFor="let obj of contactService.allContact">
+                <div class="col-lg-8 mx-auto">
+                    <div class="p-4 shadow rounded contact-card" >
+                        <div class="row row-cols-2">
+                            <div class="col-3">
+                                <h3>Name</h3>
+                                <h3>Email</h3>
+                                <h3>subject</h3>
+                                <h3>Message</h3>
+                            </div>
+                            <div class="col-9">
+                                <h3><span>{{obj.senderName}}</span></h3>
+                                <h3><span>{{obj.senderEmail}}</span></h3>
+                                <h3><span>{{obj.contactSubject}}</span></h3>
+                                
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="blockquote-custom-icon shadow-sm" [style.background-color]="getColor(obj.contactStatus)"><fa-icon [icon]="getIcon(obj.contactStatus)" class="text-white"></fa-icon></div>
+                        <p class="mb-0 mt-2 font-italic" style="text-indent: 50px;">{{obj.contactContent}} </p>
+                        <div class="contact-btns">
+                            <button type="button" class="mx-1 contact-btn btn btn-success text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="Reply"><i class="contact-i bi bi-reply" ></i></button>
+                            <button *ngIf="obj.contactStatus == unread" type="button" class="mx-1 contact-btn btn btn-secondary text-white" (click)="updateStatus(obj.contactId,readed)" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark as read"><i class="contact-i bi bi-envelope-open"></i></button>
+                            <button *ngIf="obj.contactStatus == readed" type="button" class="mx-1 contact-btn btn btn-secondary text-white" (click)="updateStatus(obj.contactId,unread)" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark as unread"><i class="contact-i bi bi-envelope"></i></button>
+                            <button type="button" class="mx-1 contact-btn btn btn-danger text-white" (click)="openDeleteDialog(obj.contactId)" data-bs-toggle="tooltip" data-bs-placement="top" title="delete"><i class="contact-i bi bi-trash"></i></button>
+                        </div>
+                       
+                    </div>
+                    
+    
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<a  class="back-to-top d-flex align-items-center justify-content-center" (click)="main.scrollIntoView()" [routerLink]="getCurrentRoute()"><i class="bi bi-arrow-up-short"></i></a>
+<ng-template #deleteDialog>
+    <h1 mat-dialog-title>Delete file</h1>
+    <div mat-dialog-content>
+      Would you like to delete this email ?
+    </div>
+    <div mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close >No</button>
+      <button class="btn btn-danger text-white"  mat-dialog-close (click)="deleteMessage()" cdkFocusInitial>yes</button>
+    </div>
+    
+</ng-template>

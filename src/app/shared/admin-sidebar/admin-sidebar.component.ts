@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ContactService } from 'src/app/services/contact.service';
+
 
 @Component({
   selector: 'app-admin-sidebar',
@@ -8,12 +10,15 @@ import { Router } from '@angular/router';
 })
 export class AdminSidebarComponent {
   user :any={} ;
-  constructor(private route : Router){
+
+  constructor(private route : Router,public contact:ContactService){
     const userString = localStorage.getItem('user');
 
     if (userString) {
       this.user = JSON.parse(userString);
     }
+    contact.getContact();
+    
   }
 
 
