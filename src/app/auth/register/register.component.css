@@ -19,7 +19,7 @@ main {
 }
 .gender-container {
   display: flex;
-  justify-content: space-between; /* Align items horizontally with space between */
+  justify-content: space-between; 
 }
 .registration-card {
   background-color: white;

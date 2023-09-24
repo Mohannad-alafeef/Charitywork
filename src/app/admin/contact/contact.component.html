@@ -1,0 +1,88 @@
+<app-admin-sidebar></app-admin-sidebar>
+<main #main id="main" class="main">
+
+    <section  class="py-5">
+        <div class="container-fluid">
+           
+    
+    
+            <div class="row my-5" *ngFor="let obj of contactService.allContact;let i = index">
+                <div class="col-lg-8 mx-auto">
+                    <div class="p-4 shadow rounded contact-card" >
+                        <div class="row row-cols-2">
+                            <div class="col-3">
+                                <h3>Name</h3>
+                                <h3>Email</h3>
+                                <h3>subject</h3>
+                                <h3>Message</h3>
+                            </div>
+                            <div class="col-9">
+                                <h3><span>{{obj.senderName}}</span></h3>
+                                <h3><span>{{obj.senderEmail}}</span></h3>
+                                <h3><span>{{obj.contactSubject}}</span></h3>
+                                
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="blockquote-custom-icon shadow-sm" [style.background-color]="getColor(obj.contactStatus)"><fa-icon [icon]="getIcon(obj.contactStatus)" class="text-white"></fa-icon></div>
+                        <p class="mb-0 mt-2 font-italic" style="text-indent: 50px;">{{obj.contactContent}} </p>
+                        <div class="contact-btns">
+                            <button type="button" class="mx-1 contact-btn btn btn-success text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="Reply"(click)="openReplyDialog(obj.senderName,obj.senderEmail,obj.contactId,i)"><i class="contact-i bi bi-reply" ></i></button>
+                            <button *ngIf="obj.contactStatus == unread" type="button" class="mx-1 contact-btn btn btn-secondary text-white" (click)="updateStatus(obj.contactId,readed,i)" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark as read"><i class="contact-i bi bi-envelope-open"></i></button>
+                            <button *ngIf="obj.contactStatus == readed" type="button" class="mx-1 contact-btn btn btn-secondary text-white" (click)="updateStatus(obj.contactId,unread,i)" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark as unread"><i class="contact-i bi bi-envelope"></i></button>
+                            <button type="button" class="mx-1 contact-btn btn btn-danger text-white" (click)="openDeleteDialog(obj.contactId,i)" data-bs-toggle="tooltip" data-bs-placement="top" title="delete"><i class="contact-i bi bi-trash"></i></button>
+                        </div>
+                       
+                    </div>
+                    
+    
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<a  class="back-to-top d-flex align-items-center justify-content-center" (click)="main.scrollIntoView()" [routerLink]="getCurrentRoute()"><i class="bi bi-arrow-up-short"></i></a>
+<ng-template #deleteDialog>
+    <h1 mat-dialog-title>Delete file</h1>
+    <div mat-dialog-content>
+      Would you like to delete this email ?
+    </div>
+    <div mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close >No</button>
+      <button class="btn btn-danger text-white"  mat-dialog-close (click)="deleteMessage()" cdkFocusInitial>yes</button>
+    </div>
+    
+</ng-template>
+<ng-template #replyDialog >
+    <h2 mat-dialog-title>reply to {{name}}</h2>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="replyForm" >
+        
+        <div class="form-group" >
+
+        <label for="Subject">Subject</label>
+        <input class="form-control" name="Subject" formControlName="subject">
+        </div>
+        
+        <div class="form-group">
+        <label for="body">Message</label>
+        <textarea class="form-control" formControlName="body" name="body" rows="6" maxlength="1000">
+        </textarea>
+        </div>
+        <div class="d-flex flex-row justify-content-end">
+
+            <button type="submit" class="mx-2 btn btn-success" mat-dialog-close [disabled]="!replyForm.valid" (click)="send()">Send</button>
+            <button type="submit" class="mx-2 btn btn-danger" mat-dialog-close [disabled]="!replyForm.valid" (click)="sendAndDelete()">Send & Delete</button>
+        </div>
+        </form>
+ 
+</mat-dialog-content>
+<!-- <mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial [disabled]="!replyForm.valid">Install</button>
+</mat-dialog-actions> -->
+
+      
+    
+</ng-template>

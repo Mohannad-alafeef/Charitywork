@@ -10,6 +10,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from 'src/Interceptor/token.interceptor';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from 'ngx-spinner'; 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -29,7 +31,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
      SharedModule, 
      FormsModule,
      AuthModule,
-     HttpClientModule
+     HttpClientModule,
+     NgxSpinnerModule,
+     FontAwesomeModule
   ],
   providers: [
     {
