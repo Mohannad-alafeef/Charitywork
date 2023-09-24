@@ -6,7 +6,7 @@
 * License: https://bootstrapmade.com/license/
 */
 function refresh2() {
-(function() {
+
   "use strict";
 
   /**
@@ -42,11 +42,12 @@ function refresh2() {
   /**
    * Sidebar toggle
    */
-  if (select('.toggle-sidebar-btn')) {
-    on('click', '.toggle-sidebar-btn', function(e) {
-      select('body').classList.toggle('toggle-sidebar')
-    })
-  }
+  // if (select('.toggle-sidebar-btn')) {
+  //   console.log('select toggle');
+  //   on('click', '.toggle-sidebar-btn', function(e) {
+  //     select('body').classList.toggle('toggle-sidebar')
+  //   })
+  // }
 
   /**
    * Search bar toggle
@@ -310,13 +311,13 @@ function refresh2() {
    */
   const mainContainer = select('#main');
   if (mainContainer) {
-    setTimeout(() => {
-      new ResizeObserver(function() {
-        select('.echart', true).forEach(getEchart => {
-          echarts.getInstanceByDom(getEchart).resize();
-        })
-      }).observe(mainContainer);
-    }, 200);
+    // setTimeout(() => {
+    //   new ResizeObserver(function() {
+    //     select('.echart', true).forEach(getEchart => {
+    //       echarts.getInstanceByDom(getEchart).resize();
+    //     })
+    //   }).observe(mainContainer);
+    // }, 200);
   }
 
-})();}
+}
