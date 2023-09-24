@@ -22,6 +22,7 @@ export class ContactComponent {
     refresh2();
     
   }
+  
   replyForm:FormGroup;
   constructor(public contactService:ContactService,private router:Router,private dialog:MatDialog,private fb:FormBuilder){
     this.replyForm = fb.group(

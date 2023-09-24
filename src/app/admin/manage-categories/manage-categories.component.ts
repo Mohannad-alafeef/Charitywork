@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, TemplateRef  } from '@angular/core';
 import { CategoriesService } from './../../services/categories.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+declare function refresh2(): any;
 
 @Component({
   selector: 'app-manage-categories',
@@ -27,7 +28,7 @@ export class ManageCategoriesComponent implements OnInit {
   previous_data:any={};
 
   ngOnInit(): void {
- 
+    refresh2();
     this.CategoryS.GetAllCategories();
   }
   
