@@ -11,6 +11,8 @@ import { TokenInterceptor } from 'src/Interceptor/token.interceptor';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner'; 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
      FormsModule,
      AuthModule,
      HttpClientModule,
-     NgxSpinnerModule
+     NgxSpinnerModule,
+     FontAwesomeModule
   ],
   providers: [
     {

@@ -15,6 +15,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { UserSidebarComponent } from './user-sidebar/user-sidebar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 
 
@@ -39,7 +41,8 @@ import { UserSidebarComponent } from './user-sidebar/user-sidebar.component';
     MatInputModule,
     MatSelectModule,
     NgxApexchartsModule,
-    NgChartsModule
+    NgChartsModule,
+    FontAwesomeModule
   ],
   exports:
   [
@@ -57,7 +60,8 @@ import { UserSidebarComponent } from './user-sidebar/user-sidebar.component';
     AdminSidebarComponent,
     NgxApexchartsModule,
     NgChartsModule,
-    UserSidebarComponent
+    UserSidebarComponent,
+    FontAwesomeModule
   ],
 
   

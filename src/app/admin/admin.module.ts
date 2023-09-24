@@ -6,11 +6,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SharedModule } from '../shared/shared.module';
 import { ManageCategoriesComponent } from './manage-categories/manage-categories.component';
 
+import { ContactComponent } from './contact/contact.component';
+
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    ManageCategoriesComponent
+    ManageCategoriesComponent,
+    ContactComponent
   ],
   imports: [
     CommonModule,

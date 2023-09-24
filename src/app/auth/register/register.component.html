@@ -25,15 +25,15 @@
                     <div class="col-md-6">
                       <div class="example-full-width">
                         <label for="FirstName">First Name</label>
-                        <input type="text" id="FirstName" name="FirstName" formControlName="FirstName" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['FirstName'].valid" [class.invalid-border]="CreateAccountForm.controls['FirstName'].invalid" placeholder="First Name">
-                       <span *ngIf="isFormSubmitted && CreateAccountForm.controls['FirstName'].hasError('required')" class="error">First Name is required</span>
+                        <input type="text" id="FirstName" name="FirstName" formControlName="FirstName" class="form-control rounded-3 is-invalid" [class.valid-border]="CreateAccountForm.controls['FirstName'].valid" [class.is-invalid]="(isFormSubmitted||fnChanged)&& CreateAccountForm.controls['FirstName'].invalid" (input)="fnChanged=true" placeholder="First Name">
+                       <span *ngIf="(isFormSubmitted||fnChanged)&& CreateAccountForm.controls['FirstName'].hasError('required')" class="text-danger">First Name is required</span>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="example-full-width">
                         <label for="LastName">Last Name</label>
-                        <input type="text" id="LastName" name="LastName" formControlName="LastName" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['LastName'].valid" [class.invalid-border]="CreateAccountForm.controls['LastName'].invalid" placeholder="Last Name">
-                       <span *ngIf="isFormSubmitted && CreateAccountForm.controls['LastName'].hasError('required')" class="error">Last Name is required</span>
+                        <input type="text" id="LastName" name="LastName" formControlName="LastName" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['LastName'].valid" [class.invalid-border]="(isFormSubmitted||lnChanged)&&CreateAccountForm.controls['LastName'].invalid" (input)="lnChanged=true" placeholder="Last Name">
+                       <span *ngIf="(isFormSubmitted||lnChanged) && CreateAccountForm.controls['LastName'].hasError('required')" class="text-danger">Last Name is required</span>
                       </div>
                     </div>
                   </div>
@@ -42,18 +42,18 @@
                     <div class="col-md-6">
                       <div class="example-full-width">
                         <label for="DateOfBirth">Date Of Birth</label>
-                        <input type="date" id="DateOfBirth" name="DateOfBirth" formControlName="DateOfBirth" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['DateOfBirth'].valid" [class.invalid-border]="CreateAccountForm.controls['DateOfBirth'].invalid" placeholder="Date Of Birth">
-                       <span *ngIf="isFormSubmitted && CreateAccountForm.controls['DateOfBirth'].hasError('required')" class="error">Date Of Birth is required</span>
+                        <input type="date" id="DateOfBirth" name="DateOfBirth" formControlName="DateOfBirth" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['DateOfBirth'].valid" [class.invalid-border]="(isFormSubmitted||dobChanged)&&CreateAccountForm.controls['DateOfBirth'].invalid" (input)="dobChanged=true" placeholder="Date Of Birth">
+                       <span *ngIf="(isFormSubmitted||dobChanged) && CreateAccountForm.controls['DateOfBirth'].hasError('required')" class="text-danger">Date Of Birth is required</span>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="gender-container">
                         <div class="example-full-width">
                           <label for="Gender">Gender</label>
-                          <select id="Gender" name="Gender" formControlName="Gender" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['Gender'].valid" [class.invalid-border]="CreateAccountForm.controls['Gender'].invalid" placeholder="Gender">
+                          <select id="Gender" name="Gender" formControlName="Gender" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['Gender'].valid" [class.invalid-border]="(isFormSubmitted||genChanged)&&CreateAccountForm.controls['Gender'].invalid" (input)="genChanged=true" placeholder="Gender">
                             <option *ngFor="let Gender of Genders" [value]="Gender.value">{{ Gender.viewValue }}</option>
                           </select>
-                         <span *ngIf="isFormSubmitted && CreateAccountForm.controls['Gender'].hasError('required')" class="error">Gender is required</span>
+                         <span *ngIf="(isFormSubmitted||genChanged) && CreateAccountForm.controls['Gender'].hasError('required')" class="text-danger">Gender is required</span>
                         </div>
                       </div>
                     </div>
@@ -63,15 +63,15 @@
                     <div class="col-md-6">
                       <div class="example-full-width">
                         <label for="Address">Address</label>
-                        <input type="text" id="Address" name="Address" formControlName="Address" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['Address'].valid" [class.invalid-border]="CreateAccountForm.controls['Address'].invalid" placeholder="Address">
-                       <span *ngIf="isFormSubmitted && CreateAccountForm.controls['Address'].hasError('required')" class="error">Address is required</span>
+                        <input type="text" id="Address" name="Address" formControlName="Address" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['Address'].valid" [class.invalid-border]="(isFormSubmitted||adChanged)&&CreateAccountForm.controls['Address'].invalid" (input)="adChanged=true" placeholder="Address">
+                       <span *ngIf="(isFormSubmitted||adChanged) && CreateAccountForm.controls['Address'].hasError('required')" class="text-danger">Address is required</span>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="example-full-width">
                         <label for="Phone">Phone Number</label>
-                        <input type="text" id="Phone" name="Phone" formControlName="Phone" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['Phone'].valid" [class.invalid-border]="CreateAccountForm.controls['Phone'].invalid" placeholder="Phone Number">
-                       <span *ngIf="isFormSubmitted && CreateAccountForm.controls['Phone'].hasError('required')" class="error">Phone Number is required</span>
+                        <input type="text" id="Phone" name="Phone" formControlName="Phone" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['Phone'].valid" [class.invalid-border]="(isFormSubmitted||phoneChanged)&&CreateAccountForm.controls['Phone'].invalid" (input)="phoneChanged=true" placeholder="Phone Number">
+                       <span *ngIf="(isFormSubmitted||phoneChanged) && CreateAccountForm.controls['Phone'].hasError('required')" class="text-danger">Phone Number is required</span>
                       </div>
                     </div>
                   </div>
@@ -79,22 +79,24 @@
                   <div>
                     <div class="mb-2 example-full-width">
                       <label for="UserName">User Name</label>
-                      <input type="text" id="UserName" name="UserName" formControlName="UserName" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['UserName'].valid" [class.invalid-border]="CreateAccountForm.controls['UserName'].invalid" placeholder="User Name">
-                     <span *ngIf="isFormSubmitted && CreateAccountForm.controls['UserName'].hasError('required')" class="error">User Name is required</span>
+                      <input type="text" id="UserName" name="UserName" formControlName="UserName" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['UserName'].valid" [class.invalid-border]="(isFormSubmitted||unChanged)&&CreateAccountForm.controls['UserName'].invalid" (input)="unChanged=true" placeholder="User Name">
+                     <span *ngIf="(isFormSubmitted||unChanged) && CreateAccountForm.controls['UserName'].hasError('required')" class="error">User Name is required</span>
+                     <span *ngIf="CreateAccountForm.controls['UserName'].hasError('userNameExist')" class="text-danger" >This User Name is already exist</span>
+
                     </div>
                     <div class="mb-2 example-full-width">
                       <label for="Password">Password</label>
-                      <input type="password" id="Password" name="Password" formControlName="Password" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['Password'].valid" [class.invalid-border]="CreateAccountForm.controls['Password'].invalid" placeholder="Password">
-                     <span *ngIf="isFormSubmitted && CreateAccountForm.controls['Password'].hasError('required')" class="error">Password is required</span>
+                      <input type="password" id="Password" name="Password" formControlName="Password" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['Password'].valid" [class.invalid-border]="(isFormSubmitted||passChanged)&&CreateAccountForm.controls['Password'].invalid" (input)="passChanged=true" placeholder="Password">
+                     <span *ngIf="(isFormSubmitted||passChanged) && CreateAccountForm.controls['Password'].hasError('required')" class="text-danger">Password is required</span>
                      <span class="text-danger" *ngIf="CreateAccountForm.controls['Password'].hasError('minlength')">Please Enter a Strong password</span>
                     
                     </div>
                     <div class="mb-2 example-full-width">
                       <label for="Email">Email</label>
-                      <input type="email" id="Email" name="Email" formControlName="Email" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['Email'].valid" [class.invalid-border]="CreateAccountForm.controls['Email'].invalid" placeholder="Email">
-                     <span *ngIf="isFormSubmitted && CreateAccountForm.controls['Email'].hasError('required')" class="error">Email is required</span>
+                      <input type="email" id="Email" name="Email" formControlName="Email" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['Email'].valid" [class.invalid-border]="(isFormSubmitted||emailChanged)&&CreateAccountForm.controls['Email'].invalid" (input)="emailChanged=true" placeholder="Email">
+                     <span *ngIf="(isFormSubmitted||emailChanged) && CreateAccountForm.controls['Email'].hasError('required')" class="text-danger">Email is required</span>
                      <span class="text-danger" *ngIf="CreateAccountForm.controls['Email'].hasError('email')">Please enter a valid email address</span>
-                      
+                      <span *ngIf="CreateAccountForm.controls['Email'].hasError('emailExist')" class="text-danger" >This email is already exist</span>
                     </div>
                   </div>
                   <div align="end"><br>

@@ -29,10 +29,12 @@
                           id="yourUsername"
                           required
                           [ngClass]="{ 'valid-border': email.valid }"
+                          (input)="emailChanged=true"
+                          [class.valid-border]="email.valid" [class.is-invalid]="(formSubmitted||emailChanged)&& email.invalid"
                         >
                       </div>
-                      <span class="text-danger" *ngIf="email.hasError('email')">Please enter a valid email address</span>
-                      <span class="text-danger" *ngIf="email.hasError('required')">Email is required</span>
+                      <span class="text-danger" *ngIf="(formSubmitted||emailChanged)&&email.hasError('email')">Please enter a valid email address</span>
+                      <span class="text-danger" *ngIf="(formSubmitted||emailChanged)&&email.hasError('required')">Email is required</span>
                     </div>
 
                     <div class="col-12">
@@ -44,9 +46,11 @@
                         id="yourPassword"
                         required
                         [ngClass]="{ 'valid-border': Password.valid }"
+                        (input)="passChanged =true"
+                        [class.valid-border]="Password.valid" [class.is-invalid]="(formSubmitted||passChanged)&& Password.invalid"
                       >
-                      <span class="text-danger" *ngIf="Password.hasError('required')">Password is required</span>
-                      <span class="text-danger" *ngIf="Password.hasError('minlength')">Please Enter a Strong password</span>
+                      <span class="text-danger" *ngIf="(formSubmitted||passChanged)&&Password.hasError('required')">Password is required</span>
+                      <span class="text-danger" *ngIf="(formSubmitted||passChanged)&&Password.hasError('minlength')">Please Enter a Strong password</span>
                     </div>
 
                     <div class="col-12">
