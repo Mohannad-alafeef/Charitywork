@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ContactService } from 'src/app/services/contact.service';
 
@@ -8,7 +8,7 @@ import { ContactService } from 'src/app/services/contact.service';
   templateUrl: './admin-sidebar.component.html',
   styleUrls: ['./admin-sidebar.component.css']
 })
-export class AdminSidebarComponent {
+export class AdminSidebarComponent implements OnInit {
   user :any={} ;
 
   constructor(private route : Router,public contact:ContactService){
@@ -20,7 +20,12 @@ export class AdminSidebarComponent {
     contact.getContact();
     
   }
-
+  ngOnInit(): void {
+    
+  }
+  toggleSideBar(){
+    document.querySelector('body')?.classList.toggle('toggle-sidebar');
+  }
 
 
   logout(){

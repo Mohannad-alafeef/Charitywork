@@ -1,0 +1,82 @@
+<app-admin-sidebar></app-admin-sidebar>
+
+<main id="main" class="main">
+
+<section class="section dashboard">
+    <div class="row">
+            <!-- Recent Sales -->
+            <div class="col-12">
+                <div class="card recent-sales overflow-auto">
+  
+<div class="card-body">
+    <h5 class="card-title">charities <span>| Today</span></h5>
+
+    <table class="table table-borderless datatable">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">image</th>
+          <th scope="col">charity Name</th>
+          <th scope="col">status</th>
+          <th scope="col">mission</th>
+          <th scope="col">Donation Goal</th>
+          <th scope="col">Category</th>
+          <th scope="col">Publisher</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ch of charity.charities">
+          <td scope="row"></td>
+          <td><img src="../../../assets/Images/{{ch.imagePath}}"style="width: 50px;"></td>
+          <td>{{ch.charityName}}</td>
+          <td>
+            <span class="badge bg-success" *ngIf="ch.isAccepted==constant.Accepted">Accepted</span>
+            <span class="badge bg-danger" *ngIf="ch.isAccepted==constant.Rejected">Rejected</span>
+            <span class="badge bg-warning" *ngIf="ch.isAccepted!=constant.Accepted &&ch.isAccepted!=constant.Rejected">On Hold</span>
+          </td>
+          <td>{{ch.createDate|date}}</td>
+          <td>{{ch.donationGoal}}</td>
+          <td>{{ch.category.categoryName}}</td>
+          <td>{{ch.user.firstName}}  {{ch.user.lastName}}</td>
+
+          <td><button class="btn btn-primary rounded-pill" (click)="seeMoreDialog(ch)">see More</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+                </div>
+            </div>
+    </div>
+</section>
+</main>
+
+
+
+<ng-template #seeMore>
+
+<h2 mat-dialog-title>{{charityy.charityName}}</h2>   
+<mat-dialog-content class="mat-typography">
+  <img class="card-img-top" src="../../../assets/Images/{{charityy.imagePath}}" style="width: 250px;"alt="Charity Image">
+  <h3 class="title">Mission:</h3>
+  <span class="card-text h6">{{charityy.mission}}</span> 
+  <br>
+  <h3 class="title">Goals:</h3>
+  <div  *ngFor="let ob of charity.goals">
+      <li class="card-text h6">{{ob.goalText}}</li>
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-stroked-button color="primary" *ngIf="charityy.isAccepted!=constant.Accepted && charityy.isAccepted!=constant.Rejected" mat-button mat-dialog-close="post">Accepte</button>
+  <button mat-stroked-button color="warn"*ngIf="charityy.isAccepted!=constant.Accepted && charityy.isAccepted!=constant.Rejected" mat-button mat-dialog-close="reject">Reject</button>
+  <button mat-mini-fab color="warn" mat-dialog-close="delete">
+    <mat-icon>delete</mat-icon>
+  </button>
+  
+</mat-dialog-actions>
+
+</ng-template>
+
