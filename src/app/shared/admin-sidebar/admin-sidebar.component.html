@@ -232,10 +232,10 @@
       </li><!-- End Pages Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed"   data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed"  [class.collapsed]="!char.isActive" data-bs-target="#tables-nav" data-bs-toggle="collapse" >
           <i class="bi bi-layout-text-window-reverse"></i><span>Manage</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="tables-nav" class="nav-content collapse "  data-bs-parent="#sidebar-nav">
+        <ul id="tables-nav" class="nav-content collapse " [class.show]="char.isActive"  data-bs-parent="#sidebar-nav">
           
           <li routerLinkActive="active">
             <a routerLink="/admin/Categories">
@@ -244,7 +244,7 @@
           </li>
           
           <li>
-            <a routerLink="/admin/charity">
+            <a routerLink="/admin/charity" routerLinkActive #char="routerLinkActive" [class.active]="char.isActive">
               <i class="bi bi-circle"></i><span>Chareties List</span>
             </a>
           </li>
