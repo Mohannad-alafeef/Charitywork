@@ -8,6 +8,7 @@ import { ManageCharityComponent } from './manage-charity/manage-charity.componen
 import { Const } from '../shared/Const';
 import { ManageCategoriesComponent } from './manage-categories/manage-categories.component';
 import { ContactComponent } from './contact/contact.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ContactComponent } from './contact/contact.component';
     DashboardComponent,
     ManageCharityComponent,
     ManageCategoriesComponent,
-    ContactComponent
+    ContactComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
