@@ -17,7 +17,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { UserSidebarComponent } from './user-sidebar/user-sidebar.component';
 import {MatCardModule} from '@angular/material/card';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -60,7 +60,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NgChartsModule,
     UserSidebarComponent,
     MatCardModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatStepperModule
   ],
 
   
