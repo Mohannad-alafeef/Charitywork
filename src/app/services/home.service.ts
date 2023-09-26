@@ -43,10 +43,16 @@ export class HomeService {
   getCharities() {
      this.http.get('https://localhost:7081/api/charity').subscribe({
       next:(res:any)=>{
-        
         res = res.filter((x:any)=>x.isAccepted==Const.Accepted);
         this.numberOfCharities = res.length;
-        this.charityObj = res.slice(0,7);
+        console.log("number"+ this.numberOfCharities);
+        
+        this.charityObj = res.slice(0,7).filter((c:any)=>c.payments.at(0)!=null);
+        this.charityObj.forEach((element:any) => {
+          console.log(element.payments);
+          console.log(element.payments.length);
+          
+        });
         this.charityRecentObj = res.slice(0,3)
       }
     });
