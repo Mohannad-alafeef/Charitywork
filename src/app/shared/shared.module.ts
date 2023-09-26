@@ -18,7 +18,7 @@ import { UserSidebarComponent } from './user-sidebar/user-sidebar.component';
 import {MatCardModule} from '@angular/material/card';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DataTablesModule } from 'angular-datatables';
-
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -65,7 +65,8 @@ import { DataTablesModule } from 'angular-datatables';
     MatCardModule,
     FontAwesomeModule,
     NgxApexchartsModule,
-    DataTablesModule
+    DataTablesModule,
+    MatStepperModule
   ],
 
   

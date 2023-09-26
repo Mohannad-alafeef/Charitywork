@@ -1,0 +1,56 @@
+/* Add this CSS to your component's CSS file or a global stylesheet */
+
+.testimonial-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .testimonial-table th,
+  .testimonial-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .testimonial-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .testimonial-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .testimonial-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  .testimonial-table img {
+    border-radius: 50%; /* Make the image circular */
+    width: 100px; /* Adjust the size as needed */
+    height: 100px; /* Adjust the size as needed */
+  }
+  
+  .testimonial-table button {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .testimonial-table button:hover {
+    background-color: black;
+  }
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
