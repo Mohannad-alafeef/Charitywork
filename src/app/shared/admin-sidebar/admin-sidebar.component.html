@@ -29,7 +29,7 @@
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
             <li class="dropdown-header">
               You have {{contact.allContact.length}} new Mail
-              <a  routerLink="/admin/issues"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+              <a  routerLink="/admin/contact"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
             </li>
             <div *ngFor="let obj of contact.recentContact">
 
@@ -192,81 +192,7 @@
         </a>
       </li><!-- End Dashboard Nav -->
 
-     
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>UI Pages</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="forms-elements.html">
-              <i class="bi bi-circle"></i><span>Home </span>
-            </a>
-          </li>
-          <li>
-            <a href="forms-layouts.html">
-              <i class="bi bi-circle"></i><span>About-Us </span>
-            </a>
-          </li>
-          <li>
-            <a href="forms-editors.html">
-              <i class="bi bi-circle"></i><span>Contact-Us </span>
-            </a>
-          </li>
-   
-        </ul>
-      </li><!-- End Forms Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed"  [class.collapsed]="!char.isActive" data-bs-target="#tables-nav" data-bs-toggle="collapse" >
-          <i class="bi bi-layout-text-window-reverse"></i><span>Manage</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="tables-nav" class="nav-content collapse"[class.show]="char.isActive"  data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="tables-general.html">
-              <i class="bi bi-circle"></i><span>Users List</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/admin/charity" routerLinkActive #char="routerLinkActive" [class.active]="char.isActive">
-              <i class="bi bi-circle"></i><span>Chareties List</span>
-            </a>
-          </li>
-          <li routerLinkActive="active">
-            <a routerLink="/admin/Categories">
-              <i class="bi bi-circle"></i><span>Categories List</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Tables Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" [class.collapsed]="!mir.isActive" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-envelope"></i><span>Contact</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="charts-nav" class="nav-content collapse " [class.show]="mir.isActive" data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="charts-chartjs.html">
-              <i class="bi bi-circle"></i><span>Testimonial List</span>
-            </a>
-          </li>
-          <li>
-            <a href="charts-apexcharts.html">
-              <i class="bi bi-circle"></i><span>Reports List</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/admin/contact" routerLinkActive #mir="routerLinkActive" [class.active]="mir.isActive">
-              <i class="bi bi-circle"></i><span>Messages List</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Charts Nav -->
-
-   
-
-      <li class="nav-heading">Pages</li>
-
+     <hr>
       <li class="nav-item">
         <a class="nav-link collapsed" href="users-profile.html">
           <i class="bi bi-person"></i>
@@ -274,6 +200,97 @@
         </a>
       </li><!-- End Profile Page Nav -->
 
+    
+      <li class="nav-heading">Pages</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-cast"></i><span>UI Pages</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="forms-elements.html">
+              <i class="bi bi-circle"></i><span>Home Page</span>
+            </a>
+          </li>
+          <li>
+            <a href="forms-layouts.html">
+              <i class="bi bi-circle"></i><span>About-Us Page</span>
+            </a>
+          </li>
+          <li>
+            <a href="forms-editors.html">
+              <i class="bi bi-circle"></i><span>Contact-Us Page</span>
+            </a>
+          </li>
+          <li>
+            <a href="forms-editors.html">
+              <i class="bi bi-circle"></i><span>Testimonial Page</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Pages Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed"  [class.collapsed]="!char.isActive" data-bs-target="#tables-nav" data-bs-toggle="collapse" >
+          <i class="bi bi-layout-text-window-reverse"></i><span>Manage</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content collapse " [class.show]="char.isActive"  data-bs-parent="#sidebar-nav">
+          
+          <li routerLinkActive="active">
+            <a routerLink="/admin/Categories">
+              <i class="bi bi-circle"></i><span>Categories List</span>
+            </a>
+          </li>
+          
+          <li>
+            <a routerLink="/admin/charity" routerLinkActive #char="routerLinkActive" [class.active]="char.isActive">
+              <i class="bi bi-circle"></i><span>Chareties List</span>
+            </a>
+          </li>
+          
+          <li>
+            <a href="tables-general.html">
+              <i class="bi bi-circle"></i><span>Testimonials List</span>
+            </a>
+          </li>
+         
+        </ul>
+      </li><!-- End Manage Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed"  data-bs-target="#Reports-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Reports</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="Reports-nav" class="nav-content collapse "  data-bs-parent="#sidebar-nav">
+          
+          <li>
+            <a href=" ">
+              <i class="bi bi-circle"></i><span>Annual Report</span>
+            </a>
+          </li>
+          <li>
+            <a href=" ">
+              <i class="bi bi-circle"></i><span>Monthly Report</span>
+            </a>
+          </li>
+
+        </ul>
+      </li><!-- End Report Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" routerLink="/admin/contact" routerLinkActive #mir="routerLinkActive" [class.active]="mir.isActive">
+          <i class="bi bi-envelope"></i>
+          <span>Contacts List</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="users.html">
+          <i class="bi bi-people-fill"></i>
+          <span>Users</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
 
     
     </ul>
