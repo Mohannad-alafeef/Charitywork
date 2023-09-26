@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+declare function refresh2(): any;
 
 @Component({
   selector: 'app-dashboard',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-
+  ngOnInit(): void {
+    refresh2();
+  }
 }
