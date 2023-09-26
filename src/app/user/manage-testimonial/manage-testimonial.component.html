@@ -1,0 +1,87 @@
+<app-user-sidebar></app-user-sidebar>
+<main id="main" class="main">
+  <div class="site-section bg-light">
+    <div class="container-fluid">
+      <div class="container-fluid">
+        <div class="col-md-12 block-11">
+          <table class="testimonial-table">
+            <thead>
+              <tr>
+                <th class="border">Image</th>
+                <th class="border">Content</th>
+                <th class="border">Rating</th>
+                <th class="border">Date</th>
+                <th class="border">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let obj of user.testimonialObj">
+                <td class="border">
+                  <img src="../../../assets/Images/{{user1.ImagePath}}" alt="" width="100" height="100">
+                </td>
+                <td class="border">
+                  {{obj.content}}
+                </td>
+                <td class="border">
+                  <ng-container *ngFor="let s of [].constructor(5);let i = index">
+                    <i class="bi bi-star-fill" *ngIf="i < obj.rate"></i>
+                    <i class="bi bi-star" *ngIf="i >= obj.rate"></i>
+                  </ng-container>
+                </td>
+                <td class="border">
+                  {{obj.testimonialDate}}
+                </td>
+                <td class="border">
+                  <button (click)="deleteTestimonial(obj.testimonialId)" >Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="border" colspan="5">
+                  <button (click)="OpenCreatetestimonial()">Create Testimonial</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<ng-template #callDeleteDailog>
+  <h1 mat-dialog-title> Delete Testimonial</h1>
+  <div mat-dialog-content> Are You sure you want to delete this Testimonial ?</div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close="yes"> Yes </button>
+    <button mat-button mat-dialog-close="no"> No </button>
+  </div>
+</ng-template>
+
+<ng-template #callCeateDailog>
+<h2 mat-dialog-title >Create Testimonial</h2>
+<mat-dialog-content class="mat-typography">
+ <form [formGroup]="CreateTestimonial">
+
+    <mat-form-field class="example-full-width">
+      <mat-label> Content</mat-label>
+      <input type="textarea" matInput formControlName="CONTENT" placeholder="Your Testimonial">
+      <mat-error *ngIf="CreateTestimonial.controls['CONTENT'].hasError('required')">
+        Message is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label> Rate </mat-label>
+      <input type="number" matInput formControlName="RATE" placeholder="Your Rate">
+      <mat-error *ngIf="CreateTestimonial.controls['RATE'].hasError('required')">
+        Rate is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+
+ </form>
+</mat-dialog-content >
+
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="createTestimonial()">Create</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
+</ng-template>

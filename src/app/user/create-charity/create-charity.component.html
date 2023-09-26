@@ -1,0 +1,90 @@
+<mat-stepper orientation="vertical">
+  <form class="mx-1 mx-md-4" [formGroup]="createCharity">
+
+    <mat-step>
+  
+      <ng-template matStepLabel>About Your Charity</ng-template>
+      <ng-template matStepContent>
+    <br>
+    <div class="row">
+          <mat-form-field class="col-5">
+            <mat-label class="matLabel">Charity Name</mat-label>
+            <input matInput formControlName="charityName">
+            <mat-error type="text" *ngIf="createCharity.controls['charityName'].hasError('required')">
+             required</mat-error>
+          </mat-form-field>
+          <br>
+          <br>
+          <mat-form-field class="col-4">
+            <mat-label class="matLabel">Select Category</mat-label>
+            <mat-select  formControlName="categoryId" >
+              <mat-option  *ngFor="let c of categories.categories" value="{{c.categoryId}}">{{c.categoryName}}</mat-option>
+              <mat-error type="text" *ngIf="createCharity.controls['categoryId'].hasError('required')">
+                required</mat-error>
+            </mat-select>
+            <mat-hint align="end"></mat-hint>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="col-3">
+            <mat-label class="matLabel">Donation Goal</mat-label>
+            <input matInput formControlName="donationGoal">
+            <mat-error type="text" *ngIf="createCharity.controls['donationGoal'].hasError('required')">
+              required</mat-error>
+          </mat-form-field>
+          </div>
+          <div class="row">
+          
+          <br>
+          <br>
+            <mat-form-field class="col-9">
+              <mat-label class="matLabel">Mission</mat-label>
+              <input matInput formControlName="mission">
+              <mat-error type="text" *ngIf="createCharity.controls['mission'].hasError('required')">
+               required</mat-error>
+            </mat-form-field>
+          </div>
+            <br>
+          <mat-label>Image</mat-label>
+          <input type="file"#file  formControlName="imagePath"
+          (change)="uploadImage(file.files)">
+       
+        <button mat-button matStepperNext>Next</button>
+      </ng-template>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Charity's Goals</ng-template>
+      <ng-template matStepContent>
+        <p>Write minimum Two Goals of your charity</p>
+        <form class="mx-1 mx-md-4" [formGroup]="createGoals">
+        <mat-form-field class="col-8">
+          <mat-label class="matLabel">Goal one</mat-label>
+          <input matInput formControlName="goal1">
+          <mat-error type="text" *ngIf="createGoals.controls['goal1'].hasError('required')">
+            required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-8">
+          <mat-label class="matLabel">Goal Two</mat-label>
+          <input matInput formControlName="goal2">
+          <mat-error type="text" *ngIf="createGoals.controls['goal2'].hasError('required')">
+            required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-8">
+          <mat-label class="matLabel">Goal Three</mat-label>
+          <input matInput formControlName="goal3">
+        
+        </mat-form-field>
+        </form>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </ng-template>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Charity's Location</ng-template>
+      <p>This content was rendered eagerly</p>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button [disabled]="!createCharity.valid && !createGoals.valid"  (click)="saveCharity()">Send Request</button>  
+    </mat-step>
+  </form>
+  </mat-stepper>

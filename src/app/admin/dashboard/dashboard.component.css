@@ -1,0 +1,11 @@
+.apex-c .filter{
+    position: absolute;
+  right: 50px;
+  top: 20px;
+  z-index: 2;
+}
+/* .table img{
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+} */
