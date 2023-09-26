@@ -1,6 +1,9 @@
+
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateCharityComponent } from '../create-charity/create-charity.component';
+declare function refresh2(): any;
+
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +16,9 @@ export class DashboardComponent {
 
   openCreateDialog(){
    this.dialog.open(CreateCharityComponent) ;
- 
+  }
+  ngOnInit(): void {
+    refresh2();
+
   }
 }
