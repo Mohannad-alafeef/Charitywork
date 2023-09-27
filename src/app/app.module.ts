@@ -12,12 +12,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner'; 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CharityFilterPipe } from './pipes/charity-filter.pipe';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
     
     
   ],

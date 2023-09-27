@@ -19,13 +19,16 @@ import {MatCardModule} from '@angular/material/card';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DataTablesModule } from 'angular-datatables';
 import {MatStepperModule} from '@angular/material/stepper';
+import { CharityFilterPipe } from '../pipes/charity-filter.pipe';
+
 
 @NgModule({
   declarations: [
     NavbarComponent,
     FooterComponent,
     AdminSidebarComponent,
-    UserSidebarComponent
+    UserSidebarComponent,
+    CharityFilterPipe
   ],
   imports: [
     CommonModule,
@@ -42,7 +45,6 @@ import {MatStepperModule} from '@angular/material/stepper';
     NgxApexchartsModule,
     NgChartsModule,
     FontAwesomeModule,
-    NgxApexchartsModule,
     DataTablesModule
   ],
   exports:
@@ -64,9 +66,9 @@ import {MatStepperModule} from '@angular/material/stepper';
     UserSidebarComponent,
     MatCardModule,
     FontAwesomeModule,
-    NgxApexchartsModule,
-    DataTablesModule,
-    MatStepperModule
+    MatStepperModule,
+    CharityFilterPipe,
+    DataTablesModule
   ],
 
   
