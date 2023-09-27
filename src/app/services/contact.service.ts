@@ -9,6 +9,7 @@ import { Const } from '../shared/Const';
 export class ContactService {
   recentContact:Array<any>=[];
   allContact:Array<any>=[];
+  unreadedContact:any[]=[];
   constructor(private http: HttpClient,private toaster:ToastrService) {}
 
   async getContact(){
@@ -28,6 +29,7 @@ export class ContactService {
    await issues.then((res:any)=>{
     this.allContact = res;
     this.recentContact = res.sort((n1:any,n2:any)=>n1.contactId<n2.contactId).slice(0,4);
+    this.unreadedContact = this.allContact.filter((x:any)=> x.contactStatus == Const.Unread);
    });
   }
   deleteMessage(id:number,index:number){
@@ -39,6 +41,7 @@ export class ContactService {
         
         this.allContact = this.allContact.splice(index,1);
         this.recentContact = this.recentContact.filter((obj:any)=>obj.contactId !=id);
+        
       }
     })
   }

@@ -23,15 +23,15 @@
 
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
             <i class="bi bi-bell"></i>
-            <span class="badge bg-primary badge-number">{{contact.allContact.length}}</span>
+            <span class="badge bg-primary badge-number">{{contact.unreadedContact.length}}</span>
           </a><!-- End Notification Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
             <li class="dropdown-header">
-              You have {{contact.allContact.length}} new Mail
+              You have {{contact.unreadedContact.length}} new Mail
               <a  routerLink="/admin/contact"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
             </li>
-            <div *ngFor="let obj of contact.recentContact">
+            <div *ngFor="let obj of contact.unreadedContact">
 
               <li>
                 <hr class="dropdown-divider">
@@ -42,7 +42,7 @@
                 <div>
                   <h4>{{obj.contactSubject}}</h4>
                   <p>{{obj.contactContent}}</p>
-                  <p>30 min. ago</p>
+                  
                 </div>
               </li>
             </div>
