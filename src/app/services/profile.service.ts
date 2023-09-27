@@ -21,10 +21,25 @@ export class ProfileService {
     }
 
     UpdateAccount(body:any){
-      debugger
+      //debugger
       body.imagePath=this.display_image;
       this.spinner.show();
       this.http.post('https://localhost:7081/api/Account/update',body).subscribe((resp: any) =>
+      {
+        this.spinner.hide();
+        this.toastr.success('Success'); 
+      },err=>
+      {
+        this.spinner.hide();
+        this.toastr.error('Error', err.status); 
+      })
+    }
+
+    UpdateLogin(body:any){
+      debugger
+  
+      this.spinner.show();
+      this.http.put('https://localhost:7081/api/login/updatelogin',body).subscribe((resp: any) =>
       {
         this.spinner.hide();
         this.toastr.success('Success'); 
