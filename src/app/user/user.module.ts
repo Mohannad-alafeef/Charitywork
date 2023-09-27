@@ -7,6 +7,7 @@ import { SharedModule } from "../shared/shared.module";
 import { ManageTestimonialComponent } from './manage-testimonial/manage-testimonial.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CreateCharityComponent } from './create-charity/create-charity.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -15,7 +16,8 @@ import { CreateCharityComponent } from './create-charity/create-charity.componen
     [
         DashboardComponent,
         ManageTestimonialComponent,
-      CreateCharityComponent
+      CreateCharityComponent,
+      ProfileComponent
         
     ],
     imports: [
