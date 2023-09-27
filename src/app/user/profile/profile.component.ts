@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
 
   user :any={} ;
   UpdateProfileForm: FormGroup;
+  UpdateLoginForm:FormGroup;
 
   constructor(private route : Router, private fb: FormBuilder,private profileS:ProfileService, public dialog: MatDialog)
   {
@@ -34,12 +35,18 @@ export class ProfileComponent implements OnInit {
       imagePath: [''],
       userId:[this.user.userId],
     });
- 
+
+   this.UpdateLoginForm=this.fb.group({
+    userName: ['', Validators.required],
+    password :['', Validators.required],
+    email: [this.user.email],
+    loginId: [this.user.LoginId],
+    });
   }
 
   ngOnInit(): void
   {
-    
+   
   }
 
   
@@ -53,10 +60,15 @@ export class ProfileComponent implements OnInit {
 }
 
 previous_data:any={};
+
   UpdateBtn(body:any)
-  {
-    this.previous_data=body;
-        this.profileS.UpdateAccount(body);
+  {this.previous_data = body;
+    this.profileS.UpdateAccount(body);
       
   }
+
+  UpdateLoginBtn(body:any){
+    this.previous_data = body;
+    this.profileS.UpdateLogin(body);
+    }
 }
