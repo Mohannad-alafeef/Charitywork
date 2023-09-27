@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Const } from '../shared/Const';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { data } from 'jquery';
 
 @Injectable({
@@ -11,6 +11,7 @@ export class AdminDashboardService {
   users: Array<any> = [];
   categories: Array<any> = [];
   charities: any[] = [];
+  charityObservable = new BehaviorSubject<any[]>([]);
   recentCharities: any[] = [];
   donations: Array<any> = [];
   payments: Array<any> = [];
@@ -54,7 +55,7 @@ export class AdminDashboardService {
     lengthMenu:[5,10,15]
     
   };
-  dtTrigger: Subject<any> = new Subject<any>();
+  
   constructor(private http: HttpClient) {}
 
   getUsers() {
@@ -85,9 +86,10 @@ export class AdminDashboardService {
       next: (resp: any) => {
         this.charities = resp;
         this.recentCharities = this.charities.slice(0,15);
-        console.log("charities : " + this.charities.filter(x=>x.isAccepted == Const.Accepted));
+       // console.log("charities : " + this.charities.filter(x=>x.isAccepted == Const.Accepted));
         this.dtOptions.data = this.recentCharities;
-        this.dtTrigger.next(this.dtOptions);
+        this.charityObservable.next(this.recentCharities);
+        //this.dtTrigger.next(this.dtOptions);
       },
       error: (err) => {
         console.log(err);
