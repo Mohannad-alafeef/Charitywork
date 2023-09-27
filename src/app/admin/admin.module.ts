@@ -9,6 +9,7 @@ import { Const } from '../shared/Const';
 import { ManageCategoriesComponent } from './manage-categories/manage-categories.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProfileComponent } from './profile/profile.component';
+import { UsersComponent } from './users/users.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ProfileComponent } from './profile/profile.component';
     ManageCharityComponent,
     ManageCategoriesComponent,
     ContactComponent,
-    ProfileComponent
+    ProfileComponent,
+    UsersComponent
   ],
   imports: [
     CommonModule,

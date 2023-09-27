@@ -279,14 +279,14 @@
       </li><!-- End Report Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" routerLink="/admin/contact" routerLinkActive #mir="routerLinkActive" [class.active]="mir.isActive">
+        <a class="nav-link collapsed" routerLink="/admin/contact" routerLinkActive #mir="routerLinkActive" [class.collapsed]="!mir.isActive">
           <i class="bi bi-envelope"></i>
           <span>Contacts List</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users.html">
+        <a class="nav-link collapsed" routerLink="/admin/users" routerLinkActive #userLink="routerLinkActive" [class.collapsed]="!userLink.isActive">
           <i class="bi bi-people-fill"></i>
           <span>Users</span>
         </a>
