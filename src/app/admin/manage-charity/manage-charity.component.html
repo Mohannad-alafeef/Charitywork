@@ -10,7 +10,51 @@
   
 <div class="card-body">
     <h5 class="card-title">charities <span>| Today</span></h5>
+    <div class="row mb-3">
+   
+        <div class="col-4">
+    <input type="text" class="form-control rounded-3" placeholder="Category name" [(ngModel)] ="_filterText">
+    <select class="form-select rounded-3 mt-3" aria-label="Default select example" [(ngModel)] ="filterSelect">
+      <option selected>choose Category</option>
+      <option  *ngFor="let c of categories.categories" [value]="c.categoryId" >{{c.categoryName}}</option>
+    </select>
+  
+  </div>
+  <div class="col-4">
+    <div class="row">
+    <label class="col-3 mt-1" for="example1">Start Date</label>
+    <input  placeholder="Start date" [(ngModel)]="startDate" name="date1" type="date" id="example1" class="form-control rounded-3 col">
+  </div>
+  <div class="row  mt-3">
+    <label class="col-3 mt-1" for="example2">End Date</label>
+      <input placeholder="End date "[(ngModel)] ="endDate"  type="date" id="example2" class="form-control rounded-3 col ">
+    </div>
+   </div>
+  <div class="col-3 mt-2">
+    <label class=" radio-inline ms-4 " for="flexRadioDefault1">
+      <input class="form-check-input" type="radio"[(ngModel)] ="filterradio" value="{{constant.Accepted}}" name="flexRadioDefault" id="flexRadioDefault1">
+      Accepted
+      </label>
+   
+      <label class="radio-inline ms-4 " for="flexRadioDefault2">
+      <input class="form-check-input" type="radio" [(ngModel)] ="filterradio" value="{{constant.Rejected}}" name="flexRadioDefault" id="flexRadioDefault2" checked>
+      Rejected
+      </label> 
 
+      <label class=" radio-inline ms-4 " for="flexRadioDefault3">
+      <input class="form-check-input" type="radio" [(ngModel)] ="filterradio" value="{{constant.NeedReview}}" name="flexRadioDefault" id="flexRadioDefault3" checked>
+      On Hold
+      </label> 
+
+  <button mat-stroked-button color="warn" class="ms-2 mt-3" (click)="clearFilter()">Clear Filter</button>
+
+      </div>
+ 
+   
+   
+  
+
+    </div>
     <table class="table table-borderless datatable">
       <thead>
         <tr>
@@ -26,7 +70,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let ch of charity.charities">
+        <tr *ngFor="let ch of charity.charities|charityFilter:_filterText:filterradio:startDate:endDate:filterSelect">
           <td scope="row"></td>
           <td><img src="../../../assets/Images/{{ch.imagePath}}"style="width: 50px;"></td>
           <td>{{ch.charityName}}</td>
@@ -70,7 +114,7 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-stroked-button color="primary" *ngIf="charityy.isAccepted!=constant.Accepted && charityy.isAccepted!=constant.Rejected" mat-button mat-dialog-close="post">Accepte</button>
+  <button mat-stroked-button color="primary" *ngIf="charityy.isAccepted!=constant.Accepted && charityy.isAccepted!=constant.Rejected" mat-button mat-dialog-close="accept">Accepte</button>
   <button mat-stroked-button color="warn"*ngIf="charityy.isAccepted!=constant.Accepted && charityy.isAccepted!=constant.Rejected" mat-button mat-dialog-close="reject">Reject</button>
   <button mat-mini-fab color="warn" mat-dialog-close="delete">
     <mat-icon>delete</mat-icon>

@@ -8,6 +8,7 @@ import { ManageCharityComponent } from './manage-charity/manage-charity.componen
 import { Const } from '../shared/Const';
 import { ManageCategoriesComponent } from './manage-categories/manage-categories.component';
 import { ContactComponent } from './contact/contact.component';
+import {Component} from '@angular/core';
 
 
 @NgModule({

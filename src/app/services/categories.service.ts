@@ -55,7 +55,7 @@ export class CategoriesService {
   UpdateCategory(body:any){
     body.imagePath=this.display_image;
     this.spinner.show();
-    this.http.put('https://localhost:7081/api/Category/updatecategory',body).subscribe((resp: any) =>
+    this.http.put('https://localhost:7081/api/Category/UpdateCategory',body).subscribe((resp: any) =>
     {
       this.spinner.hide();
       this.toastr.success('Success'); 
@@ -67,7 +67,7 @@ export class CategoriesService {
 
   UploadAttachment(file: FormData) {
     
-    this.http.post('https://localhost:7081/api/Category/uploadImage',file).subscribe((resp:any)=>{
+    this.http.post('https://localhost:7081/api/Category/UploadImage',file).subscribe((resp:any)=>{
       this.display_image= resp.imagePath; 
       console.log(resp);
       this.toastr.success('Success'); 

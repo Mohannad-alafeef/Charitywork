@@ -9,7 +9,7 @@
     <div class="row">
           <mat-form-field class="col-5">
             <mat-label class="matLabel">Charity Name</mat-label>
-            <input matInput formControlName="charityName">
+            <input matInput formControlName="charityName" class="form-control rounded-3">
             <mat-error type="text" *ngIf="createCharity.controls['charityName'].hasError('required')">
              required</mat-error>
           </mat-form-field>
