@@ -1,3 +1,4 @@
+import { ProfileComponent } from './profile/profile.component';
 import { ManageCategoriesComponent } from './manage-categories/manage-categories.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -15,12 +16,17 @@ const routes: Routes = [
     component:ManageCharityComponent
   },
   {
-    path:'Categories',
+    path:'categories',
     component:ManageCategoriesComponent
   },
     {
     path:'contact',
     component:ContactComponent
+  }
+  ,
+    {
+    path:'profile',
+    component:ProfileComponent
   }
 ];
 
