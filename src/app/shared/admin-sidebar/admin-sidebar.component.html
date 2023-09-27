@@ -23,15 +23,15 @@
 
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
             <i class="bi bi-bell"></i>
-            <span class="badge bg-primary badge-number">{{contact.allContact.length}}</span>
+            <span class="badge bg-primary badge-number">{{contact.unreadedContact.length}}</span>
           </a><!-- End Notification Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
             <li class="dropdown-header">
-              You have {{contact.allContact.length}} new Mail
+              You have {{contact.unreadedContact.length}} new Mail
               <a  routerLink="/admin/contact"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
             </li>
-            <div *ngFor="let obj of contact.recentContact">
+            <div *ngFor="let obj of contact.unreadedContact">
 
               <li>
                 <hr class="dropdown-divider">
@@ -42,7 +42,7 @@
                 <div>
                   <h4>{{obj.contactSubject}}</h4>
                   <p>{{obj.contactContent}}</p>
-                  <p>30 min. ago</p>
+                  
                 </div>
               </li>
             </div>
@@ -136,29 +136,9 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <a class="dropdown-item d-flex align-items-center" routerLink="/admin/profile">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
               </a>
             </li>
             <li>
@@ -194,7 +174,7 @@
 
      <hr>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
+        <a class="nav-link collapsed" routerLink="/admin/profile" routerLinkActive #profileLink="routerLinkActive" [class.collapsed]="!profileLink.isActive">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
@@ -223,7 +203,7 @@
         <ul id="tables-nav" class="nav-content collapse " [class.show]="char.isActive"  data-bs-parent="#sidebar-nav">
           
           <li routerLinkActive="active">
-            <a routerLink="/admin/Categories">
+            <a routerLink="/admin/categories">
               <i class="bi bi-circle"></i><span>Categories List</span>
             </a>
           </li>
@@ -264,14 +244,14 @@
       </li><!-- End Report Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" routerLink="/admin/contact" routerLinkActive #mir="routerLinkActive" [class.active]="mir.isActive">
+        <a class="nav-link collapsed" routerLink="/admin/contact" routerLinkActive #mir="routerLinkActive" [class.collapsed]="!mir.isActive">
           <i class="bi bi-envelope"></i>
           <span>Contacts List</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users.html">
+        <a class="nav-link collapsed" routerLink="/admin/users" routerLinkActive #userLink="routerLinkActive" [class.collapsed]="!userLink.isActive">
           <i class="bi bi-people-fill"></i>
           <span>Users</span>
         </a>

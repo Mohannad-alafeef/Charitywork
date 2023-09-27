@@ -72,7 +72,7 @@ export class ContactComponent {
     this.contactService.deleteMessage(this.selectedId,this.currentIndex);
   }
   updateStatus(id:number,status:number,index:number){
-    this.contactService.updateStatus(id,status,this.currentIndex);
+    this.contactService.updateStatus(id,status,index);
   }
   name:string='';
   openReplyDialog(name:string,email:string,contactId:number,index:number){

@@ -1,0 +1,75 @@
+<app-admin-sidebar></app-admin-sidebar>
+<main class="main" id="main">
+    <section class="section">
+        <div class="row">
+            <div class="col-12">
+                <div class="card recent-sales overflow-auto">
+  
+                  
+  
+                  <div class="card-body">
+                    <p class="card-title">Users</p>
+  
+                    <table #userTable datatable [dtOptions]="users.dtOptions" [dtTrigger]="dtTrigger"  class="table table-borderless w-100"></table>
+  
+                  </div>
+  
+                </div>
+              </div><!-- End Recent Sales -->
+        </div>
+    </section>
+  </main>
+  <ng-template #infoDialog>
+    <section class="section profile">
+      <div class="card-body pt-3">
+        
+        <div class="tab-content pt-2">
+    
+          <div class="tab-pane fade show active profile-overview" id="profile-overview">
+           
+              
+    
+            <div class="row">
+              <div class="col-lg-3 col-md-4 label ">Full Name</div>
+              <div class="col-lg-9 col-md-8">{{selectedUser.firstName}} {{selectedUser.lastName}}</div>
+            </div>
+    
+            <div class="row">
+              <div class="col-lg-3 col-md-4 label">Phone</div>
+              <div class="col-lg-9 col-md-8">{{selectedUser.phone}}</div>
+            </div>
+    
+            <div class="row">
+              <div class="col-lg-3 col-md-4 label">Email</div>
+              <div class="col-lg-9 col-md-8">{{selectedUser.email}}</div>
+            </div>
+    
+            <div class="row">
+              <div class="col-lg-3 col-md-4 label">Address</div>
+              <div class="col-lg-9 col-md-8">{{selectedUser.address}}</div>
+            </div>
+    
+            <div class="row">
+              <div class="col-lg-3 col-md-4 label">Gender</div>
+              <div class="col-lg-9 col-md-8">{{selectedUser.gender}}</div>
+            </div>
+    
+            <div class="row">
+              <div class="col-lg-3 col-md-4 label">Age</div>
+              <div class="col-lg-9 col-md-8">{{selectedUser.age}}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3 col-md-4 label">User Id</div>
+              <div class="col-lg-9 col-md-8">{{selectedUser.userId}}</div>
+            </div>
+    
+           
+    
+          </div>
+        </div><!-- End Bordered Tabs -->
+    
+      </div>
+    
+   
+ </section>
+</ng-template>

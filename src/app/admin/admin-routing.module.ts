@@ -1,3 +1,4 @@
+import { ProfileComponent } from './profile/profile.component';
 import { ManageCategoriesComponent } from './manage-categories/manage-categories.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -5,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManageCharityComponent } from './manage-charity/manage-charity.component';
 import { ContactComponent } from './contact/contact.component';
 import { ManagePagesComponent } from './manage-pages/manage-pages.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   {
@@ -16,7 +18,7 @@ const routes: Routes = [
     component:ManageCharityComponent
   },
   {
-    path:'Categories',
+    path:'categories',
     component:ManageCategoriesComponent
   },
     {
@@ -26,6 +28,15 @@ const routes: Routes = [
   {
     path:'pages',
     component:ManagePagesComponent
+  }
+  ,
+    {
+    path:'profile',
+    component:ProfileComponent
+  },
+  {
+    path:'users',
+    component:UsersComponent
   }
 ];
 

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import * as ApexCharts from 'apexcharts';
 import {
   ApexAxisChartSeries,
@@ -10,7 +10,7 @@ import {
   ApexTitleSubtitle,
   ChartComponent,
 } from 'ngx-apexcharts';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { AdminDashboardService } from 'src/app/services/admin-dashboard.service';
 import { Const } from 'src/app/shared/Const';
 declare function refresh2(): any;
@@ -30,8 +30,9 @@ export type ChartOptions = {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
-export class DashboardComponent implements OnInit, AfterViewInit {
+export class DashboardComponent implements OnInit, AfterViewInit,OnDestroy {
   public chartOptions: Partial<ChartOptions> | null = null;
+  dtTrigger: Subject<any> = new Subject<any>();
   date = new Date();
   month = () =>
     Array.from(Array(12), (e, i) =>
@@ -61,8 +62,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   selectedDate: string[] = [];
   data1: any[] = [];
   data2: any[] = [];
+  sub:Subscription|null = null;
   ngOnInit(): void {
     refresh2();
+    this.sub = this.dashboard.charityObservable.subscribe({
+      next:(res)=>{
+        this.dtTrigger.next(this.dashboard.dtOptions);
+      }
+    })
   }
   constructor(public dashboard: AdminDashboardService) {
     dashboard.init();
@@ -71,6 +78,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.days = this.day();
     this.hours = this.hour();
     this.initChart();
+  }
+  ngOnDestroy(): void {
+    this.sub?.unsubscribe();
+    this.dtTrigger.unsubscribe();
+    
   }
 
   initChart() {
@@ -137,6 +149,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       console.log('aview');
       console.log(this.chartOptions);
     }, 2000);
+    this.dtTrigger.next(this.dashboard.dtOptions);
   }
   getRevenueBetweenDate(date1: string, date2: string): Array<any> {
     return this.dashboard.donations.filter((x: any) => new Date(x.paymentDate));

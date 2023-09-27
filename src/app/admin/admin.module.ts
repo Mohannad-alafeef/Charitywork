@@ -9,6 +9,9 @@ import { Const } from '../shared/Const';
 import { ManageCategoriesComponent } from './manage-categories/manage-categories.component';
 import { ContactComponent } from './contact/contact.component';
 import { ManagePagesComponent } from './manage-pages/manage-pages.component';
+import {Component} from '@angular/core';
+import { ProfileComponent } from './profile/profile.component';
+import { UsersComponent } from './users/users.component';
 
 
 @NgModule({
@@ -17,7 +20,9 @@ import { ManagePagesComponent } from './manage-pages/manage-pages.component';
     ManageCharityComponent,
     ManageCategoriesComponent,
     ContactComponent,
-    ManagePagesComponent
+    ManagePagesComponent,
+    ProfileComponent,
+    UsersComponent
   ],
   imports: [
     CommonModule,
