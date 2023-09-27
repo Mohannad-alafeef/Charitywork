@@ -17,6 +17,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { UserSidebarComponent } from './user-sidebar/user-sidebar.component';
 import {MatCardModule} from '@angular/material/card';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DataTablesModule } from 'angular-datatables';
 import {MatStepperModule} from '@angular/material/stepper';
 import { CharityFilterPipe } from '../pipes/charity-filter.pipe';
 
@@ -44,7 +45,7 @@ import { CharityFilterPipe } from '../pipes/charity-filter.pipe';
     NgxApexchartsModule,
     NgChartsModule,
     FontAwesomeModule,
-
+    DataTablesModule
   ],
   exports:
   [
@@ -67,7 +68,7 @@ import { CharityFilterPipe } from '../pipes/charity-filter.pipe';
     FontAwesomeModule,
     MatStepperModule,
     CharityFilterPipe,
-  
+    DataTablesModule
   ],
 
   

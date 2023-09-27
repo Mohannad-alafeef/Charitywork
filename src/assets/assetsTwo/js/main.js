@@ -283,6 +283,7 @@ function refresh() {
   // 	});
 }
 function counter() {
+  console.log('counterr');
   $(".section-counter").waypoint(
     function (direction) {
       if (
