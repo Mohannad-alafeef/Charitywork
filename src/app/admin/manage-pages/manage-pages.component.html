@@ -1,0 +1,278 @@
+<app-admin-sidebar></app-admin-sidebar>
+
+<main id="main" class="main">
+
+<section class="section dashboard">
+    <div class="row">
+            <!-- Recent Sales -->
+            <div class="col-12">
+                <div class="card recent-sales overflow-auto">
+  
+<div class="card-body">
+    <h5 class="card-title">  Home Page <span>| Today</span></h5>
+
+    <table class="table table-borderless datatable">
+      <thead>
+        <tr>
+         
+          <th scope="col">image</th>
+          <th scope="col">Title</th>
+          <th scope="col">Text</th>
+          <th></th>
+          
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><img src="../../../assets/Images/{{page.homeObj.imagePath}}"style="width: 50px;"></td>
+          <td>{{page.homeObj.title}}</td>
+          <td>{{page.homeObj.text}}</td>
+
+          <button class="btn btn-primary m-1" (click)="openUpdatehomeDialog(page.homeObj)">Update</button>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+                </div>
+            </div>
+    </div>
+</section>
+
+<!-- About Us Page -->
+<section class="section dashboard">
+  <div class="row">
+          <!-- Recent Sales -->
+          <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+
+<div class="card-body">
+  <h5 class="card-title">  About Us Page <span>| Today</span></h5>
+
+  <table class="table table-borderless datatable">
+    <thead>
+      <tr>
+       
+        <th scope="col">image</th>
+        <th scope="col">Title</th>
+        <th scope="col">Text</th>
+        <th></th>
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img src="../../../assets/Images/{{page.aboutObj.imagePath}}"style="width: 50px;"></td>
+        <td>{{page.aboutObj.title}}</td>
+        <td>{{page.aboutObj.text}}</td>
+
+        <button class="btn btn-primary m-1" (click)="openUpdateaboutDialog(page.aboutObj)">Update</button>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+              </div>
+          </div>
+  </div>
+</section>
+
+<!-- Contact Us Page -->
+<section class="section dashboard">
+  <div class="row">
+          <!-- Recent Sales -->
+          <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+
+<div class="card-body">
+  <h5 class="card-title">  Contact Us Page <span>| Today</span></h5>
+
+  <table class="table table-borderless datatable">
+    <thead>
+      <tr>
+       
+        
+        <th scope="col">Title</th>
+        <th scope="col">Email Address</th>
+        <th scope="col">Phone number</th>
+        <th scope="col">Open Hours</th>
+        <th scope="col">Address</th>
+
+        <th></th>
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{page.contactObj.title}}</td>
+        <td>{{page.contactObj.emailAddress}}</td>
+        <td>{{page.contactObj.phone}}</td>
+        <td>{{page.contactObj.openHours}}</td>
+        <td>{{page.contactObj.address}}</td>
+
+        <button class="btn btn-primary m-1" (click)="openUpdatecontactDialog(page.contactObj)">Update</button>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+              </div>
+          </div>
+  </div>
+</section>
+
+
+
+<!-- TESTIMONIAL  Page -->
+<section class="section dashboard">
+  <div class="row">
+          <!-- Recent Sales -->
+          <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+
+<div class="card-body">
+  <h5 class="card-title">  Testimonial  Page <span>| Today</span></h5>
+
+  <table class="table table-borderless datatable">
+    <thead>
+      <tr>
+       
+        <th scope="col">image</th>
+        <th scope="col">Title</th>
+        <th scope="col">Text</th>
+        <th></th>
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img src="../../../assets/Images/{{page.testimonialObj.imagePath}}"style="width: 50px;"></td>
+        <td>{{page.testimonialObj.title}}</td>
+        <td>{{page.testimonialObj.text}}</td>
+
+        <button class="btn btn-primary m-1" (click)="openUpdatetestimonialDialog(page.testimonialObj)">Update</button>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+              </div>
+          </div>
+  </div>
+</section>
+
+
+</main>
+<!-- home dialog -->
+<ng-template #callUpdatehomeDialog >
+    <h2 style="margin-top: 30px;  text-align: center;">Update Home Page</h2>
+    <form [formGroup]="updateHomePageForm" >
+      <div >
+        <label for="title" style="font-size: 1rem; margin: 10px; color: black;">Title</label>
+        <input type="text" id="title" formControlName="title" [(ngModel)]="previous_data.title">
+      </div>
+      <div >
+        <label for="text" style="font-size: 1rem; margin: 10px; color: black;">Text</label>
+        <input type="text" id="text" formControlName="text" [(ngModel)]="previous_data.text">
+      </div>
+      <div style="display: flex; align-items: center;">
+        <label for="imagePath" style="font-size: 1rem; margin: 10px; color: black;"> Image :</label>
+        <input type="file" #file id="imagePath" formControlName="imagePath"  (change)="UploadhomeImage(file.files)" >
+      </div>
+    </form>
+    <hr>
+    <div style="margin-top: 1rem; margin-bottom: 30px; text-align: center;">
+      <button mat-button mat-dialog-close="Update" [disabled]="updateHomePageForm.invalid">Update</button>
+      <button mat-button mat-dialog-close="Cancel">Cancel</button>
+    </div>
+  </ng-template>
+
+
+  <!-- about page dialog -->
+<ng-template #callUpdateaboutDialog >
+  <h2 style="margin-top: 30px;  text-align: center;">Update About US Page</h2>
+  <form [formGroup]="updateaboutPageForm" >
+    <div >
+      <label for="title" style="font-size: 1rem; margin: 10px; color: black;">Title</label>
+      <input type="text" id="title" formControlName="title" [(ngModel)]="previous_data.title">
+    </div>
+    <div >
+      <label for="text" style="font-size: 1rem; margin: 10px; color: black;">Text</label>
+      <input type="text" id="text" formControlName="text" [(ngModel)]="previous_data.text">
+    </div>
+    <div style="display: flex; align-items: center;">
+      <label for="imagePath" style="font-size: 1rem; margin: 10px; color: black;"> Image :</label>
+      <input type="file" #file id="imagePath" formControlName="imagePath"  (change)="UploadaboutImage(file.files) " >
+    </div>
+  </form>
+  <hr>
+  <div style="margin-top: 1rem; margin-bottom: 30px; text-align: center;">
+    <button mat-button mat-dialog-close="Update" [disabled]="updateaboutPageForm.invalid">Update</button>
+    <button mat-button mat-dialog-close="Cancel">Cancel</button>
+  </div>
+</ng-template>
+
+
+  <!-- contact page dialog -->
+  <ng-template #callUpdatecontactDialog >
+    <h2 style="margin-top: 30px;  text-align: center;">Update Contact Us Page</h2>
+    <form [formGroup]="updatecontactPageForm" >
+      <div >
+        <label for="title" style="font-size: 1rem; margin: 10px; color: black;">Title</label>
+        <input type="text" id="title" formControlName="title" [(ngModel)]="previous_data.title">
+      </div>
+      <div >
+        <label for="emailAddress" style="font-size: 1rem; margin: 10px; color: black;">Email</label>
+        <input type="text" id="emailAddress" formControlName="emailAddress" [(ngModel)]="previous_data.emailAddress">
+      </div>
+      <div >
+        <label for="phone" style="font-size: 1rem; margin: 10px; color: black;">Phone </label>
+        <input type="text" id="phone" formControlName="phone" [(ngModel)]="previous_data.phone">
+      </div>
+      <div >
+        <label for="address" style="font-size: 1rem; margin: 10px; color: black;">Address</label>
+        <input type="text" id="address" formControlName="address" [(ngModel)]="previous_data.address">
+      </div>
+      <div >
+        <label for="openHours" style="font-size: 1rem; margin: 10px; color: black;">Open Hours</label>
+        <input type="text" id="openHours" formControlName="openHours" [(ngModel)]="previous_data.openHours">
+      </div>
+     
+    </form>
+    <hr>
+    <div style="margin-top: 1rem; margin-bottom: 30px; text-align: center;">
+      <button mat-button mat-dialog-close="Update" [disabled]="updatecontactPageForm.invalid">Update</button>
+      <button mat-button mat-dialog-close="Cancel">Cancel</button>
+    </div>
+  </ng-template>
+  
+
+    <!-- Testimonial page dialog -->
+<ng-template #callUpdateTestimonialDialog >
+  <h2 style="margin-top: 30px;  text-align: center;">Update Testimonial  Page</h2>
+  <form [formGroup]="updatetestimonailPageForm" >
+    <div >
+      <label for="title" style="font-size: 1rem; margin: 10px; color: black;">Title</label>
+      <input type="text" id="title" formControlName="title" [(ngModel)]="previous_data.title">
+    </div>
+    <div >
+      <label for="text" style="font-size: 1rem; margin: 10px; color: black;">Text</label>
+      <input type="text" id="text" formControlName="text" [(ngModel)]="previous_data.text">
+    </div>
+    <div style="display: flex; align-items: center;">
+      <label for="imagePath" style="font-size: 1rem; margin: 10px; color: black;"> Image :</label>
+      <input type="file" #file id="imagePath" formControlName="imagePath"  (change)="UploadtestimonialImage(file.files) " >
+    </div>
+  </form>
+  <hr>
+  <div style="margin-top: 1rem; margin-bottom: 30px; text-align: center;">
+    <button mat-button mat-dialog-close="Update" [disabled]="updatetestimonailPageForm.invalid">Update</button>
+    <button mat-button mat-dialog-close="Cancel">Cancel</button>
+  </div>
+</ng-template>
+
+
