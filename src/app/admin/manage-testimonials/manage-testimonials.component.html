@@ -1,0 +1,119 @@
+<app-admin-sidebar></app-admin-sidebar>
+<main #main id="main" class="main">
+
+    <section  class="py-5">
+        <div class="col-12">
+            <div class="card recent-sales overflow-auto">
+
+<div class="card-body">
+<h5 class="card-title">Testimonials <span>| List</span></h5>
+<div class="row mb-3">
+        <div class="container-fluid">
+            <div class=" mt-2 centered-container card-columns">
+                <label class=" radio-inline ms-4 " for="flexRadioDefault1">
+                  <input class="form-check-input" type="radio"[(ngModel)] ="filterradio" value="{{constant.Accepted}}" name="flexRadioDefault" id="flexRadioDefault1">
+                  Posted
+                  </label>
+               
+                  <label class="radio-inline ms-4 " for="flexRadioDefault2">
+                  <input class="form-check-input" type="radio" [(ngModel)] ="filterradio" value="{{constant.Rejected}}" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                  Rejected
+                  </label> 
+                  <label class="radio-inline ms-4 " for="flexRadioDefault2">
+                    <input class="form-check-input" type="radio" [(ngModel)] ="filterradio" value="{{constant.NeedReview}}" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    On Hold
+                  </label> 
+                  <label class="radio-inline ms-4 " for="flexRadioDefault2">
+                    <input class="form-check-input" type="radio" [(ngModel)] ="filterradio" value="" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    All
+                  </label> 
+            </div>
+    
+    
+            <div class="row my-5" *ngFor="let obj of testimonials.testimonials|testimonialFilter:filterradio">
+                <div class="col-lg-8 mx-auto">
+                    <div class="p-4 shadow rounded contact-card" >
+                        <div class="row row-cols-2">
+                            <div class="col-2">
+                                <img class="card-img-top" src="../../../assets/Images/{{obj.user.imagePath}}" style="width: 80px;"alt="User Image">
+ 
+                             </div>
+                        <div class="row">
+                            <div class="col-6">
+                               
+                                <h3>Name</h3>
+                                <h3>Date</h3>
+                                <h3>Rate</h3>
+                                <h3>Testimonial Text</h3>
+                            </div>
+                            <div class="col-6">
+                               
+                                <h3><span>{{obj.user.firstName}}{{obj.user.lastName}}</span></h3>
+                                <h3><span>{{obj.testimonialDate|date}}</span></h3>
+                            
+                                <h3>
+                                    <i  *ngFor="let star of stars"class="bi bi-star-fill ml-1" [style.color]="star<=obj.rate?'yellow':'#0000005c'"></i>
+                                </h3>
+                               
+                                
+                            </div>
+                        <p class="mb-0 mt-2 font-italic" style="text-indent: 50px;">{{obj.content}} </p>
+
+                        </div>
+                        </div>
+                      <div class="blockquote-custom-icon shadow-sm" [style.background-color]="getColor(obj.isAccepted)"><fa-icon [icon]="getIcon(obj.isAccepted)" class="text-white"></fa-icon></div>
+
+                        <div class="contact-btns">
+                            <button type="button" (click)="RejectDialog(obj)" *ngIf="obj.isAccepted != constant.Accepted && obj.isAccepted != constant.Rejected"class="mx-1 contact-btn btn  text-white " style="background-color:#bf0a0a"><i class="bi bi-x " style="font-size: 20px;"></i></button>
+                            <button type="button"  (click)="PostDialog(obj)"*ngIf="obj.isAccepted != constant.Accepted && obj.isAccepted != constant.Rejected"class="mx-1 contact-btn btn  text-white " style="background-color:#146c43"><i class="bi bi-check-all " style="font-size: 20px;"></i></button>
+
+                            <button type="button" class="mx-1 contact-btn btn btn-danger text-white" (click)="DeleteDialog(obj.testimonialId)" data-bs-toggle="tooltip" data-bs-placement="top" title="delete"><i class="contact-i bi bi-trash"></i></button>
+
+                        </div> 
+                       
+                    </div>
+                    
+    
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<ng-template #deleteDialog>
+    <h1 mat-dialog-title>Delete</h1>
+    <div mat-dialog-content>
+      Would you like to delete this Testimonial ?
+    </div>
+    <div mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close >No</button>
+      <button class="btn btn-danger text-white"  mat-dialog-close="yes" cdkFocusInitial>yes</button>
+    </div>
+    
+</ng-template>
+<ng-template #postDialog>
+    <h1 mat-dialog-title>Post</h1>
+    <div mat-dialog-content>
+      Would you like to Post this Testimonial ?
+    </div>
+    <div mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close >No</button>
+      <button class="btn btn-danger text-white"  mat-dialog-close="yes" cdkFocusInitial>yes</button>
+    </div>
+    
+</ng-template>
+<ng-template #rejectDialog>
+    <h1 mat-dialog-title>Reject</h1>
+    <div mat-dialog-content>
+      Would you like to Reject this Testimonial ?
+    </div>
+    <div mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close >No</button>
+      <button class="btn btn-danger text-white"  mat-dialog-close="yes" cdkFocusInitial>yes</button>
+    </div>
+    
+</ng-template>

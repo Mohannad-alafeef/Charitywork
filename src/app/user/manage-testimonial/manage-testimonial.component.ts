@@ -53,7 +53,7 @@ export class ManageTestimonialComponent {
 
   ngOnInit(): void{
     refresh2();
-    this.user.getAllTestimonial();
+    this.user.getUserTestimonial();
   }
   deleteTestimonial(id :number){
    const dialogRef= this.dialog.open(this.callDelete);
@@ -86,7 +86,7 @@ createTestimonial(){
   console.log(this.user1);
   console.log(this.userTestimonial);
 
- this.user.createtTestimonial(this.userTestimonial); 
+ this.user.createtTestimonial(this.userTestimonial);
 }
 }
 

@@ -20,6 +20,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DataTablesModule } from 'angular-datatables';
 import {MatStepperModule} from '@angular/material/stepper';
 import { CharityFilterPipe } from '../pipes/charity-filter.pipe';
+import { TestimonialFilterPipe } from '../pipes/testimonial-filter.pipe';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { CharityFilterPipe } from '../pipes/charity-filter.pipe';
     FooterComponent,
     AdminSidebarComponent,
     UserSidebarComponent,
-    CharityFilterPipe
+    CharityFilterPipe,
+    TestimonialFilterPipe
   ],
   imports: [
     CommonModule,
@@ -68,7 +70,8 @@ import { CharityFilterPipe } from '../pipes/charity-filter.pipe';
     FontAwesomeModule,
     MatStepperModule,
     CharityFilterPipe,
-    DataTablesModule
+    DataTablesModule,
+    TestimonialFilterPipe
   ],
 
   

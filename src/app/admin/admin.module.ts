@@ -12,6 +12,7 @@ import { ManagePagesComponent } from './manage-pages/manage-pages.component';
 import {Component} from '@angular/core';
 import { ProfileComponent } from './profile/profile.component';
 import { UsersComponent } from './users/users.component';
+import { ManageTestimonialsComponent } from './manage-testimonials/manage-testimonials.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { UsersComponent } from './users/users.component';
     ContactComponent,
     ManagePagesComponent,
     ProfileComponent,
-    UsersComponent
+    UsersComponent,
+    ManageTestimonialsComponent
   ],
   imports: [
     CommonModule,

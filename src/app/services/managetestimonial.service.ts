@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class ManagetestimonialService {
   testimonialObj:any=[{
 
   }]
-  constructor(private http:HttpClient,route : Router)
+  testimonials:any=[{'user':{}}];
+  constructor(private http:HttpClient,route : Router,public toaster:ToastrService)
    {
     const userString = localStorage.getItem('user');
     if (userString) {
@@ -18,8 +20,29 @@ export class ManagetestimonialService {
     }
 
    }
+   getAllTestimonial(){
+    this.http.get('https://localhost:7081/api/testimonial').subscribe({
+      next: (res: any) => {
+        this.testimonials=res;
+      },
+      error: (error) => {
+        console.error('Error fetching testimonial data:', error);
+      }
+    });
+}
 
-  getAllTestimonial() {
+UpdateTestimonial(body:any){
+    this.http.put('https://localhost:7081/api/testimonial',body).subscribe({
+      next: (res: any) => {
+      this.toaster.success("updated Sucessfully");
+        
+      },
+      error: (error) => {
+        console.error('Error fetching testimonial data:', error);
+      }
+    });
+}
+getUserTestimonial() {
     this.http.get('https://localhost:7081/api/testimonial').subscribe({
       next: (res: any) => {
         console.log(res);

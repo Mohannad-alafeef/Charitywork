@@ -214,12 +214,7 @@
             </a>
           </li>
           
-          <li>
-            <a href="tables-general.html">
-              <i class="bi bi-circle"></i><span>Testimonials List</span>
-            </a>
-          </li>
-         
+        
         </ul>
       </li><!-- End Manage Nav -->
 
@@ -249,7 +244,12 @@
           <span>Contacts List</span>
         </a>
       </li>
-
+      <li class="nav-item">
+        <a class="nav-link collapsed" routerLink="/admin/testimonials" routerLinkActive #test="routerLinkActive" [class.collapsed]="!test.isActive">
+          <i class="bi bi-chat-right-text"></i>
+          <span>Testimonials List</span>
+        </a>
+      </li>
       <li class="nav-item">
         <a class="nav-link collapsed" routerLink="/admin/users" routerLinkActive #userLink="routerLinkActive" [class.collapsed]="!userLink.isActive">
           <i class="bi bi-people-fill"></i>
