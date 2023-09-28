@@ -7,6 +7,7 @@ import { ManageCharityComponent } from './manage-charity/manage-charity.componen
 import { ContactComponent } from './contact/contact.component';
 import { ManagePagesComponent } from './manage-pages/manage-pages.component';
 import { UsersComponent } from './users/users.component';
+import { ManageTestimonialsComponent } from './manage-testimonials/manage-testimonials.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path:'users',
     component:UsersComponent
+  },
+  {
+    path:'testimonials',
+    component:ManageTestimonialsComponent
   }
 ];
 
