@@ -3,24 +3,33 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManageTestimonialComponent } from './manage-testimonial/manage-testimonial.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AllCharitiesComponent } from './all-charities/all-charities.component';
+import { MapViewComponent } from './map-view/map-view.component';
 const routes: Routes = [
   {
-    path:'',
-    component:DashboardComponent
+    path: '',
+    component: DashboardComponent,
   },
   {
-    path:'managetestimonial',
-    component:ManageTestimonialComponent
-  }  ,
+    path: 'managetestimonial',
+    component: ManageTestimonialComponent,
+  },
   {
-  path:'profile',
-  component:ProfileComponent
-}
+    path: 'profile',
+    component: ProfileComponent,
+  },
+  {
+    path:'charities',
+    component:AllCharitiesComponent
+  },
+  {
+    path:'map',
+    component:MapViewComponent
+  }
 ];
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class UserRoutingModule { }
+export class UserRoutingModule {}

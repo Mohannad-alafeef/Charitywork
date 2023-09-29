@@ -1,0 +1,19 @@
+.card .charity-mission {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 6; /* number of lines to show */
+  line-clamp: 6;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  padding-bottom: 20px;
+}
+.card .btn {
+  border: none;
+  border-bottom-left-radius: calc(0.25rem - 1px);
+  border-bottom-right-radius: calc(0.25rem - 1px);
+  margin-top: 15px;
+}
+.fundraise-item img{
+  height: 250px;
+  object-fit: cover;
+}
