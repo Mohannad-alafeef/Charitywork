@@ -1,0 +1,23 @@
+<div class="position-relative">
+
+  <div class="map-search row">
+    <input type="text"  (change)="updateMap($event)">
+    
+  </div>
+  
+  <mgl-map
+    class="charity-map"
+    [style]="
+      'https://api.maptiler.com/maps/streets-v2/style.json?key=JLBBG9wI6FsVacfc2pMJ '
+    "
+    [zoom]="[2]"
+    [center]="[0, 0]"
+    (render)="mapRender()"
+    (mapLoad)="mapLoaded($event)"
+  >
+     <mgl-control mglFullscreen >
+     </mgl-control>
+  
+    <mgl-control mglNavigation position="top-left"></mgl-control>
+  </mgl-map>
+</div>

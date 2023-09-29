@@ -1,0 +1,23 @@
+<div class="card fundraise-item">
+  <a
+    ><img
+      class="card-img-top"
+      src="../../../assets/Images/{{charity.imagePath}}"
+      alt="Image placeholder"
+  /></a>
+  <div class="card-body column-card ">
+    <h3 class="card-title"><a>{{charity.charityName}}</a></h3>
+
+    <span class="fund-raised d-block h6">{{getTotalPayment(charity.payments)|currency:'USD':true:'1.0-0'}} raised of {{charity.donationGoal|currency:'USD':true:'1.0-0'}}</span>
+    <div class="progress custom-progress-success">
+      <div class="progress-bar bg-primary" role="progressbar" [ngStyle]="{'width':calcPercent(charity.payments,charity.donationGoal)+'%'}" attr.aria-valuenow="{{calcPercent(charity.payments,charity.donationGoal)}}" aria-valuemin="0" aria-valuemax="100"></div>
+                  
+    </div>
+    <p class="h6 charity-mission">{{charity.mission}}</p>
+    <button
+      class="btn btn-success w-100 position-absolute bottom-0 end-0 right-0"
+    >
+      Donate
+    </button>
+  </div>
+</div>
