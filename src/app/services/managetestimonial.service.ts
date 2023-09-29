@@ -71,5 +71,6 @@ createtTestimonial(body:any)
   },err=>{
     alert('Something went wrong !');
   })
+  window.location.reload();
 }
 }
