@@ -22,7 +22,7 @@ const routes: Routes = [
   {
     path:'issue',
     component:IssueComponent
-  },
+  },{
     path:'charities',
     component:AllCharitiesComponent
   },
