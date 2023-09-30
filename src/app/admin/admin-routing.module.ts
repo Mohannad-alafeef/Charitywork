@@ -1,3 +1,4 @@
+import { ManageIssuesComponent } from './manage-issues/manage-issues.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ManageCategoriesComponent } from './manage-categories/manage-categories.component';
 import { NgModule } from '@angular/core';
@@ -42,7 +43,10 @@ const routes: Routes = [
   {
     path:'testimonials',
     component:ManageTestimonialsComponent
-  }
+  },  {
+    path:'issues',
+    component:ManageIssuesComponent
+  },
 ];
 
 @NgModule({

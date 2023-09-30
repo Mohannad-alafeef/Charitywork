@@ -255,7 +255,15 @@
           <i class="bi bi-people-fill"></i>
           <span>Users</span>
         </a>
-      </li><!-- End Profile Page Nav -->
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" routerLink="/admin/issues" routerLinkActive #Issue="routerLinkActive" [class.collapsed]="!Issue.isActive">
+          <i class="bi bi-envelope-arrow-down-fill"></i>
+          <span>Issues List</span>
+        </a>
+      </li>
+
+      <!-- End Profile Page Nav -->
 
     
     </ul>
