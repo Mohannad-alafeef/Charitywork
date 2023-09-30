@@ -16,6 +16,9 @@ export class UserSidebarComponent {
       this.user = JSON.parse(userString);
     }
   }
+  toggleSideBar(){
+    document.querySelector('body')?.classList.toggle('toggle-sidebar');
+  }
  
 
 

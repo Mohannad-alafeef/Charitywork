@@ -15,7 +15,8 @@
           "options": {
             "allowedCommonJsDependencies": [
               "chartjs",
-              "apexcharts"
+              "apexcharts",
+              "maplibre-gl"
             ],
             "outputPath": "dist/charitywork",
             "index": "src/index.html",
@@ -59,7 +60,8 @@
               "node_modules/swiper/swiper-bundle.min.css",
               "src/assets/assetsTwo/css/style.css",
               "node_modules/datatables.net-dt/css/jquery.dataTables.min.css",
-              "node_modules/datatables.net-dt/css/jquery.dataTables.css"
+              "node_modules/datatables.net-dt/css/jquery.dataTables.css",
+              "node_modules/maplibre-gl/dist/maplibre-gl.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",

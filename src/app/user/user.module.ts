@@ -9,6 +9,9 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CreateCharityComponent } from './create-charity/create-charity.component';
 import { ProfileComponent } from './profile/profile.component';
 import { IssueComponent } from './issue/issue.component';
+import { AllCharitiesComponent } from './all-charities/all-charities.component';
+import { CardViewComponent } from './card-view/card-view.component';
+import { MapViewComponent } from './map-view/map-view.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,9 @@ import { IssueComponent } from './issue/issue.component';
     CreateCharityComponent,
     ProfileComponent,
     IssueComponent,
+    AllCharitiesComponent,
+    CardViewComponent,
+    MapViewComponent,
   ],
   imports: [CommonModule, UserRoutingModule, SharedModule, CarouselModule],
 })
