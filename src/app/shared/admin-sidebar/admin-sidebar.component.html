@@ -217,26 +217,11 @@
         
         </ul>
       </li><!-- End Manage Nav -->
-
       <li class="nav-item">
-        <a class="nav-link collapsed"  data-bs-target="#Reports-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>Reports</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link collapsed" routerLink="/admin/reports" routerLinkActive #rep="routerLinkActive" [class.collapsed]="!rep.isActive">
+          <i class="bi bi-journal-text"></i><span>Reports</span>
         </a>
-        <ul id="Reports-nav" class="nav-content collapse "  data-bs-parent="#sidebar-nav">
-          
-          <li>
-            <a href=" ">
-              <i class="bi bi-circle"></i><span>Annual Report</span>
-            </a>
-          </li>
-          <li>
-            <a href=" ">
-              <i class="bi bi-circle"></i><span>Monthly Report</span>
-            </a>
-          </li>
-
-        </ul>
-      </li><!-- End Report Nav -->
+      </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" routerLink="/admin/contact" routerLinkActive #mir="routerLinkActive" [class.collapsed]="!mir.isActive">
