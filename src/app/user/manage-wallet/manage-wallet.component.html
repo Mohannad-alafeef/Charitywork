@@ -1,0 +1,147 @@
+
+<app-user-sidebar></app-user-sidebar>
+<main id="main" class="main">
+  <div class="site-section bg-light">
+    <div class="container-fluid">
+      <div class="container-fluid">
+        <div class="col-md-12 block-11">
+          <table class="wallet-table">
+            <thead>
+              <tr>
+                <th class="border">Card Number</th>
+                <th class="border">CVV</th>
+                <th class="border">Expiry date</th>
+                <th class="border">Balance </th>
+                <th> Action </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let obj of wallet.walletlObj">
+                <td class="border">
+                  {{obj.cardNumber}}
+                </td>
+                <td class="border">
+                  {{obj.cvv}}
+                </td>
+                <td class="border"> 
+                    {{obj.expDate}}
+                  </td>
+                  <td class="border">
+                    {{obj.balance}}
+                  </td>
+                <td class="border">
+                  <!-- <button (click)="openChargeDialog(obj)" >Charge  </button>  | -->
+                  <button (click)="deletewalle(obj.visaId)" >Delete </button>
+
+                </td>
+              </tr>
+              <tr>
+                <td class="border" colspan="5">
+                  <button (click)="OpenCreateWallet()">Add Wallet</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<ng-template #callDeleteDailog>
+    <h1 mat-dialog-title> Delete Wallet</h1>
+    <div mat-dialog-content> Are You sure you want to delete this Wallet ?</div>
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close="yes"> Yes </button>
+      <button mat-button mat-dialog-close="no"> No </button>
+    </div>
+  </ng-template>
+
+
+
+
+
+<!-- 
+<ng-template #callUpdateDailog>
+  <h2 style="margin-top: 30px; text-align: center;">Charge Wallet</h2>
+  <form [formGroup]="ChargeForm">
+    <div>
+      <label for="balance" style="font-size: 1rem; margin:5px; color: black;">Amount</label>
+      <input type="text" id="balance" formControlName="balance" placeholder="Enter amount to add" style="margin:15px; ">
+    </div>
+  </form>
+  <hr>
+  <div style="margin-top: 1rem; margin-bottom: 30px; text-align: center;">
+    <button mat-button mat-dialog-close="Charge" [disabled]="ChargeForm.invalid">Charge</button>
+    <button mat-button mat-dialog-close="Cancel">Cancel</button>
+  </div>
+</ng-template>
+
+ -->
+
+
+
+
+<ng-template #callCeateDailog>
+  <h1 mat-dialog-title>Create Wallet</h1>
+  <div mat-dialog-content>
+    Craete Your Wallet  
+  </div>
+  <form class="mx-1 mx-md-4 p-2" [formGroup]="CreateWallet">
+<div class="card p-4">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="cardNumber" class="matLabel">Card Number</label>
+        <input type="text" class="form-control" id="cardNumber" formControlName="cardNumber">
+        <mat-error *ngIf="CreateWallet.controls['cardNumber'].hasError('required') && CreateWallet.controls['cardNumber'].touched">
+          required
+        </mat-error>
+        <mat-error *ngIf="CreateWallet.controls['cardNumber'].hasError('pattern')">
+          Card Number must be  16 digits
+         </mat-error>
+         <mat-error *ngIf="CreateWallet.controls['cardNumber'].hasError('cardNumberExist')">
+          Card Number is already Exist
+         </mat-error>
+      </div>
+     
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="cvv" class="matLabel">cvv</label>
+        <input type="text" class="form-control" id="cvv" formControlName="cvv">
+        <mat-error *ngIf="CreateWallet.controls['cvv'].hasError('required') && CreateWallet.controls['cvv'].touched">
+          required
+        </mat-error>
+        <mat-error *ngIf="CreateWallet.controls['cvv'].hasError('pattern')">
+          CVV must be 3 digits
+        </mat-error>
+              </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-9">
+      <div class="form-group">
+        <label for="expDate" class="matLabel">expDate</label>
+        <input type="date" class="form-control" id="expDate" formControlName="expDate">
+        <mat-error *ngIf="CreateWallet.controls['expDate'].hasError('required') && CreateWallet.controls['expDate'].touched">
+          required
+        </mat-error>
+        <mat-error *ngIf="CreateWallet.controls['expDate'].hasError('notFutureDate')">
+          This Visa Card Expired 
+        </mat-error>
+        </div>
+
+    </div>
+  </div>
+</div>
+  </form>
+  <div mat-dialog-actions align="end">
+    <mat-dialog-actions align="end">
+      <button mat-button [disabled]="CreateWallet.invalid " cdkFocusInitial (click)="createWallet()">Create</button>
+      <button mat-button mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+  </div>
+</ng-template>

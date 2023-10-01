@@ -8,6 +8,7 @@ import { ManageTestimonialComponent } from './manage-testimonial/manage-testimon
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CreateCharityComponent } from './create-charity/create-charity.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ManageWalletComponent } from './manage-wallet/manage-wallet.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ProfileComponent } from './profile/profile.component';
     ManageTestimonialComponent,
     CreateCharityComponent,
     ProfileComponent,
+    ManageWalletComponent,
   ],
   imports: [CommonModule, UserRoutingModule, SharedModule, CarouselModule],
 })
