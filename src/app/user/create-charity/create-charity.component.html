@@ -109,10 +109,26 @@
 <!-- Charity's Location Step -->
 <mat-step>
   <ng-template matStepLabel>Charity's Location</ng-template>
-  <p>This content was rendered eagerly</p>
+  <p>Location is Required</p>
+  <mgl-map
+    class="charity-map"
+    [style]="
+      'https://api.maptiler.com/maps/streets-v2/style.json?key=JLBBG9wI6FsVacfc2pMJ '
+    "
+    [zoom]="[3]"
+    [center]="[36, 30]"
+    (mapLoad)="mapLoaded($event)" (mapClick)="choseLocation($event)">
+    <mgl-marker [lngLat]="[createCharity.value.longitude, createCharity.value.latitude]" *ngIf="locationChosen"></mgl-marker>
+    <mgl-control mglFullscreen >
+     </mgl-control>
+  
+    <mgl-control mglNavigation position="top-left"></mgl-control>
+  </mgl-map>
+
+
   <button mat-button matStepperPrevious>Back</button>
 
-  <button  mat-button [disabled]="!createCharity.valid || !createGoals.valid" (click)="saveCharity()">Send Request</button>
+  <button  mat-button [disabled]="!createCharity.valid || !createGoals.valid || !locationChosen" (click)="saveCharity()">Send Request</button>
 
 </mat-step>
 </form>

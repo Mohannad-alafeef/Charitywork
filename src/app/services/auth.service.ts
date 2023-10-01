@@ -61,14 +61,10 @@ account:any=[{}];
 
           if (data.roleId == Const.Admin) {
            // this.toastr.success('Welcome On Admin Dashbaord');
-            this.router.navigate(['admin']).then(() => {
-              window.location.reload();
-            });;
+            this.router.navigate(['admin']);
           } else if (data.roleId == Const.User) {
           //  this.toastr.success('Welcome On User Dashbaord');
-            this.router.navigate(['user']).then(() => {
-              window.location.reload();
-            });;
+            this.router.navigate(['user']);
           }
         },
         (err) => {
