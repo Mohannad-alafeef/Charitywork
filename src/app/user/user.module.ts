@@ -10,6 +10,11 @@ import { CreateCharityComponent } from './create-charity/create-charity.componen
 import { ProfileComponent } from './profile/profile.component';
 import { UserCharitiesComponent } from './user-charities/user-charities.component';
 import { UpdateCharityComponent } from './update-charity/update-charity.component';
+import { IssueComponent } from './issue/issue.component';
+import { AllCharitiesComponent } from './all-charities/all-charities.component';
+import { CardViewComponent } from './card-view/card-view.component';
+import { MapViewComponent } from './map-view/map-view.component';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +24,10 @@ import { UpdateCharityComponent } from './update-charity/update-charity.componen
     ProfileComponent,
     UserCharitiesComponent,
     UpdateCharityComponent,
+    IssueComponent,
+    AllCharitiesComponent,
+    CardViewComponent,
+    MapViewComponent,
   ],
   imports: [CommonModule, UserRoutingModule, SharedModule, CarouselModule],
 })

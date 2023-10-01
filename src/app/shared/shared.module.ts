@@ -21,6 +21,12 @@ import { DataTablesModule } from 'angular-datatables';
 import {MatStepperModule} from '@angular/material/stepper';
 import { CharityFilterPipe } from '../pipes/charity-filter.pipe';
 import { TestimonialFilterPipe } from '../pipes/testimonial-filter.pipe';
+import {MatTabsModule} from '@angular/material/tabs'; 
+import { GoogleMapsModule } from '@angular/google-maps';
+import { NgxMapLibreGLModule } from '@maplibre/ngx-maplibre-gl';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { SearchPipe } from '../pipes/search.pipe';
+
 
 
 @NgModule({
@@ -30,7 +36,8 @@ import { TestimonialFilterPipe } from '../pipes/testimonial-filter.pipe';
     AdminSidebarComponent,
     UserSidebarComponent,
     CharityFilterPipe,
-    TestimonialFilterPipe
+    TestimonialFilterPipe,
+    SearchPipe
   ],
   imports: [
     CommonModule,
@@ -47,7 +54,11 @@ import { TestimonialFilterPipe } from '../pipes/testimonial-filter.pipe';
     NgxApexchartsModule,
     NgChartsModule,
     FontAwesomeModule,
-    DataTablesModule
+    DataTablesModule,
+    MatTabsModule,
+    GoogleMapsModule,
+    NgxMapLibreGLModule,
+    NgxPaginationModule
   ],
   exports:
   [
@@ -71,7 +82,12 @@ import { TestimonialFilterPipe } from '../pipes/testimonial-filter.pipe';
     MatStepperModule,
     CharityFilterPipe,
     DataTablesModule,
-    TestimonialFilterPipe
+    TestimonialFilterPipe,
+    MatTabsModule,
+    GoogleMapsModule,
+    NgxMapLibreGLModule,
+    NgxPaginationModule,
+    SearchPipe
   ],
 
   
