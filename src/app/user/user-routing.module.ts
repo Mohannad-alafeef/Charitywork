@@ -17,28 +17,38 @@ const routes: Routes = [
     path: 'managetestimonial',
     component: ManageTestimonialComponent,
   },
- {
-  path:'managewallet',
-  component:ManageWalletComponent
-},{
-
+  {
+    path: 'managewallet',
+    component: ManageWalletComponent,
+  },
+  {
     path: 'profile',
     component: ProfileComponent,
   },
-{
-  path:'MyCharities',
-  component:UserCharitiesComponent
-},{
-    path:'issue',
-    component:IssueComponent
-  },{
-    path:'charities',
-    component:AllCharitiesComponent
+  {
+    path: 'MyCharities',
+    component: UserCharitiesComponent,
   },
   {
-    path:'map',
-    component:MapViewComponent
-  }
+    path: 'issue',
+    component: IssueComponent,
+  },
+  {
+    path: 'charities',
+    component: AllCharitiesComponent,
+  },
+  {
+    path: 'issue',
+    component: IssueComponent,
+  },
+  {
+    path: 'charities',
+    component: AllCharitiesComponent,
+  },
+  {
+    path: 'map',
+    component: MapViewComponent,
+  },
 ];
 
 @NgModule({
