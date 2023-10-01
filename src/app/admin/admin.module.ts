@@ -14,6 +14,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { UsersComponent } from './users/users.component';
 import { ManageTestimonialsComponent } from './manage-testimonials/manage-testimonials.component';
 import { ManageIssuesComponent } from './manage-issues/manage-issues.component';
+import { ReportsComponent } from './reports/reports.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ManageIssuesComponent } from './manage-issues/manage-issues.component';
     ProfileComponent,
     UsersComponent,
     ManageTestimonialsComponent,
-    ManageIssuesComponent
+    ManageIssuesComponent,
+    ReportsComponent
   ],
   imports: [
     CommonModule,
