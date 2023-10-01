@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { CharityService } from 'src/app/services/charity.service';
 import { MatStepper } from '@angular/material/stepper';
+import maplibregl, { LngLat, Map, Marker } from 'maplibre-gl';
 
 @Component({
   selector: 'app-create-charity',
@@ -27,8 +28,8 @@ user:any={};
   categoryId:new FormControl('',[Validators.required]),
   charityName:new FormControl('',[Validators.required]),
   mission:new FormControl('',[Validators.required]),
-  latitude:new FormControl('00',[Validators.required]),
-  longitude:new FormControl('00',[Validators.required]),
+  latitude:new FormControl(''),
+  longitude:new FormControl(''),
   imagePath:new FormControl('',[Validators.required]),
   donationGoal:new FormControl('',[Validators.required]),
   createDate:new FormControl(new Date(Date.now())),
@@ -41,12 +42,28 @@ user:any={};
     goal3:new FormControl(''),
 
   })
+  locationChosen=false;
+  mapRef!: Map;
+  mapLoaded(map: Map) {
+    this.mapRef = map;
+ 
+  }
+  choseLocation(event:any){
+    console.log(event);
+    this.createCharity.value.latitude=event.lngLat.lat.toString();
+    this.createCharity.value.longitude=event.lngLat.lng.toString();
+    this.locationChosen=true;
+    console.log(this.createCharity.value.latitude);
+    console.log(this.createCharity.value.longitude);
+
+  }
   saveCharity()
   {
-    
+   
     console.log(this.user);
     console.log(this.createCharity.value);
     this.charity.CreateCharity(this.createCharity.value,this.createGoals.value);
+    
   }
   
 

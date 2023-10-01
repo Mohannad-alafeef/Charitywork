@@ -75,7 +75,7 @@ export class UserCharitiesComponent {
   }
   ngOnInit(): void {
     //refresh2();
-     this.charity.getUserCharities();
+     this.charity.getUserCharities(this.user.userId);
      this.categories.GetAllCategories();
     console.log(this.categories.categories);
 

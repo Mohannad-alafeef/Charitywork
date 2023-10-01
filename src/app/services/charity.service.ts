@@ -9,11 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 export class CharityService {
 
   constructor(private http:HttpClient , public spin:NgxSpinnerService,public toas:ToastrService) {
-    const userString = localStorage.getItem('user');
-
-    if (userString) {
-      this.user = JSON.parse(userString);
-    }
+  
    }
  
   charities:any =[{'user':{},'category':{}}];
@@ -25,14 +21,14 @@ export class CharityService {
   charityId:any;
   Visa:any=[{}];
   
-   getUserCharities(){
+   getUserCharities(userId:any){
     debugger;
    
     this.spin.show;
 
      this.http.get('https://localhost:7081/api/Charity/getAll').subscribe((resp:any)=>{
      
-      this.usercharities= resp.filter((ch:any)=>{return ch.user.userId==this.user.userId;})
+      this.usercharities= resp.filter((ch:any)=>{return ch.user.userId==userId;})
       this.charities=resp;
       this.spin.hide;
 
@@ -62,9 +58,9 @@ export class CharityService {
       this.toas.success('delete success');
       this.spin.hide;
       },err=>{
-      console.log(err);
+      console.log(err.status);
       })
-      window.location.reload();
+    //  window.location.reload();
    }
 
    updateChrity(body:any){
@@ -72,44 +68,37 @@ export class CharityService {
       this.spin.show;
       this.http.put('https://localhost:7081/api/charity/Update',body).subscribe((resp)=>{
       
-      
       this.toas.success('update success');
       this.spin.hide;
       
     },err=>{
-      console.log
+      console.log(err.status);
     })
     //window.location.reload();
    }
    
-   updateChrityInfo(charity:any,goal:any){
+    updateChrityInfo(charity:any,goal:any){
     debugger;
     if(this.display_image!=null)
       charity.imagePath=this.display_image;
     
     this.spin.show;
     this.http.put('https://localhost:7081/api/charity/Update',charity).subscribe((resp)=>{
-
-    
     debugger;
     for(var i=0;i<goal.length;i++)
-     {
-      
-       this.http.put('https://localhost:7081/api/Goal/update',goal[i]).subscribe((resp)=>{
-       
-      },err=>{
-        console.log
-      })
-    
+    {   
+      this.UpdateGoal(goal[i]);
     }
+
     this.spin.hide;
     this.toas.success('update success');
    
-  },err=>{
-    console.log
-  })
- // window.location.reload();
- }
+      },err=>{
+        console.log(err.status);
+      })
+    // window.location.reload();
+    }
+
    async getGoals(id:number)
    {
        await this.http.get('https://localhost:7081/api/Goal/charityGoals/'+id).subscribe((resp:any)=>{
@@ -127,6 +116,7 @@ export class CharityService {
     }
     body.userId=this.user.userId;
     body.imagePath=this.display_image;
+
     console.log(body);
     this.spin.show();
     this.http.post('https://localhost:7081/api/charity/create',body).subscribe((resp: any) =>
@@ -157,20 +147,27 @@ export class CharityService {
       this.toas.error('Error', err.status); 
     })
     
-    window.location.reload();
-  }
+   // window.location.reload();
+    }
 
   CreateGoal(body: any) {
      debugger
  
     this.http.post('https://localhost:7081/api/Goal/create',body).subscribe((resp: any) =>
-    {
-  
-    }, err => {
+    { }, err => {
       this.toas.error('Error', err.status); 
     })
-    
   }
+  UpdateGoal(body: any) {
+    debugger
+
+    this.http.put('https://localhost:7081/api/Goal/update',body).subscribe((resp)=>{
+ 
+   }, err => {
+     this.toas.error('Error', err.status); 
+   })
+   
+ }
   UploadAttachment(file: FormData) {
     
     this.http.post('https://localhost:7081/api/charity/uploadImage',file).subscribe((resp:any)=>{
