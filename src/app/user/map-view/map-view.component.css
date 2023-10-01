@@ -1,0 +1,10 @@
+.charity-map{
+    height: 80vh;
+}
+.map-search{
+    position: absolute !important;
+    z-index: 20;
+    top: 12px !important;
+    right: 60px !important;
+    width: 35%;
+}

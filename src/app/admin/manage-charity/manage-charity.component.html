@@ -13,7 +13,7 @@
     <div class="row mb-3">
    
         <div class="col-4">
-    <input type="text" class="form-control rounded-3" placeholder="Category name" [(ngModel)] ="_filterText">
+    <input type="text" class="form-control rounded-3" placeholder="search by Charity name" [(ngModel)] ="_filterText">
     <select class="form-select rounded-3 mt-3" aria-label="Default select example" [(ngModel)] ="filterSelect">
       <option selected>choose Category</option>
       <option  *ngFor="let c of categories.categories" [value]="c.categoryId" >{{c.categoryName}}</option>
@@ -30,7 +30,7 @@
       <input placeholder="End date "[(ngModel)] ="endDate"  type="date" id="example2" class="form-control rounded-3 col ">
     </div>
    </div>
-  <div class="col-3 mt-2">
+  <div class="col-2 ">
     <label class=" radio-inline ms-4 " for="flexRadioDefault1">
       <input class="form-check-input" type="radio"[(ngModel)] ="filterradio" value="{{constant.Accepted}}" name="flexRadioDefault" id="flexRadioDefault1">
       Accepted
@@ -42,11 +42,14 @@
       </label> 
 
       <label class=" radio-inline ms-4 " for="flexRadioDefault3">
-      <input class="form-check-input" type="radio" [(ngModel)] ="filterradio" value="{{constant.NeedReview}}" name="flexRadioDefault" id="flexRadioDefault3" checked>
+      <input class="form-check-input " type="radio" [(ngModel)] ="filterradio" value="{{constant.NeedReview}}" name="flexRadioDefault" id="flexRadioDefault3" checked>
       On Hold
       </label> 
-
-  <button mat-stroked-button color="warn" class="ms-2 mt-3" (click)="clearFilter()">Clear Filter</button>
+      <label class=" radio-inline ms-4 " for="flexRadioDefault3">
+        <input class="form-check-input " type="radio" [(ngModel)] ="filterradio" value="{{constant.Posted}}" name="flexRadioDefault" id="flexRadioDefault3" checked>
+       Posted
+        </label>
+  <button mat-stroked-button color="warn" class="ms-2" (click)="clearFilter()">Clear Filter</button>
 
       </div>
  
@@ -77,14 +80,15 @@
           <td>
             <span class="badge bg-success" *ngIf="ch.isAccepted==constant.Accepted">Accepted</span>
             <span class="badge bg-danger" *ngIf="ch.isAccepted==constant.Rejected">Rejected</span>
-            <span class="badge bg-warning" *ngIf="ch.isAccepted!=constant.Accepted &&ch.isAccepted!=constant.Rejected">On Hold</span>
-          </td>
+            <span class="badge bg-success" *ngIf="ch.isAccepted==constant.Posted">Posted</span>
+            <span class="badge bg-warning" *ngIf="ch.isAccepted!=constant.Accepted && ch.isAccepted!=constant.Rejected&& ch.isAccepted!=constant.Posted">On Hold</span>
+        </td>
           <td>{{ch.createDate|date}}</td>
           <td>{{ch.donationGoal}}</td>
           <td>{{ch.category.categoryName}}</td>
           <td>{{ch.user.firstName}}  {{ch.user.lastName}}</td>
 
-          <td><button class="btn btn-primary rounded-pill" (click)="seeMoreDialog(ch)">see More</button></td>
+          <td> <button mat-raised-button class=" ml-1"  style="background-color: #f7ca44;color: white;" (click)="seeMoreDialog(ch)">see More</button></td>
         </tr>
       </tbody>
     </table>
@@ -114,8 +118,8 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-stroked-button color="primary" *ngIf="charityy.isAccepted!=constant.Accepted && charityy.isAccepted!=constant.Rejected" mat-button mat-dialog-close="accept">Accepte</button>
-  <button mat-stroked-button color="warn"*ngIf="charityy.isAccepted!=constant.Accepted && charityy.isAccepted!=constant.Rejected" mat-button mat-dialog-close="reject">Reject</button>
+  <button mat-stroked-button color="primary" *ngIf="charityy.isAccepted!=constant.Accepted && charityy.isAccepted!=constant.Rejected && charityy.isAccepted!=constant.Posted"mat-button mat-dialog-close="accept">Accepte</button>
+  <button mat-stroked-button color="warn"*ngIf="charityy.isAccepted!=constant.Accepted && charityy.isAccepted!=constant.Rejected && charityy.isAccepted!=constant.Posted" mat-button mat-dialog-close="reject">Reject</button>
   <button mat-mini-fab color="warn" mat-dialog-close="delete">
     <mat-icon>delete</mat-icon>
   </button>

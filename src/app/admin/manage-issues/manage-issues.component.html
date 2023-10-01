@@ -1,0 +1,94 @@
+<app-admin-sidebar></app-admin-sidebar>
+<main #main id="main" class="main">
+
+    <section  class="py-5">
+        <div class="container-fluid">
+           <h1 style="text-align: center; text-decoration: underline;">Customers Issues</h1>
+    
+    
+            <div class="row my-5" *ngFor="let obj of IssueS.allIssues;let i = index">
+                <div class="col-lg-8 mx-auto">
+                    <div class="p-4 shadow rounded contact-card" >
+                        <div class="row row-cols-2">
+                            <div class="col-3">
+                                <h3>Name</h3>
+                                <h3>Email</h3>
+                                <h3>subject</h3>
+                                <h3>Date</h3>
+                            </div>
+                            <div class="col-9">
+                                <h3><span>{{obj.user.firstName}} {{obj.user.lastName}}</span></h3>
+                                <h3><span>{{obj.user.email}}</span></h3>
+                                <h3><span>{{obj.subject}}</span></h3>
+                                <h3><span>{{obj.reportDate|date}}</span></h3>
+                                
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="blockquote-custom-icon shadow-sm" [style.background-color]="getColor(obj.issueStatus)"><fa-icon [icon]="getIcon(obj.issueStatus)" class="text-white"></fa-icon></div>
+                        <p class="mb-0 mt-2 font-italic" style="text-indent: 50px;">{{obj.message}} </p>
+                         <div class="contact-btns">
+                           
+                            <button type="button" class="mx-1 contact-btn btn btn-success text-white" data-bs-toggle="tooltip" 
+                            data-bs-placement="top" title="Reply"
+                            (click)="openReplyDialog(obj.user.firstName,obj.user.email,obj.problemId,i)">
+                                <i class="contact-i bi bi-reply" ></i></button>
+                            <button *ngIf="obj.issueStatus == unread" type="button" class="mx-1 contact-btn btn btn-secondary text-white" (click)="updateStatus(obj.problemId,readed,i)" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark as read"><i class="contact-i bi bi-envelope-open"></i></button>
+                            <button *ngIf="obj.issueStatus == readed" type="button" class="mx-1 contact-btn btn btn-secondary text-white" (click)="updateStatus(obj.problemId,unread,i)" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark as unread"><i class="contact-i bi bi-envelope"></i></button>
+                            <button type="button" class="mx-1 contact-btn btn btn-danger text-white" 
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="delete" 
+                            (click)="openDeleteDialog(obj.problemId)" >
+                            <i class="contact-i bi bi-trash"></i></button>
+                        </div>
+                       
+                    </div>
+                    
+    
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<ng-template #callDeleteDialog>
+    <div>
+      <h1 mat-dialog-title>Delete the Issue</h1>
+      <div mat-dialog-content>
+        Are you sure that you want to delete this ?
+      </div>
+      <div mat-dialog-actions>
+      <button mat-button mat-dialog-close="Yes">Yes</button>
+      <button mat-button mat-dialog-close="No">No</button>
+      </div>
+    </div>
+</ng-template>
+
+
+<ng-template #CallReplyDialog >
+    <h2 mat-dialog-title>reply to {{name}}</h2>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="replyForm" >
+        
+        <div class="form-group" >
+
+        <label for="Subject">Subject</label>
+        <input class="form-control" name="Subject" formControlName="subject">
+        </div>
+        
+        <div class="form-group">
+        <label for="body">Message</label>
+        <textarea class="form-control" formControlName="body" name="body" rows="6" maxlength="1000">
+        </textarea>
+        </div>
+        <div class="d-flex flex-row justify-content-end">
+
+            <button type="submit" class="mx-2 btn btn-success" mat-dialog-close [disabled]="!replyForm.valid" (click)="send()">Send</button>
+            <button type="submit" class="mx-2 btn btn-danger" mat-dialog-close [disabled]="!replyForm.valid" (click)="sendAndDelete()">Send & Delete</button>
+        </div>
+        </form>
+ 
+</mat-dialog-content>
+
+</ng-template>
+

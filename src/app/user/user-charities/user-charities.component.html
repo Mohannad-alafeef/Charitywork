@@ -1,0 +1,180 @@
+<app-user-sidebar></app-user-sidebar>
+
+
+<main id="main" class="main">
+
+    <section class="section dashboard">
+        <div class="row">
+                <!-- Recent Sales -->
+                <div class="col-12">
+                    <div class="card recent-sales overflow-auto">
+      
+    <div class="card-body">
+        <h5 class="card-title">Your charities 
+          <span *ngIf="charity.usercharities.length!=0">| You Have {{ charity.usercharities.length}} </span>
+          <span *ngIf="charity.usercharities.length==0">You Dont Have Any Charity</span>
+        </h5>
+    
+        <button mat-raised-button class=" ml-1"  style="background-color: #f7ca44;color: white;"(click)="openCreateDialog()">Add new Charity</button>
+
+<div *ngIf="charity.usercharities.length!=0" class="col-md-12 block-11">
+    <owl-carousel-o [options]="customOptions">
+     
+        <ng-template carouselSlide *ngFor="let ch of charity.usercharities">
+     
+          <div class="card fundraise-item" >
+       <div class="menu-nav">
+        <div class="menu-item"></div>
+        <div class="dropdown-container" tabindex="-1">
+          <div class="three-dots mt-2 "></div>
+          <div class="dropdown">
+            <a mat-raised-button color="warn" (click)="DeleteDialog(ch.charityId)">Delete</a>
+            
+          </div>
+        </div>
+      </div>
+            <a [style]="charity.usercharities.length==1?'align-self: center;':''" ><img class="card-img-top" src="../../../assets/Images/{{ch.imagePath}}" alt="Image placeholder" [style]="charity.usercharities.length==1?'width:280px;height:240px':''"></a>
+            <div class="card-body column-card h-100">
+              <div class="card-body d-flex align-items-center justify-content-between">
+                <h3 class="card-title">{{ch.charityName}}</h3>
+                
+                <div>
+                  <span class="badge bg-success" *ngIf="ch.isAccepted==constant.Accepted">Accepted</span>
+                  <span class="badge bg-danger" *ngIf="ch.isAccepted==constant.Rejected">Rejected</span>
+                  <span class="badge bg-success" *ngIf="ch.isAccepted==constant.Posted">Posted</span>
+                  <span class="badge bg-warning" *ngIf="ch.isAccepted!=constant.Accepted && ch.isAccepted!=constant.Rejected&& ch.isAccepted!=constant.Posted">On Hold</span>
+                </div>
+             
+              </div>
+          
+              
+              <div class="progress custom-progress-success">
+              </div>
+              
+                <p class="card-text h6">{{ch.mission}}</p>
+                <div *ngFor="let c of categories.categories" >
+                  <span *ngIf="c.categoryId === ch.categoryId" class="card-text ">(  {{ c.categoryName }} )</span>
+                </div>
+              <div class="card-body d-flex align-items-center justify-content-between">
+                <h3></h3>
+                <div>
+              <button mat-raised-button (click)="seeMoreDialog(ch)">Goals</button>
+              <button mat-raised-button class=" ml-1"  style="background-color: #f7ca44;color: white;"
+               *ngIf="ch.isAccepted!=constant.Accepted && ch.isAccepted!=constant.Rejected&&ch.isAccepted!=constant.Posted" (click)="openUpdateDialog(ch)">Update</button>
+              <button mat-raised-button class=" ml-1"  style="background-color: #198754 ;color: white;"
+               *ngIf="ch.isAccepted==constant.Accepted " (click)="PayDialog(ch)">Pay to Post</button>
+            </div>  <!-- class="btn btn-primary custom-button" -->
+            </div>
+          </div>
+        </div>
+        </ng-template>
+       
+      
+
+    </owl-carousel-o>
+  
+  </div>
+
+      </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+    </main>
+
+    <ng-template #seeMore>
+
+      <h2 mat-dialog-title>{{charityy.charityName}}</h2>   
+      <mat-dialog-content class="mat-typography">
+        <span class="title h5">Donation Goal:  <span class="card-text h6">{{charityy.donationGoal}} $</span> </span>
+        
+        <br>
+        <div class="mt-2">
+        <span class=" h5 mt-3">Goals:</span>
+        <div  *ngFor="let ob of charity.goals">
+            <li class="card-text h6">{{ob.goalText}}</li>
+        </div>
+      </div>
+      </mat-dialog-content>
+      <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+    <!--     <button mat-mini-fab color="warn" mat-dialog-close="delete">
+          <mat-icon>delete</mat-icon>
+        </button> -->
+        
+      </mat-dialog-actions>
+      
+      </ng-template>
+    
+<ng-template #updateCharity>
+  <app-update-charity [selectCharity]="selectCharity"[selectGoals]="charity.goals"></app-update-charity>
+</ng-template>
+
+<ng-template #deleteDialog>
+  <h1 mat-dialog-title>Delete</h1>
+  <div mat-dialog-content>
+    Would you like to delete this Charity ?
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close >No</button>
+    <button class="btn btn-danger text-white"  mat-dialog-close="yes" cdkFocusInitial>yes</button>
+  </div>
+</ng-template>
+
+<ng-template #payDialog>
+  <h1 mat-dialog-title>Payment to Post</h1>
+  <div mat-dialog-content>
+    whold you like to Post Your Charity? 5$ Only
+  </div>
+  <form class="mx-1 mx-md-4 p-2" [formGroup]="VisaCard">
+<div class="card p-4">
+  <div class="row">
+    <!-- Charity Name -->
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="charityName" class="matLabel">Card Number</label>
+        <input type="text" class="form-control" id="CardNumber" formControlName="CardNumber" (change)="clearVisaCardError()">
+        <mat-error type="text" *ngIf="VisaCard.controls['CardNumber'].hasError('required') && VisaCard.controls['CardNumber'].touched">
+          required
+        </mat-error>
+      </div>
+     
+    </div>
+
+    <!-- Donation Goal -->
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="donationGoal" class="matLabel">cvv</label>
+        <input type="text" class="form-control" id="cvv" formControlName="cvv"(change)="clearVisaCardError()">
+        <mat-error type="text" *ngIf="VisaCard.controls['cvv'].hasError('required') && VisaCard.controls['cvv'].touched">
+          required
+        </mat-error>
+              </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Mission -->
+    <div class="col-md-9">
+      <div class="form-group">
+        <label for="mission" class="matLabel">expDate</label>
+        <input type="date" class="form-control" id="expDate" formControlName="expDate" (change)="clearVisaCardError()">
+        <mat-error type="text" *ngIf="VisaCard.controls['expDate'].hasError('required') && VisaCard.controls['expDate'].touched">
+          required
+        </mat-error>
+ 
+        </div>
+        <span *ngIf="visaNotFound" style="color: red;">VisaCard Not Found!</span>
+        <span *ngIf="balanceCheck" style="color: red;">You don't have enough balnace, please RECHARCH!</span>
+        <span *ngIf="expCheck" style="color: red;">VisaCard is expired!</span>
+
+    </div>
+  </div>
+</div>
+  </form>
+  <div mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close >No</button>
+    <button class="btn btn-danger text-white"[disabled]="!VisaCard.valid" style="background-color: #198754;" (click)="pay()" cdkFocusInitial>Pay</button>
+  </div>
+</ng-template>
+

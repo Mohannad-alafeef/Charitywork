@@ -50,7 +50,6 @@
                         [class.valid-border]="Password.valid" [class.is-invalid]="(formSubmitted||passChanged)&& Password.invalid"
                       >
                       <span class="text-danger" *ngIf="(formSubmitted||passChanged)&&Password.hasError('required')">Password is required</span>
-                      <span class="text-danger" *ngIf="(formSubmitted||passChanged)&&Password.hasError('minlength')">Please Enter a Strong password</span>
                     </div>
 
                     <div class="col-12">

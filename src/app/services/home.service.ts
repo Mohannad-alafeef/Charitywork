@@ -43,7 +43,7 @@ export class HomeService {
   getCharities() {
      this.http.get('https://localhost:7081/api/charity').subscribe({
       next:(res:any)=>{
-        res = res.filter((x:any)=>x.isAccepted==Const.Accepted);
+        res = res.filter((x:any)=>x.isAccepted==Const.Posted);
         this.numberOfCharities = res.length;
         console.log("number"+ this.numberOfCharities);
         

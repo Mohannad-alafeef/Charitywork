@@ -9,6 +9,12 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CreateCharityComponent } from './create-charity/create-charity.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ManageWalletComponent } from './manage-wallet/manage-wallet.component';
+import { UserCharitiesComponent } from './user-charities/user-charities.component';
+import { UpdateCharityComponent } from './update-charity/update-charity.component';
+import { IssueComponent } from './issue/issue.component';
+import { AllCharitiesComponent } from './all-charities/all-charities.component';
+import { CardViewComponent } from './card-view/card-view.component';
+import { MapViewComponent } from './map-view/map-view.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +23,12 @@ import { ManageWalletComponent } from './manage-wallet/manage-wallet.component';
     CreateCharityComponent,
     ProfileComponent,
     ManageWalletComponent,
+    UserCharitiesComponent,
+    UpdateCharityComponent,
+    IssueComponent,
+    AllCharitiesComponent,
+    CardViewComponent,
+    MapViewComponent,
   ],
   imports: [CommonModule, UserRoutingModule, SharedModule, CarouselModule],
 })

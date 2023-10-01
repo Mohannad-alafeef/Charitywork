@@ -1,0 +1,135 @@
+<mat-stepper orientation="vertical">
+    <form class="mx-1 mx-md-4" [formGroup]="updateCharity">
+
+<!-- About Your Charity Step -->
+<mat-step>
+  <ng-template matStepLabel>Update Your Charity</ng-template>
+  <ng-template matStepContent>
+    <br>
+    <div class="row">
+      <!-- Charity Name -->
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="charityName" class="matLabel">Charity Name</label>
+          <input type="text" class="form-control" id="charityName" formControlName="charityName" [(ngModel)]="selectCharity.charityName">
+          <mat-error type="text" *ngIf="updateCharity.controls['charityName'].hasError('required') && updateCharity.controls['charityName'].touched">
+            required
+          </mat-error>
+        </div>
+       
+      </div>
+
+      <!-- Select Category -->
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="categoryId" class="matLabel">Select Category</label>
+          <select class="form-control" id="categoryId" formControlName="categoryId" [(ngModel)]="selectCharity.categoryId">
+          
+         
+            <option *ngFor="let c of categories.categories" [value]="c.categoryId" [selected]="c.categoryId===selectCharity.categoryId">{{c.categoryName}}</option>
+          </select>
+          <mat-error type="text" *ngIf="updateCharity.controls['categoryId'].hasError('required') && updateCharity.controls['categoryId'].touched">
+            required
+          </mat-error>
+        </div>
+      </div>
+
+      <!-- Donation Goal -->
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="donationGoal" class="matLabel">Donation Goal</label>
+          <input type="text" class="form-control" id="donationGoal" formControlName="donationGoal" [(ngModel)]="selectCharity.donationGoal">
+          <mat-error type="text" *ngIf="updateCharity.controls['donationGoal'].hasError('required') && updateCharity.controls['donationGoal'].touched">
+            required
+          </mat-error>
+                </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Mission -->
+      <div class="col-md-9">
+        <div class="form-group">
+          <label for="mission" class="matLabel">Mission</label>
+          <input type="text" class="form-control" id="mission" formControlName="mission" [(ngModel)]="selectCharity.mission">
+          <mat-error type="text" *ngIf="updateCharity.controls['mission'].hasError('required') && updateCharity.controls['mission'].touched">
+            required
+          </mat-error>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <label>Image</label>
+    <input type="file" #file class="form-control-file" id="imagePath" formControlName="imagePath" (change)="uploadImage(file.files)">
+   
+    <button mat-button matStepperNext>Next</button>
+  </ng-template>
+</mat-step>
+
+<!-- Charity's Goals Step -->
+<mat-step>
+  <ng-template matStepLabel>Charity's Goals</ng-template>
+  <ng-template matStepContent>
+    <p>Update Goals</p>
+    <form class="mx-1 mx-md-4" [formGroup]="updateGoals">
+      <!-- Goal One -->
+      <div class="form-group">
+        <label for="goal1" class="matLabel">Goal One</label>
+        <input  type="text" class="form-control" id="goal1" formControlName="goal1" [(ngModel)]="selectGoals[0].goalText">
+
+        <mat-error type="text" *ngIf="updateGoals.controls['goal1'].hasError('required') && updateGoals.controls['goal1'].touched">
+          required
+        </mat-error>
+      </div>
+
+      <!-- Goal Two -->
+      <div class="form-group">
+        <label for="goal2" class="matLabel">Goal Two</label>
+        <input type="text" class="form-control" id="goal2" formControlName="goal2" [(ngModel)]="selectGoals[1].goalText">
+
+        <mat-error type="text" *ngIf="updateGoals.controls['goal2'].hasError('required') && updateGoals.controls['goal2'].touched">
+          required
+        </mat-error>
+       </div>
+
+      <!-- Goal Three -->
+      <div class="form-group" *ngIf="selectGoals.length==3">
+        <label for="goal3" class="matLabel">Goal Three</label>
+        <input type="text" class="form-control" id="goal3" formControlName="goal3" [(ngModel)]="selectGoals[2].goalText">
+      </div>
+      
+    </form>
+
+    <button mat-button matStepperPrevious>Back</button>
+    <button mat-button matStepperNext>Next</button>
+  </ng-template>
+</mat-step>
+
+<!-- Charity's Location Step -->
+<mat-step>
+  <ng-template matStepLabel>Charity's Location</ng-template>
+  <p>Location is Required</p>
+  <mgl-map
+    class="charity-map"
+    [style]="
+      'https://api.maptiler.com/maps/streets-v2/style.json?key=JLBBG9wI6FsVacfc2pMJ '
+    "
+    [zoom]="[4]"
+    [center]="[selectCharity.longitude,selectCharity.latitude]"
+    (mapLoad)="mapLoaded($event)" (mapClick)="choseLocation($event)">
+    <mgl-marker [lngLat]="[selectCharity.longitude,selectCharity.latitude]"></mgl-marker>
+    <mgl-control mglFullscreen >
+     </mgl-control>
+  
+    <mgl-control mglNavigation position="top-left"></mgl-control>
+  </mgl-map>
+
+  <button mat-button matStepperPrevious>Back</button>
+
+  <button  mat-button [disabled]="!updateCharity.valid || !updateGoals.valid " (click)="UpdateCharity()">Update Charity</button>
+
+</mat-step>
+</form>
+</mat-stepper> 
+
