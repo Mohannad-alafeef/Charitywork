@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CharityService } from 'src/app/services/charity.service';
 
 @Component({
   selector: 'app-user-sidebar',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 export class UserSidebarComponent {
   user :any={} ;
   
-  constructor(private route : Router){
+  constructor(private route : Router,public charity:CharityService){
     const userString = localStorage.getItem('user');
 
     if (userString) {
@@ -21,6 +22,9 @@ export class UserSidebarComponent {
 
   logout(){
     localStorage.clear();
-   this.route.navigate(['']);
+   
+   
+    this.route.navigate(['']);
+     
   }
 }

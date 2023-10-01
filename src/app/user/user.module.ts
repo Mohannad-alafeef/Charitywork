@@ -8,6 +8,8 @@ import { ManageTestimonialComponent } from './manage-testimonial/manage-testimon
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CreateCharityComponent } from './create-charity/create-charity.component';
 import { ProfileComponent } from './profile/profile.component';
+import { UserCharitiesComponent } from './user-charities/user-charities.component';
+import { UpdateCharityComponent } from './update-charity/update-charity.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { ProfileComponent } from './profile/profile.component';
     ManageTestimonialComponent,
     CreateCharityComponent,
     ProfileComponent,
+    UserCharitiesComponent,
+    UpdateCharityComponent,
   ],
   imports: [CommonModule, UserRoutingModule, SharedModule, CarouselModule],
 })

@@ -8,7 +8,9 @@ export enum Const{
     NeedPayment = 21,
     Rejected = 22,
     NeedReview = 23,
+    Posted=24,
     Unread = 30,
     Readed = 31,
-    Replied = 32
+    Replied = 32,
+    PaymntAmount=5
 }

@@ -8,55 +8,111 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CharityService {
 
-  constructor(private http:HttpClient , public spin:NgxSpinnerService,public toas:ToastrService) { }
-  charities:any =[{'user':{},'category':{}}];
+  constructor(private http:HttpClient , public spin:NgxSpinnerService,public toas:ToastrService) {
+    const userString = localStorage.getItem('user');
 
+    if (userString) {
+      this.user = JSON.parse(userString);
+    }
+   }
+ 
+  charities:any =[{'user':{},'category':{}}];
+  usercharities:any=[{}];
   goals:any=[{}];
   addGoal:any={}
   user:any={};
   display_image:any;
   charityId:any;
+  Visa:any=[{}];
+  
+   getUserCharities(){
+    debugger;
+   
+    this.spin.show;
+
+     this.http.get('https://localhost:7081/api/Charity/getAll').subscribe((resp:any)=>{
+     
+      this.usercharities= resp.filter((ch:any)=>{return ch.user.userId==this.user.userId;})
+      this.charities=resp;
+      this.spin.hide;
+
+     },err=>{
+       console.log(err.status);
+     })
+   }
   getAllCharities(){
     debugger;
     this.spin.show;
 
-     this.http.get('https://localhost:7081/api/Charity/getAll').subscribe((resp:any)=>{
-       this.charities=resp;
-       //this.spin.hide;
-       debugger;
-      console.log(this.charities);
+    this.http.get('https://localhost:7081/api/Charity/getAll').subscribe((resp:any)=>{
+
+    this.charities=resp;
+    this.spin.hide;
+
      },err=>{
        console.log(err.status);
      })
    }
 
    DeleteCharity(id:number){
-        debugger;
-        this.http.delete('https://localhost:7081/api/charity/'+id).subscribe((resp:any)=>{
-      //alert('Deleted');
-      window.location.reload();
-      this.toas.error('delete success');
-      
+      debugger;
+      this.spin.show;
+      this.http.delete('https://localhost:7081/api/charity/'+id).subscribe((resp:any)=>{
+     
+      this.toas.success('delete success');
+      this.spin.hide;
       },err=>{
       console.log(err);
       })
+      window.location.reload();
    }
 
    updateChrity(body:any){
       debugger;
+      this.spin.show;
       this.http.put('https://localhost:7081/api/charity/Update',body).subscribe((resp)=>{
-      this.spin.hide;
-      //alert('update successfully');
+      
+      
       this.toas.success('update success');
-      window.location.reload();
+      this.spin.hide;
+      
     },err=>{
       console.log
     })
+    //window.location.reload();
    }
+   
+   updateChrityInfo(charity:any,goal:any){
+    debugger;
+    if(this.display_image!=null)
+      charity.imagePath=this.display_image;
+    
+    this.spin.show;
+    this.http.put('https://localhost:7081/api/charity/Update',charity).subscribe((resp)=>{
 
-   getGoals(id:number)
+    
+    debugger;
+    for(var i=0;i<goal.length;i++)
+     {
+      
+       this.http.put('https://localhost:7081/api/Goal/update',goal[i]).subscribe((resp)=>{
+       
+      },err=>{
+        console.log
+      })
+    
+    }
+    this.spin.hide;
+    this.toas.success('update success');
+   
+  },err=>{
+    console.log
+  })
+ // window.location.reload();
+ }
+   async getGoals(id:number)
    {
-        this.http.get('https://localhost:7081/api/Goal/charityGoals/'+id).subscribe((resp:any)=>{
+       await this.http.get('https://localhost:7081/api/Goal/charityGoals/'+id).subscribe((resp:any)=>{
         this.goals=resp;
       },err=>{
       console.log(err);
@@ -95,12 +151,13 @@ export class CharityService {
         debugger
         this.CreateGoal(this.addGoal);
       }
+      this.spin.hide();
       this.toas.success('Charity was Sent successfuly to the admin');
     }, err => {
       this.toas.error('Error', err.status); 
     })
     
-    //window.location.reload();
+    window.location.reload();
   }
 
   CreateGoal(body: any) {
@@ -118,11 +175,46 @@ export class CharityService {
     
     this.http.post('https://localhost:7081/api/charity/uploadImage',file).subscribe((resp:any)=>{
       this.display_image= resp.imagePath; 
-      console.log(resp);
-      //this.toas.success('Success'); 
+
     },err=>{
-      //alert('somthing wrong');
+    
       this.toas.error('Error', err.status); 
     });
     }
+
+    
+  ChrityPayment(body: any) {
+    this.spin.show();
+
+   this.http.post('https://localhost:7081/api/payment',body).subscribe((resp: any) =>
+   {
+    this.spin.hide();
+    this.toas.success('Posted successfuly'); 
+   }, err => {
+     this.toas.error('Error', err.status); 
+   })
+   
+ }
+ updateVisaCard(body:any){
+
+  this.http.put('https://localhost:7081/api/visaCard',body).subscribe((resp: any) =>
+  {
+       
+  }, err => {
+    this.toas.error('Error', err.status); 
+  })
+ }
+
+
+  VisaCardByNmber(){
+  debugger
+
+  this.http.get('https://localhost:7081/api/visaCard').subscribe((resp: any) => {
+
+     this.Visa = resp;
+   }, err => {
+     this.toas.error('Error', err.status);
+   })
+ //console.log(this.Visa);
+ }
 }
