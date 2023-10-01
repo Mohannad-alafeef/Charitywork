@@ -44,9 +44,6 @@ export class ManageTestimonialComponent {
     if (userString) {
       this.user1 = JSON.parse(userString);
     }
-   
-    
-
   }
   
   @ViewChild ('callDeleteDailog') callDelete !:TemplateRef<any>
@@ -69,7 +66,6 @@ dialogRef.afterClosed().subscribe((result)=>{
     }
   }
 })
- 
 }
 @ViewChild('callCeateDailog') callCeateDailog!:TemplateRef<any>
 OpenCreatetestimonial()

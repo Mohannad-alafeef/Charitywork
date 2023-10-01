@@ -66,6 +66,7 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
+              "node_modules/jquery/dist/jquery.min.js",
               "node_modules/datatables.net/js/jquery.dataTables.js",
               "src/assets/assetsTwo/js/jquery.min.js",
               "src/assets/assetsTwo/js/jquery-migrate-3.0.1.min.js",
