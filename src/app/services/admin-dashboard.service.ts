@@ -84,7 +84,7 @@ export class AdminDashboardService {
     
     this.http.get('https://localhost:7081/api/charity').subscribe({
       next: (resp: any) => {
-        this.charities = resp;
+        this.charities = resp.filter((x:any)=>x.isAccepted == Const.Posted);
         this.recentCharities = this.charities.slice(0,15);
        // console.log("charities : " + this.charities.filter(x=>x.isAccepted == Const.Accepted));
         this.dtOptions.data = this.recentCharities;
