@@ -6,7 +6,7 @@
            
     
     
-            <div class="row my-5" *ngFor="let obj of contactService.allContact;let i = index">
+            <div class="row my-5" *ngFor="let obj of contactService.allContact| paginate:{itemsPerPage:15,currentPage:p};let i = index">
                 <div class="col-lg-8 mx-auto">
                     <div class="p-4 shadow rounded contact-card" >
                         <div class="row row-cols-2">
@@ -39,10 +39,12 @@
     
                 </div>
             </div>
+            <div class="d-flex flex-wrap justify-content-center py-3 mx-3">
+                <pagination-controls (pageChange)="p=$event"></pagination-controls>
+              </div>
         </div>
     </section>
 </main>
-<a  class="back-to-top d-flex align-items-center justify-content-center" (click)="main.scrollIntoView()" [routerLink]="getCurrentRoute()"><i class="bi bi-arrow-up-short"></i></a>
 <ng-template #deleteDialog>
     <h1 mat-dialog-title>Delete file</h1>
     <div mat-dialog-content>
