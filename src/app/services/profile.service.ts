@@ -11,7 +11,7 @@ export class ProfileService {
   constructor(private http :HttpClient,private spinner :NgxSpinnerService,private toastr: ToastrService) { }
   UploadAttachment(file: FormData) {
     
-    this.http.post('https://localhost:7081/api/Category/uploadImage',file).subscribe((resp:any)=>{
+    this.http.post('https://localhost:7081/api/Account/UploadImage',file).subscribe((resp:any)=>{
       this.display_image= resp.imagePath; 
       console.log(resp);
      
