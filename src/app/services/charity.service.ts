@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { Const } from '../shared/Const';
 
 @Injectable({
   providedIn: 'root'
@@ -68,8 +69,8 @@ export class CharityService {
       this.spin.show;
       this.http.put('https://localhost:7081/api/charity/Update',body).subscribe((resp)=>{
       
-      this.toas.success('update success');
       this.spin.hide;
+      this.toas.success('success');
       
     },err=>{
       console.log(err.status);
@@ -193,7 +194,7 @@ export class CharityService {
    
  }
  updateVisaCard(body:any){
-
+  debugger
   this.http.put('https://localhost:7081/api/visaCard',body).subscribe((resp: any) =>
   {
        
@@ -203,7 +204,7 @@ export class CharityService {
  }
 
 
-  VisaCardByNmber(){
+  getVisaCard(){
   debugger
 
   this.http.get('https://localhost:7081/api/visaCard').subscribe((resp: any) => {
@@ -213,5 +214,44 @@ export class CharityService {
      this.toas.error('Error', err.status);
    })
  //console.log(this.Visa);
+ }
+
+ getUserVisaCard(user:any){
+  this.http.get('https://localhost:7081/api/visaCard').subscribe((resp: any) => {
+
+     this.Visa = resp.filter((V: any) => {
+      
+      return V.userId==user;
+
+     });
+   }, err => {
+     this.toas.error('Error', err.status);
+   })
+ }
+
+ userCharityVisa:any=[{}];
+  getUserCharityVisaCard(user:any){
+  this.http.get('https://localhost:7081/api/visaCard').subscribe((resp: any) => {
+
+     this.userCharityVisa = resp.filter((V: any) => {
+     
+      return V.userId==user;
+    })
+   }, err => {
+     this.toas.error('Error', err.status);
+   })
+ }
+
+ AdminCharityVisa:any=[{}];
+ getAdminVisaCard(){
+  this.http.get('https://localhost:7081/api/visaCard').subscribe((resp: any) => {
+
+     this.AdminCharityVisa = resp.filter((V: any) => {
+     
+      return V.cardNumber==Const.AdminCardNumber;
+    })
+   }, err => {
+     this.toas.error('Error', err.status);
+   })
  }
 }

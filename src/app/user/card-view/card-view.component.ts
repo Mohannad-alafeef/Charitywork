@@ -1,4 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
+import { PaymentComponent } from '../payment/payment.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Const } from 'src/app/shared/Const';
 
 @Component({
   selector: 'app-card-view',
@@ -6,7 +9,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./card-view.component.css']
 })
 export class CardViewComponent {
+  constructor(public dialog: MatDialog){}
+  @ViewChild('donate')donate !:TemplateRef<any>
   @Input() charity!:any;
+  constant=Const;
   getTotalPayment(payments:any[]):number{
     return payments.map(x=>x.amount).reduce((sum,el)=>sum +=el,0)
   }
@@ -15,4 +21,8 @@ export class CardViewComponent {
     return (total/goal)*100;
   }
 
+  Donate(){
+    this.dialog.open(this.donate) ;
+
+  }
 }
