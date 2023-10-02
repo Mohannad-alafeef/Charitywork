@@ -17,6 +17,7 @@ export class ContactComponent {
   replied=Const.Replied;
   @ViewChild('deleteDialog') deleteDialog!: TemplateRef<any>;
   @ViewChild('replyDialog') replyDialog!: TemplateRef<any>;
+  p = 1
  // issuesReport:any=[{}];
   ngOnInit(): void {
     refresh2();
@@ -95,4 +96,5 @@ export class ContactComponent {
     console.log(this.replyForm.value);
     this.contactService.sendAndDelete(this.replyForm.value,this.selectedId,this.currentIndex);
   }
+  
 }
