@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { HomeService } from 'src/app/services/home.service';
+import { Const } from 'src/app/shared/Const';
 declare function refresh(): any;
 declare function swiper(): any;
 declare function counter(): any;
@@ -60,7 +61,7 @@ export class HomePageComponent implements OnInit,AfterViewInit {
     counter();
   }
   getTotalPayment(payments:any[]):number{
-    return payments.map(x=>x.amount).reduce((sum,el)=>sum +=el,0)
+    return payments.filter((x:any)=>x.paymentType == Const.Donation).map(x=>x.amount).reduce((sum,el)=>sum +=el,0)
   }
   calcPercent(payments:any[],goal:number):number{
     let total = this.getTotalPayment(payments)

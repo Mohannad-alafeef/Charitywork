@@ -244,38 +244,23 @@
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
   <ul class="sidebar-nav" id="sidebar-nav">
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/user">
-        <i class="bi bi-grid"></i>
-        <span>Dashboard</span>
-      </a>
-    </li>
-    <!-- End Dashboard Nav -->
-    <li class="nav-item">
-      <a class="nav-link collapsed" routerLink="/user/profile">
-        <i class="bi bi-person"></i>
-        <span>Profile</span>
-      </a>
-    </li>
-    <!-- End Profile Page Nav -->
+ 
+    
 
-    <li class="nav-heading">Pages</li>
 
     <li class="nav-item">
       <a
         class="nav-link collapsed"
-        data-bs-target="#components-nav"
-        data-bs-toggle="collapse"
-        routerLink="/user/charities"
+        routerLinkActive [routerLinkActiveOptions]="{exact:true}" #ach="routerLinkActive" [class.collapsed]="!ach.isActive"
+        routerLink="/user"
       >
-        <i class="bi bi-menu-button-wide"></i><span>View Chareties</span>
+        <i class="bi bi-menu-button-wide"></i><span>Chareties</span>
       </a>
     </li>
     <li class="nav-item">
       <a
         class="nav-link collapsed"
-        data-bs-target="#components-nav"
-        data-bs-toggle="collapse"
+        routerLinkActive [routerLinkActiveOptions]="{exact:true}" #mch="routerLinkActive" [class.collapsed]="!mch.isActive"
         routerLink="/user/MyCharities"
       >
         <i class="bi bi-menu-button-wide"></i><span>My Chareties</span>
@@ -284,8 +269,7 @@
     <li>
       <a
         class="nav-link collapsed"
-        data-bs-target="#components-nav"
-        data-bs-toggle="collapse"
+        routerLinkActive [routerLinkActiveOptions]="{exact:true}" #mw="routerLinkActive" [class.collapsed]="!mw.isActive"
         routerLink="/user/managewallet"
       >
         <i class="bi bi-wallet"></i><span> My Wallet</span>
@@ -298,6 +282,7 @@
         data-bs-target="#Contact-nav"
         data-bs-toggle="collapse"
         href="#"
+        [class.collapsed]="!mt.isActive&&!iss.isActive"
       >
         <i class="bi bi-envelope"></i><span>Contact</span
         ><i class="bi bi-chevron-down ms-auto"></i>
@@ -306,20 +291,29 @@
         id="Contact-nav"
         class="nav-content collapse"
         data-bs-parent="#sidebar-nav"
+        [class.show]="mt.isActive||iss.isActive"
       >
         <li>
-          <a routerLink="/user/managetestimonial">
+          <a routerLink="/user/managetestimonial" routerLinkActive [routerLinkActiveOptions]="{exact:true}" #mt="routerLinkActive" [class.active]="mt.isActive">
             <i class="bi bi-circle"></i><span> My Testimonial </span>
           </a>
         </li>
         <li>
-          <a routerLink="/user/issue">
+          <a routerLink="/user/issue" routerLinkActive [routerLinkActiveOptions]="{exact:true}" #iss="routerLinkActive" [class.active]="iss.isActive">
             <i class="bi bi-circle"></i><span>Report an Issue</span>
           </a>
         </li>
       </ul>
     </li>
     <!-- End Contact Nav -->
+    <!-- End Dashboard Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" routerLink="/user/profile" routerLinkActive [routerLinkActiveOptions]="{exact:true}" #pr="routerLinkActive" [class.collapsed]="!pr.isActive">
+        <i class="bi bi-person"></i>
+        <span>Profile</span>
+      </a>
+    </li>
+    <!-- End Profile Page Nav -->
   </ul>
 </aside>
 <!-- End Sidebar-->

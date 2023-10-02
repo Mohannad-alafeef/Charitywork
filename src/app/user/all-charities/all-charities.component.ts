@@ -13,7 +13,9 @@ export class AllCharitiesComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.charityView.getCharities();
+    let user = localStorage.getItem('user');
+    let userObj = JSON.parse(user!);
+    this.charityView.getCharities(userObj.userId);
   }
 
 }

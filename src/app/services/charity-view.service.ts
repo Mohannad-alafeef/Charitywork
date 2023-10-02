@@ -10,10 +10,10 @@ export class CharityViewService {
 
   constructor(private http:HttpClient) { }
 
-  getCharities() {
+  getCharities(userId:number) {
     this.http.get('https://localhost:7081/api/charity').subscribe({
      next:(res:any)=>{
-       res = res.filter((x:any)=>x.isAccepted==Const.Posted);
+       res = res.filter((x:any)=>x.isAccepted==Const.Posted && x.userId != userId);
 
        this.charityObj = res.filter((c:any)=>c.payments.at(0)!=null);
     
