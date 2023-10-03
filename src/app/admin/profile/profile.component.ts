@@ -4,6 +4,7 @@ import { Component, OnInit, ViewChild, TemplateRef  } from '@angular/core';
 import { CategoriesService } from './../../services/categories.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+declare function refresh2(): any;
 
 @Component({
   selector: 'app-profile',
@@ -46,19 +47,19 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void
   {
-   
+    refresh2();
   }
 
   
- UploadImage(file:any){
-  if(file.length==0)
-  return ; 
-  let fileToUpload = <File> file[0] ; 
-  const formData = new FormData(); 
-  formData.append('file',fileToUpload,fileToUpload.name); 
-  this.profileS.UploadAttachment(formData);
-}
-
+  UploadImage(file:any){
+    if(file.length==0)
+    return ; 
+    let fileToUpload = <File> file[0] ; 
+    const formData = new FormData(); 
+    formData.append('file',fileToUpload,fileToUpload.name); 
+    this.profileS.UploadAttachment(formData);
+  }
+  
 previous_data:any={};
 
   UpdateBtn(body:any)
