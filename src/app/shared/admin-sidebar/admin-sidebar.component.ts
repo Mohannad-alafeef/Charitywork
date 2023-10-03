@@ -1,55 +1,60 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AdminChatService } from 'src/app/services/admin-chat.service';
 import { ContactService } from 'src/app/services/contact.service';
-
 
 @Component({
   selector: 'app-admin-sidebar',
   templateUrl: './admin-sidebar.component.html',
-  styleUrls: ['./admin-sidebar.component.css']
+  styleUrls: ['./admin-sidebar.component.css'],
 })
 export class AdminSidebarComponent implements OnInit {
-  user :any={} ;
+  user: any = {};
+  
 
-  constructor(private route : Router,public contact:ContactService,private router:Router){
+  constructor(
+    private route: Router,
+    public contact: ContactService,
+    private router: Router,
+    public chat: AdminChatService
+  ) {
     const userString = localStorage.getItem('user');
 
     if (userString) {
       this.user = JSON.parse(userString);
     }
     contact.getContact();
-    
+
   }
   ngOnInit(): void {
+    if(this.chat.connected){
+
+      this.chat.getGroups();
+    }
     let btt = document.querySelector('#back-to-top');
     console.log(btt);
-    
-    document.addEventListener('scroll',()=>{
-      
-      
+
+    document.addEventListener('scroll', () => {
       if (window.scrollY > 100) {
-        btt!.classList.add('active')
+        btt!.classList.add('active');
       } else {
-        btt!.classList.remove('active')
+        btt!.classList.remove('active');
       }
-    })
-    
+    });
   }
-  toggleSideBar(){
+  toggleSideBar() {
     document.querySelector('body')?.classList.toggle('toggle-sidebar');
   }
 
-
-  logout(){
+  logout() {
     localStorage.clear();
-   this.route.navigate(['']);
+    this.route.navigate(['']);
   }
-  getCurrentRoute():string{
+  getCurrentRoute(): string {
     return this.router.url;
   }
-  scrollIntoView(){
+  scrollIntoView() {
     let main = document.getElementById('main');
     main?.scrollIntoView();
-    
   }
 }
