@@ -57,63 +57,31 @@
 
           <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
             <i class="bi bi-chat-left-text"></i>
-            <span class="badge bg-success badge-number">3</span>
+            <span class="badge bg-success badge-number">{{chat.chatNum}}</span>
           </a><!-- End Messages Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
             <li class="dropdown-header">
-              You have 3 new messages
-              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+              You have {{chat.chatNum}} new messages
+              <a routerLink="/admin/chats"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
             </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+            <div *ngFor="let obj of chat.senders">
 
-            <li class="message-item">
-              <a href="#">
-                <img src="../../../assets/AdminAssets/img/messages-1.jpg" alt="" class="rounded-circle">
-                <div>
-                  <h4>Maria Hudson</h4>
-                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                  <p>4 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+              <li class="message-item">
+                <a routerLink="/admin/chats">
+                  <img src="../../../assets/Images/Male.png" alt="" class="rounded-circle">
+                  <div>
+                    <h4>{{obj.name}}</h4>
+                  </div>
+                </a>
+              </li>
+            </div>
+          
 
-            <li class="message-item">
-              <a href="#">
-                <img src="../../../assets/AdminAssets/img/messages-2.jpg" alt="" class="rounded-circle">
-                <div>
-                  <h4>Anna Nelson</h4>
-                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                  <p>6 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="message-item">
-              <a href="#">
-                <img src="../../../assets/AdminAssets/img/messages-3.jpg" alt="" class="rounded-circle">
-                <div>
-                  <h4>David Muldon</h4>
-                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                  <p>8 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="dropdown-footer">
-              <a href="#">Show all messages</a>
-            </li>
 
           </ul><!-- End Messages Dropdown Items -->
 
@@ -122,7 +90,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="../../../assets/Images/{{user.ImagePath}}" alt="Profile" class="rounded-circle">
+            <img src="../../../assets/Images/{{user.imagePath}}" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{user.userName}}</span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -229,6 +197,12 @@
         <a class="nav-link collapsed" routerLink="/admin/issues" routerLinkActive #Issue="routerLinkActive" [class.collapsed]="!Issue.isActive">
           <i class="bi bi-envelope-arrow-down-fill"></i>
           <span>Issues List</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" routerLink="/admin/chats" routerLinkActive #cha="routerLinkActive" [class.collapsed]="!cha.isActive">
+          <i class="bi bi-chat-dots"></i>
+          <span>Chat</span>
         </a>
       </li>
 

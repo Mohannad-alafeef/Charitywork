@@ -15,9 +15,12 @@
     </div>
     <p class="h6 charity-mission">{{charity.mission}}</p>
     <button
-      class="btn btn-success w-100 position-absolute bottom-0 end-0 right-0"
-    >
+      class="btn btn-success w-100 position-absolute bottom-0 end-0 right-0" (click)="Donate()">
       Donate
     </button>
   </div>
 </div>
+
+<ng-template #donate>
+  <app-payment [selectedCharity]="charity" [DonatePayment]="constant.Donation"></app-payment>
+</ng-template>

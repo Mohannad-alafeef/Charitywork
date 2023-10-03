@@ -4,7 +4,7 @@ import { CategoriesService } from 'src/app/services/categories.service';
 import { CharityService } from 'src/app/services/charity.service';
 import { MatStepper } from '@angular/material/stepper';
 import maplibregl, { LngLat, Map, Marker } from 'maplibre-gl';
-
+import { NgxSpinnerModule } from 'ngx-spinner'; 
 @Component({
   selector: 'app-create-charity',
   templateUrl: './create-charity.component.html',

@@ -15,6 +15,8 @@ import { UsersComponent } from './users/users.component';
 import { ManageTestimonialsComponent } from './manage-testimonials/manage-testimonials.component';
 import { ManageIssuesComponent } from './manage-issues/manage-issues.component';
 import { ReportsComponent } from './reports/reports.component';
+import { ChatComponent } from './chat/chat.component';
+import { ChatSearchPipe } from '../pipes/chat-search.pipe';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { ReportsComponent } from './reports/reports.component';
     UsersComponent,
     ManageTestimonialsComponent,
     ManageIssuesComponent,
-    ReportsComponent
+    ReportsComponent,
+    ChatComponent,
+    ChatSearchPipe
   ],
   imports: [
     CommonModule,

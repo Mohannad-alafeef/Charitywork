@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ManagetestimonialService } from 'src/app/services/managetestimonial.service';
 declare function refresh2(): any;
 
@@ -39,7 +40,8 @@ export class ManageTestimonialComponent {
   });
   userTestimonial:any={};
  
-  constructor(public user:ManagetestimonialService,route : Router,public dialog: MatDialog) {
+  constructor(public user:ManagetestimonialService,route : Router,public dialog: MatDialog,
+    public spin:NgxSpinnerService) {
     const userString = localStorage.getItem('user');
     if (userString) {
       this.user1 = JSON.parse(userString);
@@ -50,7 +52,7 @@ export class ManageTestimonialComponent {
 
   ngOnInit(): void{
     refresh2();
-    this.user.getUserTestimonial();
+    this.user.getUserTestimonial(this.user1.userId);
   }
   deleteTestimonial(id :number){
    const dialogRef= this.dialog.open(this.callDelete);

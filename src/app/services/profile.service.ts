@@ -2,12 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
   display_image:any;
+  callback!:(path:string)=>void;
   constructor(private http :HttpClient,private spinner :NgxSpinnerService,private toastr: ToastrService) { }
 
     
@@ -15,6 +17,7 @@ export class ProfileService {
     
     this.http.post('https://localhost:7081/api/Account/UploadImage',file).subscribe((resp:any)=>{
       this.display_image= resp.imagePath; 
+      this.callback(resp.imagePath);
       console.log(resp);
       this.toastr.success('Success'); 
     },err=>{

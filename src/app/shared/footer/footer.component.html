@@ -1,46 +1,180 @@
-<button class="chat-btn" mat-fab extended>
+<button class="chat-btn" mat-fab extended (click)="chat.toggleChat()">
   <mat-icon>forum</mat-icon>
   Lets Chat
 </button>
+<div class="chat-container shadow" *ngIf="chat.togglechat">
+  <div class="card card-bordered">
+    <div class="card-header">
+      <h4 class="card-title"><strong>Chat</strong></h4>
+    </div>
+
+    <div *ngIf="chat.showChat">
+      <div
+        class="ps-container ps-theme-default ps-active-y"
+        id="chat-content"
+        style="overflow-y: scroll !important; height: 400px !important"
+      >
+        <div class="media media-chat" *ngFor="let message of chat.groupMessages" [class.media-chat-reverse]="message.id!=0">
+          <div class="user">
+            <p class="name">{{message.name}}</p>
+
+            <img
+              class="avatar"
+              src="https://img.icons8.com/color/36/000000/administrator-male.png"
+              alt="..."
+            />
+          </div>
+          <div class="media-body">
+            <p>{{message.content}}</p>
+          </div>
+        </div>
+
+        <!-- <div class="media media-chat media-chat-reverse">
+          <div class="user">
+            <p class="name">Mohannad</p>
+
+            <img
+              class="avatar"
+              src="https://img.icons8.com/color/36/000000/administrator-male.png"
+              alt="..."
+            />
+          </div>
+          <div class="media-body">
+            <p>
+              Okay then see you on
+              sundaywdawdwadawdwadawdawdwadwadwadwawadwadawdwadwadwadwadawdwadwadwadwadawdwadawd!!
+            </p>
+          </div>
+        </div> -->
+
+        <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px">
+          <div
+            class="ps-scrollbar-x"
+            tabindex="0"
+            style="left: 0px; width: 0px"
+          ></div>
+        </div>
+        <div
+          class="ps-scrollbar-y-rail"
+          style="top: 0px; height: 0px; right: 2px"
+        >
+          <div
+            class="ps-scrollbar-y"
+            tabindex="0"
+            style="top: 0px; height: 2px"
+          ></div>
+        </div>
+      </div>
+
+      <div class="publisher bt-1 border-light">
+       
+        <input
+          class="publisher-input"
+          type="text"
+          placeholder="Write something"
+          [formControl]="message"
+        />
+
+        <a class="publisher-btn text-info" (click)="sendMessage()" data-abc="true"
+          ><i class="fa fa-paper-plane"></i
+        ></a>
+      </div>
+    </div>
+    <div class="chat-form" *ngIf="chat.showForm">
+      <form class="row g-3" [formGroup]="chatForm">
+        <div class="col-12">
+          <label for="inputPassword4" class="form-label">Name</label>
+          <input type="text" class="form-control" id="inputPassword4" formControlName="name">
+        </div>
+        <div class="col-12">
+          <label for="inputEmail4" class="form-label">Email</label>
+          <input type="email" class="form-control" id="inputEmail4" formControlName="email">
+        </div>
+       
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary" (click)="submit()" [disabled]="!chatForm.valid">Start</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 <footer class="footer">
-    <div class="container">
-      <div class="row mb-5">
-        <div class="col-md-6 col-lg-4">
-          <h3 class="heading-section h1">About Us</h3>
-          <p class="lead">{{home.aboutObj.text}} </p>
-          
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <h3 class="heading-section">Recent Charities</h3>
-          <div class="block-21 d-flex mb-4" *ngFor="let obj of home.charityRecentObj">
-            <figure class="mr-3">
-
-              <img src="../../assets/Images/{{obj.imagePath}}" alt="" class="img-fluid" style="height: 70px;width: 100%; object-fit: cover;">
-
-            </figure>
-            <div class="text">
-              <h3 class="heading"><a href="#">{{obj.charityName}}</a></h3>
-              
-            </div>
-          </div>
-
-          
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="block-23">
-            <h3 class="heading-section">Get Connected</h3>
-              <ul>
-                <li><span class="icon icon-map-marker"></span><span class="text h6">{{home.contactObj.address}}</span></li>
-                <li><a href="#"><span class="icon icon-phone"></span><span class="text h6">{{home.contactObj.phone}}</span></a></li>
-                <li><a href="#"><span class="icon icon-envelope"></span><span class="text h6">{{home.contactObj.emailAddress}}</span></a></li>
-              </ul>
-            </div>
-        </div>
-        
-        
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md-6 col-lg-4">
+        <h3 class="heading-section h1">About Us</h3>
+        <p class="lead">{{ home.aboutObj.text }}</p>
       </div>
-      
+      <div class="col-md-6 col-lg-4">
+        <h3 class="heading-section">Recent Charities</h3>
+        <div
+          class="block-21 d-flex mb-4"
+          *ngFor="let obj of home.charityRecentObj"
+        >
+          <figure class="mr-3">
+            <img
+              src="../../assets/Images/{{ obj.imagePath }}"
+              alt=""
+              class="img-fluid"
+              style="height: 70px; width: 100%; object-fit: cover"
+            />
+          </figure>
+          <div class="text">
+            <h3 class="heading">
+              <a href="#">{{ obj.charityName }}</a>
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="block-23">
+          <h3 class="heading-section">Get Connected</h3>
+          <ul>
+            <li>
+              <span class="icon icon-map-marker"></span
+              ><span class="text h6">{{ home.contactObj.address }}</span>
+            </li>
+            <li>
+              <a href="#"
+                ><span class="icon icon-phone"></span
+                ><span class="text h6">{{ home.contactObj.phone }}</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><span class="icon icon-envelope"></span
+                ><span class="text h6">{{
+                  home.contactObj.emailAddress
+                }}</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-  </footer>
-<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+  </div>
+</footer>
+<div id="ftco-loader" class="show fullscreen">
+  <svg class="circular" width="48px" height="48px">
+    <circle
+      class="path-bg"
+      cx="24"
+      cy="24"
+      r="22"
+      fill="none"
+      stroke-width="4"
+      stroke="#eeeeee"
+    />
+    <circle
+      class="path"
+      cx="24"
+      cy="24"
+      r="22"
+      fill="none"
+      stroke-width="4"
+      stroke-miterlimit="10"
+      stroke="#F96D00"
+    />
+  </svg>
+</div>

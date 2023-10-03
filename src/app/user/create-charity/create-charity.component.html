@@ -128,7 +128,7 @@
 
   <button mat-button matStepperPrevious>Back</button>
 
-  <button  mat-button [disabled]="!createCharity.valid || !createGoals.valid || !locationChosen" (click)="saveCharity()">Send Request</button>
+  <button  mat-button mat-dialog-close [disabled]="!createCharity.valid || !createGoals.valid || !locationChosen" (click)="saveCharity()">Send Request</button>
 
 </mat-step>
 </form>

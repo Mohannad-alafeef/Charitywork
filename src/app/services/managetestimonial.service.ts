@@ -14,10 +14,10 @@ export class ManagetestimonialService {
   testimonials:any=[{'user':{}}];
   constructor(private http:HttpClient,route : Router,public toaster:ToastrService)
    {
-    const userString = localStorage.getItem('user');
+  /*   const userString = localStorage.getItem('user');
     if (userString) {
       this.user = JSON.parse(userString);
-    }
+    } */
 
    }
    getAllTestimonial(){
@@ -42,11 +42,11 @@ UpdateTestimonial(body:any){
       }
     });
 }
-getUserTestimonial() {
+getUserTestimonial(userId:any) {
     this.http.get('https://localhost:7081/api/testimonial').subscribe({
       next: (res: any) => {
         console.log(res);
-        this.testimonialObj = res.filter((x:any)=>x.userId==this.user.userId);
+        this.testimonialObj = res.filter((x:any)=>x.userId==userId);
         console.log(this.testimonialObj);
       },
       error: (error) => {
@@ -67,10 +67,10 @@ createtTestimonial(body:any)
   {
     alert('Your Testimonial Added Sucessfully');
     
-
+    window.location.reload();
   },err=>{
     alert('Something went wrong !');
   })
-  window.location.reload();
+ 
 }
 }

@@ -127,9 +127,15 @@
 
   <button mat-button matStepperPrevious>Back</button>
 
-  <button  mat-button [disabled]="!updateCharity.valid || !updateGoals.valid " (click)="UpdateCharity()">Update Charity</button>
+  <button  mat-button mat-dialog-close [disabled]="!updateCharity.valid || !updateGoals.valid " (click)="UpdateCharity()">Update Charity</button>
 
 </mat-step>
 </form>
 </mat-stepper> 
 
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium"
+color = "#fff"
+type = "ball-fussion"
+[fullScreen] = "true">
+<p style="color: white" > Loading... </p>
+</ngx-spinner>

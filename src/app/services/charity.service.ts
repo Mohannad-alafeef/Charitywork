@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { Const } from '../shared/Const';
 
 @Injectable({
   providedIn: 'root'
@@ -51,57 +52,105 @@ export class CharityService {
    }
 
    DeleteCharity(id:number){
-      debugger;
+     // debugger;
       this.spin.show;
       this.http.delete('https://localhost:7081/api/charity/'+id).subscribe((resp:any)=>{
      
-      this.toas.success('delete success');
       this.spin.hide;
+      this.toas.success('Deleted successfully', 'success', {
+        timeOut: 2000,
+      }).onHidden.subscribe({
+        next:()=>{
+          window.location.reload();
+        }
+      });
       },err=>{
       console.log(err.status);
       })
-    //  window.location.reload();
    }
 
    updateChrity(body:any){
       debugger;
       this.spin.show;
       this.http.put('https://localhost:7081/api/charity/Update',body).subscribe((resp)=>{
-      
-      this.toas.success('update success');
+       
       this.spin.hide;
-      
+      this.toas.success('Updated successfully', 'success', {
+        timeOut: 2000,
+      }).onHidden.subscribe({
+        next:()=>{
+          window.location.reload();
+        }
+      });
     },err=>{
       console.log(err.status);
     })
-    //window.location.reload();
+   
    }
    
-    updateChrityInfo(charity:any,goal:any){
+    async updateChrityInfo(charity:any,goal:any){
+      this.spin.show;
     debugger;
     if(this.display_image!=null)
       charity.imagePath=this.display_image;
-    
-    this.spin.show;
-    this.http.put('https://localhost:7081/api/charity/Update',charity).subscribe((resp)=>{
-    debugger;
-    for(var i=0;i<goal.length;i++)
-    {   
+ 
+    await this.http.put('https://localhost:7081/api/charity/Update',charity).subscribe((resp)=>{
+     for(var i=0;i<goal.length;i++)
+    { 
       this.UpdateGoal(goal[i]);
-    }
-
+    } 
+  
     this.spin.hide;
-    this.toas.success('update success');
-   
+    this.toas.success('Updated successfully', 'success', {
+      timeOut: 2000,
+    }).onHidden.subscribe({
+      next:()=>{
+      
+        window.location.reload();
+      }
+    });
       },err=>{
         console.log(err.status);
       })
-    // window.location.reload();
     }
 
-   async getGoals(id:number)
+    updateChrityInfoo(charity:any,goal:any){
+      debugger;
+      if(this.display_image!=null)
+        charity.imagePath=this.display_image;
+      
+      
+    let charityy=new Promise<void>((resolve,reject)=>{
+      this.spin.show;
+      this.http.put('https://localhost:7081/api/charity/Update',charity).subscribe((resp)=>{
+     /*  for(var i=0;i<goal.length;i++)
+      {   
+        this.UpdateGoal(goal[i]);
+      } */
+    resolve(goal);
+    
+        },err=>{
+          console.log(err.status);
+        })
+        charityy.then((res:any)=>{
+          this.UpdateGoal(res[0]);
+          this.UpdateGoal(res[1]);
+          if(res.length==3)
+          this.UpdateGoal(res[2]);
+          this.spin.hide;
+          
+      this.toas.success('Updated successfully', 'success', {
+        timeOut: 2000,
+      }).onHidden.subscribe({
+        next:()=>{
+          window.location.reload();
+        }
+      });
+        })});
+      }
+    getGoals(id:number)
    {
-       await this.http.get('https://localhost:7081/api/Goal/charityGoals/'+id).subscribe((resp:any)=>{
+        this.http.get('https://localhost:7081/api/Goal/charityGoals/'+id).subscribe((resp:any)=>{
         this.goals=resp;
       },err=>{
       console.log(err);
@@ -142,7 +191,14 @@ export class CharityService {
         this.CreateGoal(this.addGoal);
       }
       this.spin.hide();
-      this.toas.success('Charity was Sent successfuly to the admin');
+     
+      this.toas.success('Charity was Sent successfuly to the admin', 'success', {
+        timeOut: 3000,
+      }).onHidden.subscribe({
+        next:()=>{
+          window.location.reload();
+        }
+      });
     }, err => {
       this.toas.error('Error', err.status); 
     })
@@ -160,8 +216,9 @@ export class CharityService {
   }
   UpdateGoal(body: any) {
     debugger
-
+    this.spin.show;
     this.http.put('https://localhost:7081/api/Goal/update',body).subscribe((resp)=>{
+      this.spin.hide;
  
    }, err => {
      this.toas.error('Error', err.status); 
@@ -185,15 +242,23 @@ export class CharityService {
 
    this.http.post('https://localhost:7081/api/payment',body).subscribe((resp: any) =>
    {
-    this.spin.hide();
-    this.toas.success('Posted successfuly'); 
+    
+    this.toas.success('Thank You', 'success', {
+      timeOut: 2000,
+    }).onHidden.subscribe({
+      next:()=>{
+        this.spin.hide();
+        window.location.reload();
+      }
+    });
+
    }, err => {
      this.toas.error('Error', err.status); 
    })
    
  }
  updateVisaCard(body:any){
-
+  debugger
   this.http.put('https://localhost:7081/api/visaCard',body).subscribe((resp: any) =>
   {
        
@@ -203,7 +268,7 @@ export class CharityService {
  }
 
 
-  VisaCardByNmber(){
+  getVisaCard(){
   debugger
 
   this.http.get('https://localhost:7081/api/visaCard').subscribe((resp: any) => {
@@ -213,5 +278,44 @@ export class CharityService {
      this.toas.error('Error', err.status);
    })
  //console.log(this.Visa);
+ }
+
+ getUserVisaCard(user:any){
+  this.http.get('https://localhost:7081/api/visaCard').subscribe((resp: any) => {
+
+     this.Visa = resp.filter((V: any) => {
+      
+      return V.userId==user;
+
+     });
+   }, err => {
+     this.toas.error('Error', err.status);
+   })
+ }
+
+ userCharityVisa:any=[{}];
+  getUserCharityVisaCard(user:any){
+  this.http.get('https://localhost:7081/api/visaCard').subscribe((resp: any) => {
+
+     this.userCharityVisa = resp.filter((V: any) => {
+     
+      return V.userId==user;
+    })
+   }, err => {
+     this.toas.error('Error', err.status);
+   })
+ }
+
+ AdminCharityVisa:any=[{}];
+ getAdminVisaCard(){
+  this.http.get('https://localhost:7081/api/visaCard').subscribe((resp: any) => {
+
+     this.AdminCharityVisa = resp.filter((V: any) => {
+     
+      return V.cardNumber==Const.AdminCardNumber;
+    })
+   }, err => {
+     this.toas.error('Error', err.status);
+   })
  }
 }

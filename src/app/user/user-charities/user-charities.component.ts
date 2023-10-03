@@ -8,13 +8,15 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { data } from 'jquery';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-user-charities',
   templateUrl: './user-charities.component.html',
   styleUrls: ['./user-charities.component.css']
 })
 export class UserCharitiesComponent {
-  constructor(public charity:CharityService,public dialog: MatDialog,public categories:CategoriesService ,private toaster:ToastrService){
+  constructor(public charity:CharityService,public dialog: MatDialog,public categories:CategoriesService 
+    ,private toaster:ToastrService,public spin : NgxSpinnerService){
     const userString = localStorage.getItem('user');
 
     if (userString) {
@@ -30,7 +32,7 @@ export class UserCharitiesComponent {
     @ViewChild('payDialog')payDialog !:TemplateRef<any>
 
     
-    formControlsChanged = false;
+  formControlsChanged = false;
   charityy:any={};
   selectCharity:any={};
   goals:any=[{}];
@@ -79,7 +81,7 @@ export class UserCharitiesComponent {
      this.categories.GetAllCategories();
     console.log(this.categories.categories);
 
-    this.charity.VisaCardByNmber();
+    this.charity.getVisaCard();
 
     
   }
@@ -92,7 +94,7 @@ export class UserCharitiesComponent {
       {
       debugger
         if(result=='yes'){
-         
+         this.spin.show();
           this.charity.DeleteCharity(id);
         }
       }
@@ -117,75 +119,6 @@ export class UserCharitiesComponent {
         const dialogRef= this.dialog.open(this.payDialog) ;
         this.selectCharity = body;
     }
-    pay(){
-
-        ///filter the visaCards
-        const dateNow = new Date(Date.now());
-
-        const filteredVisa  = this.charity.Visa.filter((V: any) => {
-          const expDate = V.expDate.split('T')[0];
-          return V.cardNumber === this.VisaCard.value.CardNumber && V.userId==this.user.userId
-           && V.cvv.toString() == this.VisaCard.value.cvv && expDate==this.VisaCard.value.expDate
-         });
-         console.log("filteredVisa");
-         console.log(filteredVisa);
-debugger
-         if(filteredVisa.length==0)
-         {
-          this.visaNotFound=true;
-       
-           this.toaster.warning('sorry Not found VisaCard')
-   
-         }
-         else{
-           if(filteredVisa[0].balance < this.constant.PaymntAmount)
-             {
-                this.balanceCheck=true;
-                this.toaster.warning('sorry You Dont Have enough Balance'); 
-             }
-   
-           else if(filteredVisa[0].expDate <= dateNow)
-            {
-               this.expCheck=true;
-               this.toaster.warning('Expired visaCard');
-               
-
-            }
-
-   
-           else 
-           {
-              this.paymentBody.paymentType= this.constant.Payment;
-              this.paymentBody.paymentDate= new Date(Date.now());
-              this.paymentBody.amount=this.constant.PaymntAmount
-              this.paymentBody.userId=this.user.userId;
-              this.paymentBody.charityId= this.selectCharity.charityId;
-              console.log(this.paymentBody);
-
-              this.visaBody.visaId=filteredVisa[0].visaId;
-              this.visaBody.CardNumber=filteredVisa[0].cardNumber;
-              this.visaBody.balance=filteredVisa[0].balance - this.constant.PaymntAmount;
-              this.visaBody.cvv=filteredVisa[0].cvv;
-              this.visaBody.expDate=filteredVisa[0].expDate;
-              this.visaBody.userId=filteredVisa[0].userId;
-              console.log(this.visaBody);
-       
-              this.selectCharity.isAccepted=this.constant.Posted;
-             console.log(this.selectCharity);
-
-             this.charity.ChrityPayment(this.paymentBody);
-             this.charity.updateVisaCard(this.visaBody);
-             this.charity.updateChrity( this.selectCharity);
-
-           }
-           console.log('visacard found');
-         }
- 
-
-
-    }
-
-
 
     uploadImage(file:any){
       if(file.length==0)

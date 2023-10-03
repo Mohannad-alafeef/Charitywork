@@ -14,6 +14,8 @@ import { IssueComponent } from './issue/issue.component';
 import { AllCharitiesComponent } from './all-charities/all-charities.component';
 import { CardViewComponent } from './card-view/card-view.component';
 import { MapViewComponent } from './map-view/map-view.component';
+import { PaymentComponent } from './payment/payment.component';
+import { NgxSpinnerModule } from 'ngx-spinner'; 
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { MapViewComponent } from './map-view/map-view.component';
     AllCharitiesComponent,
     CardViewComponent,
     MapViewComponent,
+    PaymentComponent,
+    
   ],
-  imports: [CommonModule, UserRoutingModule, SharedModule, CarouselModule],
+  imports: [CommonModule, UserRoutingModule, SharedModule, CarouselModule,NgxSpinnerModule],
 })
 export class UserModule {}

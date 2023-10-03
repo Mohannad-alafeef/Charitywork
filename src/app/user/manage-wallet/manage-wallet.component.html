@@ -24,7 +24,7 @@
                   {{obj.cvv}}
                 </td>
                 <td class="border"> 
-                    {{obj.expDate}}
+                    {{obj.expDate|date}}
                   </td>
                   <td class="border">
                     {{obj.balance}}
@@ -37,7 +37,7 @@
               </tr>
               <tr>
                 <td class="border" colspan="5">
-                  <button (click)="OpenCreateWallet()">Add Wallet</button>
+                  <button (click)="OpenCreateWallet()">Add Visa card</button>
                 </td>
               </tr>
             </tbody>
@@ -49,8 +49,8 @@
 </main>
 
 <ng-template #callDeleteDailog>
-    <h1 mat-dialog-title> Delete Wallet</h1>
-    <div mat-dialog-content> Are You sure you want to delete this Wallet ?</div>
+    <h1 mat-dialog-title> Delete VisaCard</h1>
+    <div mat-dialog-content> Are You sure you want to delete this VisaCard ?</div>
     <div mat-dialog-actions>
       <button mat-button mat-dialog-close="yes"> Yes </button>
       <button mat-button mat-dialog-close="no"> No </button>
@@ -83,17 +83,18 @@
 
 
 <ng-template #callCeateDailog>
-  <h1 mat-dialog-title>Create Wallet</h1>
-  <div mat-dialog-content>
-    Craete Your Wallet  
-  </div>
+  <h1 mat-dialog-title>Add VisaCard</h1>
   <form class="mx-1 mx-md-4 p-2" [formGroup]="CreateWallet">
 <div class="card p-4">
   <div class="row">
-    <div class="col-md-5">
+    <div class="col">
       <div class="form-group">
         <label for="cardNumber" class="matLabel">Card Number</label>
-        <input type="text" class="form-control" id="cardNumber" formControlName="cardNumber">
+        <div class="input-group">
+        <span class="input-group-text" id="inputGroupPrepend2"><i class="bi bi-credit-card-2-back-fill"></i></span>
+
+        <input type="text" class="form-control" id="cardNumber" formControlName="cardNumber"aria-describedby="inputGroupPrepend2">
+      </div>
         <mat-error *ngIf="CreateWallet.controls['cardNumber'].hasError('required') && CreateWallet.controls['cardNumber'].touched">
           required
         </mat-error>
@@ -104,7 +105,7 @@
           Card Number is already Exist
          </mat-error>
       </div>
-     
+    
     </div>
 
     <div class="col-md-3">
@@ -140,8 +141,15 @@
   </form>
   <div mat-dialog-actions align="end">
     <mat-dialog-actions align="end">
-      <button mat-button [disabled]="CreateWallet.invalid " cdkFocusInitial (click)="createWallet()">Create</button>
+      <button mat-button [disabled]="CreateWallet.invalid " cdkFocusInitial (click)="createWallet()">Add</button>
       <button mat-button mat-dialog-close>Cancel</button>
   </mat-dialog-actions>
   </div>
 </ng-template>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium"
+color = "#fff"
+type = "ball-fussion"
+[fullScreen] = "true">
+<p style="color: white" > Loading... </p>
+</ngx-spinner>
