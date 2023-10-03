@@ -26,6 +26,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@kurkle/color": "^0.3.2",
     "@maplibre/ngx-maplibre-gl": "^16.0.0",
+    "@microsoft/signalr": "^7.0.11",
     "@types/maplibre-gl": "^1.14.0",
     "angular-datatables": "^16.0.0",
     "apexcharts": "^3.42.0",

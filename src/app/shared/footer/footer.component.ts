@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ChatService } from 'src/app/services/chat.service';
 import { HomeService } from 'src/app/services/home.service';
 
 @Component({
@@ -7,7 +9,13 @@ import { HomeService } from 'src/app/services/home.service';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
-  constructor(public home:HomeService){
+  chatForm:FormGroup = new FormGroup({
+    name: new FormControl(null,[Validators.required]),
+    email: new FormControl(null,[Validators.required,Validators.email]),
+  });
+  message = new FormControl(null,Validators.required);
+  
+  constructor(public home:HomeService,public chat:ChatService,private fb:FormBuilder){
     home.getCharities();
     home.getHomePage();
     home.getContactPage();
@@ -16,6 +24,21 @@ export class FooterComponent {
     home.getUserTest();
     home.getPayments();
     
+    
   }
+  submit(){
+    this.chat.name = this.chatForm.get('name')?.value;
+    this.chat.email = this.chatForm.get('email')?.value
+    this.chat.connectToChat();
+  }
+  sendMessage(){
+    console.log(this.message.value);
+    
+    if(!this.message.valid) return;
+    console.log('valid');
+    this.chat.sendToGroup(this.message.value!);
+
+  }
+  
 
 }

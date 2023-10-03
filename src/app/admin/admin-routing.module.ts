@@ -10,6 +10,7 @@ import { ManagePagesComponent } from './manage-pages/manage-pages.component';
 import { UsersComponent } from './users/users.component';
 import { ManageTestimonialsComponent } from './manage-testimonials/manage-testimonials.component';
 import { ReportsComponent } from './reports/reports.component';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
   {
@@ -47,10 +48,15 @@ const routes: Routes = [
   {
     path: 'issues',
     component: ManageIssuesComponent,
-  },{
-    path:'reports',
-    component:ReportsComponent
-  }
+  },
+  {
+    path: 'reports',
+    component: ReportsComponent,
+  },
+  {
+    path: 'chats',
+    component: ChatComponent,
+  },
 ];
 
 @NgModule({

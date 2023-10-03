@@ -1,0 +1,67 @@
+<app-admin-sidebar></app-admin-sidebar>
+<main class="main" id="main">
+  <div class="container">
+    <div class="row clearfix">
+      <div class="col-lg-12">
+        <div class="card chat-app">
+          <div id="plist" class="people-list">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"
+                  ><i class="fa fa-search"></i
+                ></span>
+              </div>
+              <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="cSearch"/>
+            </div>
+            <div class="people-list-inner">
+
+                <ul class="list-unstyled chat-list mt-2 mb-0">
+                  <li class="clearfix" *ngFor="let key of chat.sendersId|chatSearch:chat.chats:cSearch" (click)="selectedChat(key)" [class.active]="sChat==key">
+                    <img src="../../../assets/Images/Male.png" alt="avatar" />
+                    <div class="about">
+                      <div class="name">{{chat.chats[key].name}}</div>
+                    </div>
+                  </li>
+                </ul>
+            </div>
+          </div>
+          <div class="chat" >
+            <div *ngIf="this.sChat.length >0">
+
+                <div class="chat-history" id="chat-container" >
+                  <ul class="m-b-0">
+                    <li class="clearfix" *ngFor="let message of chat.groupMessages">
+                      <!-- <div class="message-data text-right">
+                        <span class="message-data-time">10:10 AM, Today</span>
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
+                      </div> -->
+                      <div class="message other-message float-right" *ngIf="message.id != 1">
+                        {{message.content}}
+                      </div>
+                      <div class="message my-message" *ngIf="message.id == 1">{{message.content}}</div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="chat-message clearfix">
+                  <div class="input-group mb-0">
+                    <div class="input-group-prepend" (click)="sendMessage()" >
+                      <span class="input-group-text"
+                        ><i class="fa fa-send"></i
+                      ></span>
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter text here..."
+                      [formControl]="message"
+                      
+                    />
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
