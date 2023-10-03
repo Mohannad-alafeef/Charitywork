@@ -2,9 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { CharityService } from 'src/app/services/charity.service';
+import { EmailService } from 'src/app/services/email.service';
 import { Const } from 'src/app/shared/Const';
 
 @Component({
@@ -22,7 +24,8 @@ export class PaymentComponent implements OnInit{
   @Input() selectedCharity!:any;
   @Input() DonatePayment :any;
 
-  constructor(public charity:CharityService,public dialog: MatDialog ,private toaster:ToastrService,private router:Router){
+  constructor(public charity:CharityService,public dialog: MatDialog 
+    ,private toaster:ToastrService,private router:Router, public email:EmailService,public spin : NgxSpinnerService){
     const userString = localStorage.getItem('user');
 
     if (userString) {
@@ -83,18 +86,11 @@ export class PaymentComponent implements OnInit{
     {
      
       
-
+      this.spin.show();
      if(this.DonatePayment==this.constant.Donation)
      {
  debugger
-      this.payment.amount=this.pay.value.amount;
-      this.payment.paymentType=this.constant.Donation;
-      this.payment.charityId=this.selectedCharity.charityId;
-      this.payment.userId=this.user.userId;
-      this.payment.paymnetDate=dateNow;
-      this.charity.ChrityPayment(this.payment);
-     
-
+    
       ///user visacard
       console.log('visacard befor',this.pay.value.visaCard);
       this.pay.value.visaCard.balance = this.pay.value.visaCard.balance - this.pay.value.amount;
@@ -108,17 +104,24 @@ export class PaymentComponent implements OnInit{
       this.charity.userCharityVisa[0].balance = this.charity.userCharityVisa[0].balance +parseInt( this.pay.value.amount);
       console.log('charity visa after',this.charity.userCharityVisa[0]);
       this.charity.updateVisaCard(this.charity.userCharityVisa[0]);
+
+      this.payment.amount=this.pay.value.amount;
+      this.payment.paymentType=this.constant.Donation;
+      this.payment.charityId=this.selectedCharity.charityId;
+      this.payment.userId=this.user.userId;
+      this.payment.paymentDate=dateNow;
+      this.charity.ChrityPayment(this.payment);
+      
+      console.log('.email',this.user.email);
+      console.log('.charityName',this.selectedCharity.charityName);
+      console.log('.amount',this.pay.value.amount);
+      this.email.sendPdfMail(this.user.email,this.selectedCharity.charityName,this.pay.value.amount,this.constant.Donation);
+
       
      }
      else if (this.DonatePayment==this.constant.Payment)
      {
-      this.payment.amount=this.constant.PaymntAmount;
-      this.payment.paymentType=this.constant.Payment;
-      this.payment.charityId=this.selectedCharity.charityId;
-      this.payment.userId=this.user.userId;
-      this.payment.paymnetDate=dateNow;
-      this.charity.ChrityPayment(this.payment);
-      console.log('paymnet',this.payment);
+     
 
       //admid visacard
       console.log('admin card beffor',this.charity.AdminCharityVisa[0].balance);
@@ -130,10 +133,22 @@ export class PaymentComponent implements OnInit{
       console.log('visacard beffor',this.pay.value.visaCard);
       this.pay.value.visaCard.balance = this.pay.value.visaCard.balance - this.constant.PaymntAmount;
       console.log('visacard after',this.pay.value.visaCard);
-      this.charity.updateVisaCard(this.pay.value.visaCard);
+     this.charity.updateVisaCard(this.pay.value.visaCard);
 
       this.selectedCharity.isAccepted =this.constant.Posted;
       this.charity.updateChrity(this.selectedCharity);
+
+      this.payment.amount=this.constant.PaymntAmount;
+      this.payment.paymentType=this.constant.Payment;
+      this.payment.charityId=this.selectedCharity.charityId;
+      this.payment.userId=this.user.userId;
+      this.payment.paymentDate=dateNow;
+      this.charity.ChrityPayment(this.payment);
+      console.log('paymnet',this.payment);
+
+      console.log('.email',this.user.email);
+      console.log('.charityName',this.selectedCharity.charityName);
+      this.email.sendPdfMail(this.user.email,this.selectedCharity.charityName,'5',this.constant.Payment);
 
      }
 

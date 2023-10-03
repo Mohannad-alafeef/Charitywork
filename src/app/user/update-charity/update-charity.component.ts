@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { CharityService } from 'src/app/services/charity.service';
 import maplibregl, { LngLat, Map, Marker } from 'maplibre-gl';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-update-charity',
@@ -10,7 +12,7 @@ import maplibregl, { LngLat, Map, Marker } from 'maplibre-gl';
   styleUrls: ['./update-charity.component.css']
 })
 export class UpdateCharityComponent {
-  constructor (public charity:CharityService,public categories:CategoriesService){
+  constructor (public charity:CharityService,public categories:CategoriesService,public spin : NgxSpinnerService,public t:ToastrService){
   
   }
   ngOnInit(): void {
@@ -63,14 +65,16 @@ export class UpdateCharityComponent {
     }
   UpdateCharity()
   {
-    debugger
+   // debugger
     if(this.updateCharity.value.imagePath=='')  
         this.updateCharity.value.imagePath=this.selectCharity.imagePath;
   
-  debugger
-      console.log(this.selectGoals[0]);
-      console.log(this.updateCharity.value);
+ // debugger
+    //  console.log(this.selectGoals[0]);
+    //  console.log(this.updateCharity.value);
+    this.spin.show();
     this.charity.updateChrityInfo(this.selectCharity,this.selectGoals);
+   
   }
 
   uploadImage(file:any){
