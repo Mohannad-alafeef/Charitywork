@@ -2,6 +2,7 @@ import { AfterViewInit, Component, Renderer2, TemplateRef, ViewChild } from '@an
 import { AbstractControl, FormBuilder,FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { UsersService } from 'src/app/services/users.service';
 import { UserwalletService } from 'src/app/services/userwallet.service';
 declare function refresh2(): any;
@@ -21,8 +22,9 @@ export class ManageWalletComponent   {
   dialogRef: any;
 
 
-  constructor(public wallet:UserwalletService,route : Router,public dialog: MatDialog, private renderer: Renderer2,  private formBuilder: FormBuilder
-    ) {
+  constructor(public wallet:UserwalletService,route : Router,
+    public dialog: MatDialog, private renderer: Renderer2,  private formBuilder: FormBuilder
+    ,public spin:NgxSpinnerService) {
     const userString = localStorage.getItem('user');
     if (userString) {
        this.user1 = JSON.parse(userString);
@@ -79,6 +81,7 @@ cardNumberExistValidator(control: AbstractControl): ValidationErrors | null {
    {
      if(result=='yes')
      {
+       this.spin.show;
        this.wallet.DeleteWallet(id );
      }
      else if(result=='no'){

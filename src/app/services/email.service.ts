@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Const } from '../shared/Const';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +9,13 @@ export class EmailService {
 
   constructor(private http:HttpClient) { }
 
-  sendPdfMail(to:string,charity:string,amount:string) {
-    let body = 'Thank you for using our website.\rYour charity has been posted'
+  sendPdfMail(to:string,charity:string,amount:string,payType:number) {
+    let body: string ;
+    if(payType==Const.Payment)
+     body = 'Thank you for using our website.\rYour charity has been posted'
+  else
+      body = 'Thank you for using our website.\rThank You for Donation'
+
    this.http.get('../../../assets/pdf/pdfTemplate.html',{ responseType: 'blob' }).subscribe({
     next:(temp:any)=>{
       this.http.get('../../../assets/pdf/pdfStyle.css',{responseType:'blob'}).subscribe({

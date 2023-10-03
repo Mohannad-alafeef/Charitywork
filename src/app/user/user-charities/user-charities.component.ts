@@ -8,13 +8,15 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { data } from 'jquery';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-user-charities',
   templateUrl: './user-charities.component.html',
   styleUrls: ['./user-charities.component.css']
 })
 export class UserCharitiesComponent {
-  constructor(public charity:CharityService,public dialog: MatDialog,public categories:CategoriesService ,private toaster:ToastrService){
+  constructor(public charity:CharityService,public dialog: MatDialog,public categories:CategoriesService 
+    ,private toaster:ToastrService,public spin : NgxSpinnerService){
     const userString = localStorage.getItem('user');
 
     if (userString) {
@@ -92,7 +94,7 @@ export class UserCharitiesComponent {
       {
       debugger
         if(result=='yes'){
-         
+         this.spin.show();
           this.charity.DeleteCharity(id);
         }
       }
