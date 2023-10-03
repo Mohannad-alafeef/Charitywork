@@ -12,5 +12,6 @@ export enum Const{
     Unread = 30,
     Readed = 31,
     Replied = 32,
-    PaymntAmount=5
+    PaymntAmount=5,
+    AdminCardNumber=111111111
 }
