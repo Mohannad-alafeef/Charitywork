@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit {
       address: ['', Validators.required],
       gender: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
-      age: [''], 
+      //age: [''], 
       imagePath: [''],
       userId:[this.user.userId],
     });
@@ -62,13 +62,29 @@ export class ProfileComponent implements OnInit {
 previous_data:any={};
 
   UpdateBtn(body:any)
-  {this.previous_data = body;
+  {  
+    this.user.firstName = body.firstName;
+    this.user.lastName = body.lastName;
+    this.user.email = body.email;
+    this.user.phone = body.phone;
+    this.user.address = body.address;
+    this.user.gender = body.gender;
+    this.user.dateOfBirth = body.dateOfBirth;
+    this.user.imagePath = body.imagePath;
+  
+    localStorage.setItem('user', JSON.stringify(this.user));
+
+    
     this.profileS.UpdateAccount(body);
       
   }
 
   UpdateLoginBtn(body:any){
-    this.previous_data = body;
+    this.user.userName = body.userName;
+    this.user.email = body.email;
+  
+    localStorage.setItem('user', JSON.stringify(this.user));
+
     this.profileS.UpdateLogin(body);
     }
 }
