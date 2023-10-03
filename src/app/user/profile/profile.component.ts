@@ -4,6 +4,7 @@ import { Component, OnInit, ViewChild, TemplateRef  } from '@angular/core';
 import { CategoriesService } from './../../services/categories.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
@@ -24,15 +25,15 @@ export class ProfileComponent implements OnInit {
     }
 
     this.UpdateProfileForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['',[Validators.required,Validators.email]],
-      phone: ['', Validators.required],
-      address: ['', Validators.required],
-      gender: ['', Validators.required],
-      dateOfBirth: ['', Validators.required],
+      firstName: [this.user.firstName, Validators.required],
+      lastName: [this.user.lastName, Validators.required],
+      email: [this.user.email,[Validators.required,Validators.email]],
+      phone: [this.user.phone, Validators.required],
+      address: [this.user.address, Validators.required],
+      gender: [this.user.gender, Validators.required],
+      dateOfBirth: [formatDate(this.user.dateOfBirth, 'yyyy-MM-dd', 'en'), Validators.required],
       //age: [''], 
-      imagePath: [''],
+      //imagePath: [this.user.imagePath],
       userId:[this.user.userId],
     });
 
@@ -42,10 +43,14 @@ export class ProfileComponent implements OnInit {
     email: [this.user.email],
     loginId: [this.user.LoginId],
     });
+    profileS.callback = (path)=>{
+      this.user.imagePath = path;
+    }
   }
 
   ngOnInit(): void
   {
+
    
   }
 
@@ -70,7 +75,7 @@ previous_data:any={};
     this.user.address = body.address;
     this.user.gender = body.gender;
     this.user.dateOfBirth = body.dateOfBirth;
-    this.user.imagePath = body.imagePath;
+   // this.user.imagePath = body.imagePath;
   
     localStorage.setItem('user', JSON.stringify(this.user));
 
