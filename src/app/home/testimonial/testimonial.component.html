@@ -29,24 +29,24 @@
               <ng-template carouselSlide *ngFor="let obj of home.userTestObj">
                 <div class="card">
                   <div class="content">
-    
-                    <div class="img-card">
-                        <img src="../../assets/Images/{{obj.user.imagePath}}"
-                            alt="">
-                    </div>
-                    <div class="testimonial mt-4 mb-2">
-                      {{obj.content}}
-                    </div>
-                    <div class="stars">
-                      <ng-container *ngFor="let s of [].constructor(5);let i = index">
-    
-                        <i class="bi bi-star-fill" *ngIf="i<obj.rate"></i>
-                        <i class="bi bi-star" *ngIf="i>=obj.rate"></i>
-                      </ng-container>
-                      
-                    </div>
-                    <div class="name">
-                      {{obj.user.firstName}} {{obj.user.lastName}}
+                    <div class="d-flex">
+                      <div class="img-card">
+                        <img src="../../assets/Images/{{obj.user.imagePath}}" alt="" style="border-radius: 50%; height: 150px; width: 150px;">
+                      </div>
+                      <div class="ml-4">
+                        <div class="testimonial">
+                          {{obj.content}}
+                        </div>
+                        <div class="stars mt-2">
+                          <ng-container *ngFor="let s of [].constructor(5); let i = index">
+                            <i class="bi bi-star-fill" *ngIf="i < obj.rate"></i>
+                            <i class="bi bi-star" *ngIf="i >= obj.rate"></i>
+                          </ng-container>
+                        </div>
+                        <div class="name mt-2">
+                          {{obj.user.firstName}} {{obj.user.lastName}}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
