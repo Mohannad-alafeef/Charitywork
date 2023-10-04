@@ -44,7 +44,7 @@ export class AdminDashboardService {
       data:'payments',
       searchable:false,
       render:(data:any[])=>{
-        return data.map((x:any)=>{
+        return data.filter((x:any)=>x?.paymentType == Const.Donation).map((x:any)=>{
           if(x==null) return {amount:0};
           else return x;
         }).reduce((sum,el)=>sum+= el.amount,0);
