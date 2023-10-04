@@ -147,3 +147,103 @@
   </ul>
 </aside>
 <!-- End Sidebar-->
+<button class="chat-btn" mat-fab extended (click)="chat.toggleChatContainer()">
+  <mat-icon>forum</mat-icon>
+  Lets Chat
+</button>
+<div class="chat-container shadow" *ngIf="chat.togglechat">
+  <div class="card card-bordered">
+    <div class="card-header">
+      <h4 class="card-title"><strong>Chat</strong></h4>
+    </div>
+
+    <div *ngIf="chat.showChat">
+      <div
+        class="ps-container ps-theme-default ps-active-y"
+        id="chat-content"
+        style="overflow-y: scroll !important; height: 400px !important"
+      >
+        <div class="media media-chat" *ngFor="let message of chat.groupMessages" [class.media-chat-reverse]="message.id!=2">
+          <div class="user">
+            <p class="name">{{message.name}}</p>
+
+            <img
+              class="avatar"
+              src="https://img.icons8.com/color/36/000000/administrator-male.png"
+              alt="..."
+            />
+          </div>
+          <div class="media-body">
+            <p>{{message.content}}</p>
+          </div>
+        </div>
+
+        <!-- <div class="media media-chat media-chat-reverse">
+          <div class="user">
+            <p class="name">Mohannad</p>
+
+            <img
+              class="avatar"
+              src="https://img.icons8.com/color/36/000000/administrator-male.png"
+              alt="..."
+            />
+          </div>
+          <div class="media-body">
+            <p>
+              Okay then see you on
+              sundaywdawdwadawdwadawdawdwadwadwadwawadwadawdwadwadwadwadawdwadwadwadwadawdwadawd!!
+            </p>
+          </div>
+        </div> -->
+
+        <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px">
+          <div
+            class="ps-scrollbar-x"
+            tabindex="0"
+            style="left: 0px; width: 0px"
+          ></div>
+        </div>
+        <div
+          class="ps-scrollbar-y-rail"
+          style="top: 0px; height: 0px; right: 2px"
+        >
+          <div
+            class="ps-scrollbar-y"
+            tabindex="0"
+            style="top: 0px; height: 2px"
+          ></div>
+        </div>
+      </div>
+
+      <div class="publisher bt-1 border-light">
+       
+        <input
+          class="publisher-input"
+          type="text"
+          placeholder="Write something"
+          [formControl]="message"
+        />
+
+        <a class="publisher-btn text-info" (click)="sendMessage()" data-abc="true"
+          ><i class="fa fa-paper-plane"></i
+        ></a>
+      </div>
+    </div>
+    <div class="chat-form" *ngIf="chat.showForm">
+      <form class="row g-3" [formGroup]="chatForm">
+        <div class="col-12">
+          <label for="inputPassword4" class="form-label">Name</label>
+          <input type="text" class="form-control" id="inputPassword4" formControlName="name">
+        </div>
+        <div class="col-12">
+          <label for="inputEmail4" class="form-label">Email</label>
+          <input type="email" class="form-control" id="inputEmail4" formControlName="email">
+        </div>
+       
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary" (click)="submit()" [disabled]="!chatForm.valid">Start</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

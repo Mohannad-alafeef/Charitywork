@@ -53,6 +53,7 @@ account:any=[{}];
           const responce = {
             token: resp.toString(), //save on localstorge
           };
+          localStorage.clear();
           localStorage.setItem('token', responce.token);
           let data: any = jwt_decode(responce.token);
           localStorage.setItem('user', JSON.stringify(data));

@@ -14,7 +14,7 @@ export class CardViewComponent {
   @Input() charity!:any;
   constant=Const;
   getTotalPayment(payments:any[]):number{
-    return payments.map(x=>x.amount).reduce((sum,el)=>sum +=el,0)
+    return payments.filter((x:any)=>x.paymentType == Const.Donation).map(x=>x.amount).reduce((sum,el)=>sum +=el,0)
   }
   calcPercent(payments:any[],goal:number):number{
     let total = this.getTotalPayment(payments)

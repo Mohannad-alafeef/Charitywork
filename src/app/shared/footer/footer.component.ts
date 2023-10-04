@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ChatService } from 'src/app/services/chat.service';
 import { HomeService } from 'src/app/services/home.service';
+import { Const } from '../Const';
 
 @Component({
   selector: 'app-footer',
@@ -23,21 +24,26 @@ export class FooterComponent {
     home.getTest();
     home.getUserTest();
     home.getPayments();
-    
+    chat.connectToChat();
     
   }
   submit(){
     this.chat.name = this.chatForm.get('name')?.value;
     this.chat.email = this.chatForm.get('email')?.value
-    this.chat.connectToChat();
+    this.chat.startChat(Const.Guest);
   }
   sendMessage(){
     console.log(this.message.value);
     
     if(!this.message.valid) return;
     console.log('valid');
-    this.chat.sendToGroup(this.message.value!);
+    this.chat.sendToGroup(this.message.value!,Const.Guest);
+    this.message.setValue(null);
 
+  }
+  @HostListener('document:keypress', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key == 'Enter') this.sendMessage();
   }
   
 
