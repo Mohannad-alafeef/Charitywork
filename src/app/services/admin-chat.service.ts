@@ -36,6 +36,7 @@ export class AdminChatService {
       .then(() => {
         this.connected = true;
         this.getGroups();
+        this.connection.invoke('JoinAdminGroup');
       })
       .catch((err) => {
         console.log(err);
@@ -45,6 +46,9 @@ export class AdminChatService {
       
       this.getGroupMessages(message);
     });
+    this.connection.on('NewGroup',()=>{
+      this.getGroups();
+    })
   }
   getGroups() {
     this.connection.invoke('GetGroups').then((res) => {

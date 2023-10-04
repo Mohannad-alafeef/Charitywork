@@ -31,10 +31,10 @@
                 <div class="chat-history" id="chat-container" >
                   <ul class="m-b-0">
                     <li class="clearfix" *ngFor="let message of chat.groupMessages">
-                      <!-- <div class="message-data text-right">
-                        <span class="message-data-time">10:10 AM, Today</span>
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
-                      </div> -->
+                      <div class="message-data text-right" [class.text-right]="message.id != 1">
+                        <span class="message-data-time">{{message.name}}</span>
+                        <!-- <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar"> -->
+                      </div>
                       <div class="message other-message float-right" *ngIf="message.id != 1">
                         {{message.content}}
                       </div>
