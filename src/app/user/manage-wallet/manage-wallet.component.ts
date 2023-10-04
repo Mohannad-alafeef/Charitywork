@@ -71,7 +71,7 @@ cardNumberExistValidator(control: AbstractControl): ValidationErrors | null {
 
   ngOnInit(): void{
     refresh2();
-    this.wallet.getUserWallet();
+    this.wallet.getUserWallet(this.user1.userId);
   }
 
   deletewalle(id :number){
@@ -81,7 +81,7 @@ cardNumberExistValidator(control: AbstractControl): ValidationErrors | null {
    {
      if(result=='yes')
      {
-       this.spin.show;
+      
        this.wallet.DeleteWallet(id );
      }
      else if(result=='no'){

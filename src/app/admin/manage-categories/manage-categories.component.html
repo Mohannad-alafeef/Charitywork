@@ -1,35 +1,32 @@
  <app-admin-sidebar></app-admin-sidebar>
- <div class="body-wrapper">
-    <div class="col-lg-12 d-flex align-items-stretch" style="font-size: 15px; overflow-x: hidden; margin-top: 70px">
-      <div class="card w-100">
-          <div class="card-body p-4">
-            <h1 class="card-title fw-semibold mb-2">Categories</h1>
-            <button class="btn btn-primary mb-4" (click)="openCreateDialog()">Add New Category</button>
+ <main id="main" class="main">
+
+  <section class="section dashboard">
+   <div class="row">
+           
+    <div class="col-12">
+      <div class="card recent-sales overflow-auto">
+    
+      <div class="card-body">
+      <h5 class="card-title">categories <span>| List</span></h5>
+            <button  mat-raised-button class=" ml-1"  style="background-color: #f7ca44;color: white;" (click)="openCreateDialog()">Add New Category</button>
             <div class="table-responsive">
-              <table class="table text-nowrap mb-0 align-middle">
-                <thead class="text-dark fs-4">
+              <table class="table table-borderless datatable p-2">
+                <thead>
                   <tr>
-                    <!-- <th class="border-bottom-0">
-                      <h4 class="fw-semibold mb-0">Category Id</h4>
-                    </th> -->
-                    <th class="border-bottom-0">
-                      <h4 class="fw-semibold mb-0">Category Name</h4>
-                    </th>
-                    <th class="border-bottom-0">
-                      <h4 class="fw-semibold mb-0">Image</h4>
-                    </th>
-                    <th class="border-bottom-0">
-                      <h4 class="fw-semibold mb-0">Manage</h4>
-                    </th>
+                    <th scope="col">image</th>
+                    <th scope="col">Category Name</th>
+                    <th scope="col">Manage</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let category of CategoryS.categories">
                 <!--<td>{{ category.categoryId }}</td> -->
-                    <td>{{ category.categoryName }}</td>
                     <td><img style="height:100px; width: 100px;" src="../../../assets/Images/{{ category.imagePath }}"></td>
-                    <td><button class="btn btn-primary m-1" (click)="openDeleteDialog(category.categoryId)">Delete</button>
-                       <button class="btn btn-primary m-1" (click)="openUpdateDialog(category)">Update</button>
+                    <td>{{ category.categoryName }}</td>
+                    <td><button  mat-raised-button class=" ml-1"  style="background-color: #f7ca44;color: white;" (click)="openDeleteDialog(category.categoryId)">Delete</button>
+                       <button   mat-raised-button class=" ml-1"  style="background-color: #f7ca44;color: white;"(click)="openUpdateDialog(category)">Update</button>
                     </td> 
                   </tr>                     
                 </tbody>
@@ -39,6 +36,9 @@
         </div>
       </div>
 </div>
+</section>
+</main>
+
 
 
 <ng-template #callDeleteDialog>
