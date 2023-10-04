@@ -237,16 +237,19 @@
                   <div class="img-card">
                     <img src="../../assets/Images/{{obj.user.imagePath}}" alt="" style="border-radius: 50%; height: 150px; width: 150px;">
                   </div>
+
+                  
                   <div class="ml-4">
-                    <div class="testimonial-comtent">
-                      {{obj.content}}
-                    </div>
                     <div class="stars mt-2">
                       <ng-container *ngFor="let s of [].constructor(5); let i = index">
                         <i class="bi bi-star-fill" *ngIf="i < obj.rate"></i>
                         <i class="bi bi-star" *ngIf="i >= obj.rate"></i>
                       </ng-container>
                     </div>
+                    <div class="testimonial-content">
+                      {{obj.content}}
+                    </div>
+                    
                     <div class="name mt-2">
                       {{obj.user.firstName}} {{obj.user.lastName}}
                     </div>
