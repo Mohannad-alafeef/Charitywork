@@ -14,22 +14,18 @@ export class UserwalletService {
   }]
   constructor(private http:HttpClient,route : Router,public toaster:ToastrService, public spin:NgxSpinnerService)
   {
-   const userString = localStorage.getItem('user');
-   if (userString) {
-     this.user = JSON.parse(userString);
-   }
 
   }
   
-  getUserWallet() {
-    this.spin.show;
+  getUserWallet(userId:any) {
+    this.spin.show();
 
     this.http.get('https://localhost:7081/api/visaCard').subscribe({
       next: (res: any) => {
         console.log(res);
-        this.walletlObj = res.filter((x:any)=>x.userId==this.user.userId);
+        this.walletlObj = res.filter((x:any)=>x.userId==userId);
         console.log(this.walletlObj);
-        this.spin.hide;
+        this.spin.hide();
 
       },
 
@@ -40,17 +36,15 @@ export class UserwalletService {
   }
   DeleteWallet(id:number){
   
+    this.spin.show();
     this.http.delete('https://localhost:7081/api/visaCard/'+id).subscribe((res:any)=>{
       //alert(' Wallet Deleted !');
-     
-     
-      this.toaster.success('Deleted Sucessfully', 'success', {
-        timeOut: 1600,
+      this.spin.hide();
+      this.toaster.success('Deleted', 'success', {
+        timeOut: 3000,
       }).onHidden.subscribe({
         next:()=>{
-          this.spin.hide;
           window.location.reload();
-
         }
       });
     },err=>{
@@ -58,16 +52,16 @@ export class UserwalletService {
     })
     }
 
-  async  createtWallet(body:any)
+  createtWallet(body:any)
     {
-       this.spin.show;
+       this.spin.show();
 
       this.http.post('https://localhost:7081/api/visaCard',body).subscribe((res)=>
       {
        // alert('Your Wallet Created Sucessfully');
-       this.spin.hide;
+       this.spin.hide();
        this.toaster.success('VisaCard Added Successfully', 'success', {
-        timeOut: 1600,
+        timeOut: 2500,
       }).onHidden.subscribe({
         next:()=>{
           window.location.reload();

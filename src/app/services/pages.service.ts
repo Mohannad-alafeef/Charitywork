@@ -76,7 +76,9 @@ export class PagesService {
 // home page update
 
    UpdateHomePage(body:any){
+    if(this.display_image!=null)
     body.imagePath=this.display_image;
+     
     this.spinner.show();
     this.http.put('https://localhost:7081/api/HomePage/Update',body).subscribe((resp: any) =>
     {
@@ -90,7 +92,9 @@ export class PagesService {
 
   //about us page update 
   UpdateaboutPage(body:any){
-    body.imagePath=this.display_image;
+    if(this.display_image!=null)
+     body.imagePath=this.display_image;
+      
     this.spinner.show();
     this.http.put('https://localhost:7081/api/aboutPage/update',body).subscribe((resp: any) =>
     {
@@ -115,7 +119,10 @@ export class PagesService {
   }
   //testimonial  page update 
   UpdatetestimonialPage(body:any){
+    if(this.display_image!=null)
     body.imagePath=this.display_image;
+   
+   
     this.spinner.show();
     this.http.put('https://localhost:7081/api/testimonialpage/update',body).subscribe((resp: any) =>
     {
@@ -133,7 +140,7 @@ export class PagesService {
     this.http.post('https://localhost:7081/api/HomePage/uploadImage',file).subscribe((resp:any)=>{
       this.display_image= resp.imagePath; 
       console.log(resp);
-      this.toastr.success('Success'); 
+
     },err=>{
       //alert('somthing wrong');
       this.toastr.error('Error', err.status); 
@@ -143,7 +150,7 @@ export class PagesService {
       this.http.post('https://localhost:7081/api/aboutPage/uploadImage',file).subscribe((resp:any)=>{
         this.display_image= resp.imagePath; 
         console.log(resp);
-        this.toastr.success('Success'); 
+     
       },err=>{
         //alert('somthing wrong');
         this.toastr.error('Error', err.status); 
@@ -153,7 +160,7 @@ export class PagesService {
         this.http.post('https://localhost:7081/api/testimonialpage/UploadImage',file).subscribe((resp:any)=>{
       this.display_image= resp.imagePath; 
       console.log(resp);
-      this.toastr.success('Success'); 
+     
     },err=>{
       //alert('somthing wrong');
       this.toastr.error('Error', err.status); 

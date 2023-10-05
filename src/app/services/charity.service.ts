@@ -9,7 +9,7 @@ import { Const } from '../shared/Const';
 })
 export class CharityService {
 
-  constructor(private http:HttpClient , public spin:NgxSpinnerService,public toas:ToastrService) {
+  constructor(private http:HttpClient , public spin:NgxSpinnerService,public toastr:ToastrService) {
   
    }
  
@@ -25,13 +25,13 @@ export class CharityService {
    getUserCharities(userId:any){
     debugger;
    
-    this.spin.show;
+    this.spin.show();
 
      this.http.get('https://localhost:7081/api/Charity/getAll').subscribe((resp:any)=>{
      
       this.usercharities= resp.filter((ch:any)=>{return ch.user.userId==userId;})
       this.charities=resp;
-      this.spin.hide;
+      this.spin.hide();
 
      },err=>{
        console.log(err.status);
@@ -39,12 +39,12 @@ export class CharityService {
    }
   getAllCharities(){
     debugger;
-    this.spin.show;
+    this.spin.show();
 
     this.http.get('https://localhost:7081/api/Charity/getAll').subscribe((resp:any)=>{
 
     this.charities=resp;
-    this.spin.hide;
+    this.spin.hide();
 
      },err=>{
        console.log(err.status);
@@ -53,12 +53,12 @@ export class CharityService {
 
    DeleteCharity(id:number){
      // debugger;
-      this.spin.show;
+      this.spin.show();
       this.http.delete('https://localhost:7081/api/charity/'+id).subscribe((resp:any)=>{
      
-      this.spin.hide;
-      this.toas.success('Deleted successfully', 'success', {
-        timeOut: 2000,
+      this.spin.hide();
+      this.toastr.success('Deleted', 'success', {
+        timeOut: 3000,
       }).onHidden.subscribe({
         next:()=>{
           window.location.reload();
@@ -71,11 +71,11 @@ export class CharityService {
 
    updateChrity(body:any){
       debugger;
-      this.spin.show;
+      this.spin.show();
       this.http.put('https://localhost:7081/api/charity/Update',body).subscribe((resp)=>{
        
-      this.spin.hide;
-      this.toas.success('Updated successfully', 'success', {
+      this.spin.hide();
+      this.toastr.success('Updated', 'success', {
         timeOut: 2000,
       }).onHidden.subscribe({
         next:()=>{
@@ -88,21 +88,21 @@ export class CharityService {
    
    }
    
-    async updateChrityInfo(charity:any,goal:any){
-      this.spin.show;
+     updateChrityInfo(charity:any,goal:any){
+     
     debugger;
     if(this.display_image!=null)
       charity.imagePath=this.display_image;
- 
-    await this.http.put('https://localhost:7081/api/charity/Update',charity).subscribe((resp)=>{
+      this.spin.show();
+     this.http.put('https://localhost:7081/api/charity/Update',charity).subscribe((resp)=>{
      for(var i=0;i<goal.length;i++)
     { 
       this.UpdateGoal(goal[i]);
     } 
   
-    this.spin.hide;
-    this.toas.success('Updated successfully', 'success', {
-      timeOut: 2000,
+    this.spin.hide();
+    this.toastr.success('Updated', 'success', {
+      timeOut: 3000,
     }).onHidden.subscribe({
       next:()=>{
       
@@ -114,40 +114,7 @@ export class CharityService {
       })
     }
 
-    updateChrityInfoo(charity:any,goal:any){
-      debugger;
-      if(this.display_image!=null)
-        charity.imagePath=this.display_image;
-      
-      
-    let charityy=new Promise<void>((resolve,reject)=>{
-      this.spin.show;
-      this.http.put('https://localhost:7081/api/charity/Update',charity).subscribe((resp)=>{
-     /*  for(var i=0;i<goal.length;i++)
-      {   
-        this.UpdateGoal(goal[i]);
-      } */
-    resolve(goal);
-    
-        },err=>{
-          console.log(err.status);
-        })
-        charityy.then((res:any)=>{
-          this.UpdateGoal(res[0]);
-          this.UpdateGoal(res[1]);
-          if(res.length==3)
-          this.UpdateGoal(res[2]);
-          this.spin.hide;
-          
-      this.toas.success('Updated successfully', 'success', {
-        timeOut: 2000,
-      }).onHidden.subscribe({
-        next:()=>{
-          window.location.reload();
-        }
-      });
-        })});
-      }
+  
     getGoals(id:number)
    {
         this.http.get('https://localhost:7081/api/Goal/charityGoals/'+id).subscribe((resp:any)=>{
@@ -192,7 +159,7 @@ export class CharityService {
       }
       this.spin.hide();
      
-      this.toas.success('Charity was Sent successfuly to the admin', 'success', {
+      this.toastr.success('Charity was Sent successfuly to the admin', 'success', {
         timeOut: 3000,
       }).onHidden.subscribe({
         next:()=>{
@@ -200,7 +167,7 @@ export class CharityService {
         }
       });
     }, err => {
-      this.toas.error('Error', err.status); 
+      this.toastr.error('Error', err.status); 
     })
     
    // window.location.reload();
@@ -211,17 +178,14 @@ export class CharityService {
  
     this.http.post('https://localhost:7081/api/Goal/create',body).subscribe((resp: any) =>
     { }, err => {
-      this.toas.error('Error', err.status); 
+      this.toastr.error('Error', err.status); 
     })
   }
   UpdateGoal(body: any) {
     debugger
-    this.spin.show;
     this.http.put('https://localhost:7081/api/Goal/update',body).subscribe((resp)=>{
-      this.spin.hide;
- 
    }, err => {
-     this.toas.error('Error', err.status); 
+     this.toastr.error('Error', err.status); 
    })
    
  }
@@ -232,7 +196,7 @@ export class CharityService {
 
     },err=>{
     
-      this.toas.error('Error', err.status); 
+      this.toastr.error('Error', err.status); 
     });
     }
 
@@ -242,18 +206,17 @@ export class CharityService {
 
    this.http.post('https://localhost:7081/api/payment',body).subscribe((resp: any) =>
    {
-    
-    this.toas.success('Thank You', 'success', {
+    this.spin.hide();
+    this.toastr.success('Thank You', 'success', {
       timeOut: 2000,
     }).onHidden.subscribe({
       next:()=>{
-        this.spin.hide();
         window.location.reload();
       }
     });
 
    }, err => {
-     this.toas.error('Error', err.status); 
+     this.toastr.error('Error', err.status); 
    })
    
  }
@@ -263,7 +226,7 @@ export class CharityService {
   {
        
   }, err => {
-    this.toas.error('Error', err.status); 
+    this.toastr.error('Error', err.status); 
   })
  }
 
@@ -275,7 +238,7 @@ export class CharityService {
 
      this.Visa = resp;
    }, err => {
-     this.toas.error('Error', err.status);
+     this.toastr.error('Error', err.status);
    })
  //console.log(this.Visa);
  }
@@ -289,7 +252,7 @@ export class CharityService {
 
      });
    }, err => {
-     this.toas.error('Error', err.status);
+     this.toastr.error('Error', err.status);
    })
  }
 
@@ -302,7 +265,7 @@ export class CharityService {
       return V.userId==user;
     })
    }, err => {
-     this.toas.error('Error', err.status);
+     this.toastr.error('Error', err.status);
    })
  }
 
@@ -315,7 +278,7 @@ export class CharityService {
       return V.cardNumber==Const.AdminCardNumber;
     })
    }, err => {
-     this.toas.error('Error', err.status);
+     this.toastr.error('Error', err.status);
    })
  }
 }
