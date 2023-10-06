@@ -1,6 +1,20 @@
 .centered-container {
     display: flex;
-  
     align-items: center; /* Center items horizontally */
     justify-content: center; /* Center items vertically */
+    
   }
+  .contact-card {
+    padding: 15px; 
+    border: 1px solid  #D6BE76; 
+    border-radius: 10px; 
+    background-color: white;
+
+}
+.py-5 .col-12 .card-body{
+  background-color: #F8F7EF;
+}
+.py-5{
+  background-color: #F8F7EF;
+
+}

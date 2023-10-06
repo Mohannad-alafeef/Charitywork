@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit{
       UserName: ['', Validators.required],
       Password: ['',[Validators.required,Validators.minLength(8)]],
       Email: ['',[Validators.required,Validators.email]],
-      Phone: ['', Validators.required],
+      Phone: ['', [Validators.required,Validators.pattern('^[0-9]{10}$')]],
       ImagePath: [''],
       loginId: [''],
     });

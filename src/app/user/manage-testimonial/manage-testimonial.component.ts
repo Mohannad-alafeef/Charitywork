@@ -34,7 +34,7 @@ export class ManageTestimonialComponent {
   };
   CreateTestimonial:FormGroup=new FormGroup({
     CONTENT:new FormControl('',Validators.required),
-    RATE:new FormControl('',Validators.required),
+    RATE:new FormControl('',[Validators.required, Validators.min(1),Validators.max(5)]),
     
 
   });
