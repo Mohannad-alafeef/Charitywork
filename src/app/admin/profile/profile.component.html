@@ -44,7 +44,7 @@
                 </li>
 
                 <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Edit Login</button>
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
                 </li>
               </ul>
 
@@ -173,30 +173,56 @@
 
                 </div>
 
-                    <div class="tab-pane fade pt-3" id="profile-change-password">
+                <div class="tab-pane fade pt-3" id="profile-change-password">
                   <!-- Change Password Form -->
-                  <form [formGroup]="UpdateLoginForm">
-
+                  <form [formGroup]="passwordChangeForm">
+                
                     <div class="row mb-3">
-                      <label for="userName" class="col-md-4 col-lg-3 col-form-label">Username</label>
+                      <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="userName" type="text" class="form-control" id="userName"  formControlName="userName" [(ngModel)]="user.userName">
+                        <input formControlName="currentPassword" name="currentPassword" type="password" class="form-control" id="currentPassword">
+                        <!-- Display error message for currentPassword -->
+                        <div *ngIf="(isFormSubmitted) &&passwordChangeForm?.get('currentPassword')?.hasError('required')" class="text-danger">
+                          Current Password is required.
+                        </div>
                       </div>
                     </div>
-                  
+                
                     <div class="row mb-3">
-                      <label for="password" class="col-md-4 col-lg-3 col-form-label">New Password</label>
+                      <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="password" type="password" class="form-control" id="password" formControlName="password"  [(ngModel)]="user.password">
+                        <input formControlName="newPassword" name="newPassword" type="password" class="form-control" id="newPassword">
+                        <!-- Display error messages for newPassword -->
+                        <div *ngIf="(isFormSubmitted) &&passwordChangeForm?.get('newPassword')?.hasError('required')" class="text-danger">
+                          New Password is required.
+                        </div>
+                        <div *ngIf="(isFormSubmitted) &&passwordChangeForm?.get('newPassword')?.hasError('minlength')" class="text-danger">
+                          New Password must be at least 8 characters long.
+                        </div>
                       </div>
                     </div>
-
+                
+                    <div class="row mb-3">
+                      <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input formControlName="renewPassword" name="renewPassword" type="password" class="form-control" id="renewPassword">
+                        <!-- Display error messages for renewPassword -->
+                        <div *ngIf="(isFormSubmitted) &&passwordChangeForm?.get('renewPassword')?.hasError('required')" class="text-danger">
+                          Re-enter New Password is required.
+                        </div>
+                        <div *ngIf="(isFormSubmitted) &&passwordChangeForm?.get('renewPassword')?.hasError('minlength')" class="text-danger">
+                          Re-enter New Password must be at least 8 characters long.
+                        </div>
+                      </div>
+                    </div>
+                
                     <div class="text-center">
-                      <button type="submit" class="btn btn-primary" (click)="UpdateLoginBtn(UpdateLoginForm.value)">Save Changes</button>
+                      <button type="submit" class="btn btn-primary" (click)="changePassword(passwordChangeForm.value)">Change Password</button>
                     </div>
-                  </form><!-- End Change Username and Password Form -->
-                </div>                 
-
+                  </form><!-- End Change Password Form -->
+                </div>
+                
+                
               </div>
               <!-- End Bordered Tabs -->
 
