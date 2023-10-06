@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
       firstName: [this.user.firstName, Validators.required],
       lastName: [this.user.lastName, Validators.required],
       email: [this.user.email,[Validators.required,Validators.email]],
-      phone: [this.user.phone, Validators.required],
+      phone: [this.user.phone, [Validators.required,Validators.pattern('^[0-9]{10}$')]],
       address: [this.user.address, Validators.required],
       gender: [this.user.gender, Validators.required],
       dateOfBirth: [formatDate(this.user.dateOfBirth, 'yyyy-MM-dd', 'en'), Validators.required],

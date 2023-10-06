@@ -1,10 +1,18 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
 <body>
   <main>
     <div class="container">
       <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
         <div class="container">
+          
           <div class="row registration-card ">
-
+            <div class="back-arrow-container">
+              <a routerLink="/">
+                  <i class="fa fa-arrow-left" aria-hidden="true"></i>
+              </a>
+           </div>
+          
             <div class="col-lg-6 col-md-6 d-flex flex-column align-items-center justify-content-center">
               <a class="navbar-brand">GiveHope</a>
               <div class="gender-image-container text-center mb-3">
@@ -72,6 +80,8 @@
                         <label for="Phone">Phone Number</label>
                         <input type="text" id="Phone" name="Phone" formControlName="Phone" class="form-control rounded-3 valid-border invalid-border" [class.valid-border]="CreateAccountForm.controls['Phone'].valid" [class.invalid-border]="(isFormSubmitted||phoneChanged)&&CreateAccountForm.controls['Phone'].invalid" (input)="phoneChanged=true" placeholder="Phone Number">
                        <span *ngIf="(isFormSubmitted||phoneChanged) && CreateAccountForm.controls['Phone'].hasError('required')" class="text-danger">Phone Number is required</span>
+                       <mat-error *ngIf="CreateAccountForm.controls['Phone'].hasError('pattern')">
+                        Please insert a valid phone number</mat-error>
                       </div>
                     </div>
                   </div>
@@ -102,9 +112,14 @@
                   <div align="end"><br>
                     <button class="btn btn-primary w-100" style="color: white;" type="submit" [disabled]="!CreateAccountForm.valid" (click)="CreateAccountBtn()">Create Account</button>
                   </div>
+                
                 </form>
+               
               </div>
               <hr>
+              <div class="col-12">
+                <p class="small mb-0">Already have an account? <a routerLink="/auth/login">Login</a></p>
+              </div>
             </div>
           </div>
         </div>

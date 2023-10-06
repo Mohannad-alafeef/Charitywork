@@ -31,7 +31,7 @@ export class AdminDashboardService {
       data:'imagePath',
       searchable:false,
       render:(data)=>{
-        return `<img src="../../../assets/Images/${data}" width="50" height="50" style="object-fit: cover;">`
+        return `<img src="../../../assets/Images/${data}" width="70" height="70" style="object-fit:cover; border-radius: 50%;">`
       }
     }, {
       title: 'Donation Goal',

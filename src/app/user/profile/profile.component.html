@@ -131,6 +131,9 @@
                       <div class="col-md-8 col-lg-9">
                         <input name="Phone" type="text" class="form-control" id="Phone" formControlName="phone"  >
                       </div>
+                    <mat-error *ngIf="UpdateProfileForm.controls['phone'].hasError('pattern')">
+                      Please insert a valid phone number
+                    </mat-error>
                     </div>
 
                     <div class="row mb-3">
