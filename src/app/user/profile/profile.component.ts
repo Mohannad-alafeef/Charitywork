@@ -12,6 +12,10 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  sCurrent = false;
+  sNew = false;
+  sRe = false;
+
 
   user :any={} ;
   UpdateProfileForm: FormGroup;
@@ -100,12 +104,19 @@ export class ProfileComponent implements OnInit {
     this.user.address = body.address;
     this.user.gender = body.gender;
     this.user.dateOfBirth = body.dateOfBirth;
+   
+
   
+    this.profileS.UpdateAccount(this.user);
     localStorage.setItem('user', JSON.stringify(this.user));
 
     
-    this.profileS.UpdateAccount(body);
       
+  }
+  togglePassword(b:boolean,input:any):boolean{
+    console.log(input);
+    input.type = !b?'text':'password';
+    return !b;
   }
 
 }
