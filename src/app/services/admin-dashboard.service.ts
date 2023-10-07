@@ -19,43 +19,50 @@ export class AdminDashboardService {
   messages: Array<any> = [];
   issues: Array<any> = [];
   dtOptions: DataTables.Settings = {
-    destroy:true,
-    pagingType:'full_numbers',
-    search:true,
-    columns: [{
-      title: 'Charity Name',
-      data: 'charityName',
-      searchable:true
-    },{
-      title:'Charity Image',
-      data:'imagePath',
-      searchable:false,
-      render:(data)=>{
-        return `<img src="../../../assets/Images/${data}" width="70" height="70" style="object-fit:cover; border-radius: 50%;">`
-      }
-    }, {
-      title: 'Donation Goal',
-      data: 'donationGoal',
-      searchable:false
-      
-    },
-    {
-      title:'Donation',
-      data:'payments',
-      searchable:false,
-      render:(data:any[])=>{
-        return data.filter((x:any)=>x?.paymentType == Const.Donation).map((x:any)=>{
-          if(x==null) return {amount:0};
-          else return x;
-        }).reduce((sum,el)=>sum+= el.amount,0);
-        
-      }
-    }],
+    destroy: true,
+    pagingType: 'full_numbers',
+    search: true,
+    columnDefs:[
+      { className: "table-td-size", targets: "_all" }
+    ],
+    columns: [
+      {
+        title: 'Charity Name',
+        data: 'charityName',
+        searchable: true
+      },
+      {
+        title: 'Charity Image',
+        data: 'imagePath',
+        searchable: false,
+        render: (data) => {
+          return `<img src="../../../assets/Images/${data}" width="70" height="70" style="object-fit:cover; border-radius: 50%;">`;
+        },
+      },
+      {
+        title: 'Donation',
+        data: 'payments',
+        searchable: false,
+        render: (data: any[]) => {
+          return data
+            .filter((x: any) => x?.paymentType == Const.Donation)
+            .map((x: any) => {
+              if (x == null) return { amount: 0 };
+              else return x;
+            })
+            .reduce((sum, el) => (sum += el.amount), 0);
+        },
+      },
+      {
+        title: 'Donation Goal',
+        data: 'donationGoal',
+        searchable: false,
+      },
+    ],
     pageLength: 5,
-    lengthMenu:[5,10,15]
-    
+    lengthMenu: [5, 10, 15],
   };
-  
+
   constructor(private http: HttpClient) {}
 
   getUsers() {
@@ -81,12 +88,11 @@ export class AdminDashboardService {
       });
   }
   getCharities() {
-    
     this.http.get('https://localhost:7081/api/charity').subscribe({
       next: (resp: any) => {
-        this.charities = resp.filter((x:any)=>x.isAccepted == Const.Posted);
-        this.recentCharities = this.charities.slice(0,15);
-       // console.log("charities : " + this.charities.filter(x=>x.isAccepted == Const.Accepted));
+        this.charities = resp.filter((x: any) => x.isAccepted == Const.Posted);
+        this.recentCharities = this.charities.slice(0, 15);
+        // console.log("charities : " + this.charities.filter(x=>x.isAccepted == Const.Accepted));
         this.dtOptions.data = this.recentCharities;
         this.charityObservable.next(this.recentCharities);
         //this.dtTrigger.next(this.dtOptions);
@@ -103,9 +109,6 @@ export class AdminDashboardService {
         this.donations = resp.filter(
           (x: any) => x.paymentType == Const.Donation
         );
-        
-
-        
       },
       error: (err) => {
         console.log(err);
@@ -133,17 +136,18 @@ export class AdminDashboardService {
     });
   }
   getIssues() {
-    this.http.get('https://localhost:7081/api/IssuesReport/getAllissues').subscribe({
-      next: (resp: any) => {
-        this.issues = resp;
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+    this.http
+      .get('https://localhost:7081/api/IssuesReport/getAllissues')
+      .subscribe({
+        next: (resp: any) => {
+          this.issues = resp;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
   }
 
-  
   init() {
     this.getPayments();
     this.getUsers();
@@ -153,5 +157,4 @@ export class AdminDashboardService {
     this.getContact();
     this.getIssues();
   }
-   
 }

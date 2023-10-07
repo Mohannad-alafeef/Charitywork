@@ -4,6 +4,10 @@
   top: 20px;
   z-index: 2;
 }
+.table-td-size {
+  font-size: 5em;
+  color: white;
+}
 /* .table img{
   width: 80px;
   height: 80px;

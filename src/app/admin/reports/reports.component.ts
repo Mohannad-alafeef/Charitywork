@@ -21,21 +21,11 @@ export class ReportsComponent implements OnInit,OnDestroy,AfterViewInit {
     this.sub = this.reports.paymentsObservable.subscribe({
       next:(res)=>{
         this.dtTrigger.next(this.reports.dtOptions);
-        this.dataTabel();
       }
     });
-    this.dataTabel();
-  }
-  dataTabel(){
-    try{
-      this.datatableElement.dtInstance.then((dtInstance:any)=>{
-        console.log(dtInstance.buttons.container);
-        
-      });
-    }catch(e:any){
 
-    }
   }
+ 
   ngOnDestroy(): void {
     this.sub?.unsubscribe();
     this.dtTrigger.unsubscribe();

@@ -269,35 +269,25 @@ export class DashboardComponent implements OnInit, AfterViewInit,OnDestroy {
       let eDate: string = period[period.length - 1];
       let endDate = new Date(eDate);
 
-      let s1 = this.dashboard.payments
-        .filter(
-          (x: any) =>
-            new Date(x.paymentDate) >= startDate &&
-            new Date(x.paymentDate) <= endDate
-        )
-        .map((obj: any) => {
-          return { x: obj.paymentDate, y: obj.amount };
-        });
-      let s2: { x: string; y: number }[] = [];
-      let map = new Map<string, number>();
-      this.dashboard.users
-        .filter(
-          (x: any) =>
-            new Date(x.loginDate) >= startDate &&
-            new Date(x.loginDate) <= endDate
-        )
-        .forEach((obj, i) => {
-          if (map.has(obj.loginDate)) {
-            map.set(obj.loginDate, map.get(obj.loginDate)! + 1);
-          } else {
-            map.set(obj.loginDate, 1);
-          }
-        });
-      map.forEach((v, k) => {
-        s2.push({ x: k, y: v });
-      });
-      this.data1 = s1;
-      this.data2 = s2;
+      
+     
+        const mappedPayments:{x:string,y:number}[] = [];
+        const mappedUsers:{x:string,y:number}[] = [];
+        for (let index = 0; index < period.length-1; index++) {
+          debugger;
+          const date1 = period[index];
+          const date2 = period[index+1];
+          const periodPayment = this.dashboard.payments.filter((v)=>new Date(v.paymentDate) >= new Date(date1) &&
+          new Date(v.paymentDate) <= new Date(date2)).reduce((sum,el)=>sum+=el.amount,0);
+          const periodUsers = this.dashboard.users.filter((v)=>new Date(v.loginDate) >= new Date(date1) &&
+          new Date(v.loginDate) <= new Date(date2)).reduce((sum,el)=>sum+=1,0);
+          mappedPayments.push({x:date1,y:periodPayment});
+          mappedUsers.push({x:date1,y:periodUsers});
+          
+        }
+      
+      this.data1 = mappedPayments;
+      this.data2 = mappedUsers;
     } catch (e: any) {
       console.log(e);
     }

@@ -15,6 +15,9 @@ export class ReportsService {
     destroy: true,
     pagingType: 'full_numbers',
     search: true,
+    columnDefs:[
+      { className: "table-td-size", targets: "_all" }
+    ],
     columns: [
       {
         title: 'Charity Name',
@@ -29,7 +32,7 @@ export class ReportsService {
         data: 'charity',
         searchable: false,
         render: (data: any) => {
-          return `<img src="../../../assets/Images/${data.imagePath}" width="50" height="50" style="object-fit: cover;">`;
+          return `<img src="../../../assets/Images/${data.imagePath}" width="70" height="70" style="object-fit:cover; border-radius: 50%;">`;
         },
       },
       {
@@ -37,7 +40,7 @@ export class ReportsService {
         data: 'user',
         searchable: false,
         render: (data: any) => {
-          return `<img src="../../../assets/Images/${data.imagePath}" width="50" height="50" style="object-fit: cover;">`;
+          return `<img src="../../../assets/Images/${data.imagePath}" width="70" height="70" style="object-fit:cover; border-radius: 50%;">`;
         },
       },
       {

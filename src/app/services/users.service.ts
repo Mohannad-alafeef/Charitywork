@@ -23,6 +23,9 @@ export class UsersService {
       
       return row;
     },
+    columnDefs:[
+      { className: "table-td-size", targets: "_all" }
+    ],
     columns: [
       {
         title: 'First Name',
@@ -40,7 +43,7 @@ export class UsersService {
         searchable: false,
         orderable:false,
         render: (data) => {
-          return `<img src="../../../assets/Images/${data}" width="50" height="50" style="object-fit: cover;">`;
+          return `<img src="../../../assets/Images/${data}" width="70" height="70" style="object-fit:cover; border-radius: 50%;">`;
         },
       },
       {
