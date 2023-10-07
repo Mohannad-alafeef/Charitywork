@@ -39,3 +39,16 @@
 border-width: 0;
 color: white;
 }
+.contact-card {
+  padding: 15px; /* Existing padding */
+  border: 3px solid #FBD488; 
+  border-radius: 10px; 
+  background-color: white;
+}
+.py-5{
+  background-color: #F8F7EF;
+}
+.card-title{
+  margin-left: 50px;
+
+}

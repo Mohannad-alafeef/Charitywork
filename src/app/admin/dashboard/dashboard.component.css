@@ -4,8 +4,15 @@
   top: 20px;
   z-index: 2;
 }
+.table-td-size {
+  font-size: 5em;
+  color: white;
+}
 /* .table img{
   width: 80px;
   height: 80px;
   object-fit: cover;
 } */
+/* .card-body{
+  border: 1px solid  #D6BE76; 
+    border-radius: 10px; } */
