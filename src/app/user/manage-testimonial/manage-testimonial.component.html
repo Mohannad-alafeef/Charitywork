@@ -74,6 +74,12 @@
       <mat-error *ngIf="CreateTestimonial.controls['RATE'].hasError('required')">
         Rate is <strong>required</strong>
       </mat-error>
+      <mat-error *ngIf="CreateTestimonial.controls['RATE'].hasError('min')">
+        The minimum acceptable value (or rating) is <strong>one </strong> star 
+      </mat-error>
+      <mat-error *ngIf="CreateTestimonial.controls['RATE'].hasError('max')">
+        The maximum acceptable value (or rating) is <strong>five </strong> star
+      </mat-error>
     </mat-form-field>
 
 
