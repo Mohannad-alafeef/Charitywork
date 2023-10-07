@@ -75,7 +75,7 @@
       <tbody>
         <tr *ngFor="let ch of charity.charities|charityFilter:_filterText:filterradio:startDate:endDate:filterSelect">
           <td scope="row"></td>
-          <td><img src="../../../assets/Images/{{ch.imagePath}}"style="width: 50px;"></td>
+          <td><img src="../../../assets/Images/{{ch.imagePath}}"style="width: 90px;height: 50px;"></td>
           <td>{{ch.charityName}}</td>
           <td>
             <span class="badge bg-success" *ngIf="ch.isAccepted==constant.Accepted">Accepted</span>
@@ -105,8 +105,8 @@
 <ng-template #seeMore>
 
 <h2 mat-dialog-title>{{charityy.charityName}}</h2>   
-<mat-dialog-content class="mat-typography">
-  <img class="card-img-top" src="../../../assets/Images/{{charityy.imagePath}}" style="width: 250px;"alt="Charity Image">
+<mat-dialog-content class="mat-typography card m-3">
+  <img class="card-img-top m-3" src="../../../assets/Images/{{charityy.imagePath}}" style="width: 280px;height: 200px; "alt="Charity Image">
   <h3 class="title">Mission:</h3>
   <span class="card-text h6">{{charityy.mission}}</span> 
   <br>

@@ -86,7 +86,7 @@ export class PagesService {
       this.toastr.success('Success'); 
     },err=>
     {
-      this.toastr.error('Error', err.status); 
+     // this.toastr.error('Error', err.status); 
     })
   }
 
@@ -102,7 +102,7 @@ export class PagesService {
       this.toastr.success('Success'); 
     },err=>
     {
-      this.toastr.error('Error', err.status); 
+      //this.toastr.error('Error', err.status); 
     })
   }
   //contact us page update 
@@ -114,7 +114,7 @@ export class PagesService {
       this.toastr.success('Success'); 
     },err=>
     {
-      this.toastr.error('Error', err.status); 
+      //this.toastr.error('Error', err.status); 
     })
   }
   //testimonial  page update 
@@ -130,7 +130,7 @@ export class PagesService {
       this.toastr.success('Success'); 
     },err=>
     {
-      this.toastr.error('Error', err.status); 
+      //this.toastr.error('Error', err.status); 
     })
   }
 
@@ -163,7 +163,7 @@ export class PagesService {
      
     },err=>{
       //alert('somthing wrong');
-      this.toastr.error('Error', err.status); 
+     // this.toastr.error('Error', err.status); 
     });
     }
  }

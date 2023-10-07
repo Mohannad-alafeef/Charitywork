@@ -19,7 +19,7 @@ export class CategoriesService {
     
     },
     err=>{
-      this.toastr.error('Error', err.status);  
+      //this.toastr.error('Error', err.status);  
     })
   }
 
@@ -32,7 +32,7 @@ export class CategoriesService {
       this.toastr.success('Success'); 
     },
     err=>{
-      this.toastr.error('Error', err.status); 
+      //this.toastr.error('Error', err.status); 
     })
     window.location.reload();
   }
@@ -46,7 +46,7 @@ export class CategoriesService {
       this.spinner.hide();
       this.toastr.success('Success'); 
     }, err => {
-      this.toastr.error('Error', err.status); 
+      //this.toastr.error('Error', err.status); 
     })
     
     window.location.reload();
@@ -61,7 +61,7 @@ export class CategoriesService {
       this.toastr.success('Success'); 
     },err=>
     {
-      this.toastr.error('Error', err.status); 
+     // this.toastr.error('Error', err.status); 
     })
   }
 
@@ -73,7 +73,7 @@ export class CategoriesService {
       this.toastr.success('Success'); 
     },err=>{
       //alert('somthing wrong');
-      this.toastr.error('Error', err.status); 
+      //this.toastr.error('Error', err.status); 
     });
     }
 }

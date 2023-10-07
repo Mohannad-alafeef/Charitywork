@@ -37,7 +37,7 @@ export class ProfileService {
       },err=>
       {
         this.spinner.hide();
-        this.toastr.error('Error', err.status); 
+        //this.toastr.error('Error', err.status); 
       })
     }
 
@@ -52,7 +52,7 @@ export class ProfileService {
       },err=>
       {
         this.spinner.hide();
-        this.toastr.error('Error', err.status); 
+        //this.toastr.error('Error', err.status); 
       })
     }
   
