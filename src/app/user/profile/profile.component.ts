@@ -15,7 +15,9 @@ export class ProfileComponent implements OnInit {
 
   user :any={} ;
   UpdateProfileForm: FormGroup;
-  UpdateLoginForm:FormGroup;
+  passwordChangeForm:FormGroup;
+
+  isFormSubmitted = false;
 
   constructor(private route : Router, private fb: FormBuilder,private profileS:ProfileService, public dialog: MatDialog)
   {
@@ -32,28 +34,52 @@ export class ProfileComponent implements OnInit {
       address: [this.user.address, Validators.required],
       gender: [this.user.gender, Validators.required],
       dateOfBirth: [formatDate(this.user.dateOfBirth, 'yyyy-MM-dd', 'en'), Validators.required],
-      //age: [''], 
-      //imagePath: [this.user.imagePath],
       userId:[this.user.userId],
     });
 
-   this.UpdateLoginForm=this.fb.group({
-    userName: ['', Validators.required],
-    password :['', Validators.required],
-    email: [this.user.email],
-    loginId: [this.user.LoginId],
+
+    this.passwordChangeForm = this.fb.group({
+      loginId: [this.user.loginId],
+      currentPassword: ['', Validators.required],
+      newPassword: ['', [Validators.required, Validators.minLength(8)]],
+      renewPassword: ['', [Validators.required, Validators.minLength(8)]],
+
     });
     profileS.callback = (path)=>{
       this.user.imagePath = path;
     }
+
   }
 
   ngOnInit(): void
   {
-
    
   }
+  changePassword(body: any) {
+    debugger;
+    const { currentPassword, newPassword, renewPassword } = this.passwordChangeForm.value;
+  this.isFormSubmitted = true;
+    if (currentPassword && newPassword && renewPassword) {
+      if (currentPassword === this.user?.password) 
+      {
+        if (newPassword === renewPassword) {
+          
+          const { loginId, userName, email } = this.user;
+          const password = newPassword;
+          const ChangePassBody = [{ loginId, userName, password, email }];
+  
+          this.profileS.UpdateLogin(ChangePassBody[0]);
+          this.user.password=newPassword;
+          localStorage.setItem('user', JSON.stringify(this.user));
 
+        } else {
+          alert('New password and re-entered password do not match');
+        }
+      }
+      else{ alert('Current Password is not correct');}
+    }
+  }
+  
   
  UploadImage(file:any){
   if(file.length==0)
@@ -64,7 +90,6 @@ export class ProfileComponent implements OnInit {
   this.profileS.UploadAttachment(formData);
 }
 
-previous_data:any={};
 
   UpdateBtn(body:any)
   {  
@@ -75,7 +100,6 @@ previous_data:any={};
     this.user.address = body.address;
     this.user.gender = body.gender;
     this.user.dateOfBirth = body.dateOfBirth;
-   // this.user.imagePath = body.imagePath;
   
     localStorage.setItem('user', JSON.stringify(this.user));
 
@@ -84,12 +108,4 @@ previous_data:any={};
       
   }
 
-  UpdateLoginBtn(body:any){
-    this.user.userName = body.userName;
-    this.user.email = body.email;
-  
-    localStorage.setItem('user', JSON.stringify(this.user));
-
-    this.profileS.UpdateLogin(body);
-    }
 }
