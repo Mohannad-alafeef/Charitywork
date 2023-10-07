@@ -22,8 +22,8 @@ export class EmailService {
         next:(sty:any)=>{
           const formData = new FormData();
           formData.append('reciverEmail',to);
-          formData.append('subject','Greatings');
-          formData.append('body','hello');
+          formData.append('subject','Payment Receipt');
+          formData.append('body','Check the pdf for More information about your payment');
           formData.append('pTitle','Payment Receipt');
           formData.append('pBody',body);
           formData.append('pCharity',charity);
