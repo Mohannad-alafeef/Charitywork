@@ -38,6 +38,9 @@ main {
   .invalid-border {
   border-color: #dc3545; 
   }
+  .back-arrow {
+    font-size: xx-large;
+  }
 
 
 .back-arrow-container {
