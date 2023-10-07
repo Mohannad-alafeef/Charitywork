@@ -1,18 +1,24 @@
 main {
-    /*background-image: url('../../../assets/Images/bg_1.jpg');*/
-    background-color: rgb(248, 247, 239);
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
+  /*background-image: url('../../../assets/Images/bg_1.jpg');*/
+  background-color: rgb(248, 247, 239);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
 .valid-border {
-border-color: #28a745; 
+  border-color: #28a745;
 }
-
 
 .invalid-border {
-border-color: #dc3545; 
+  border-color: #dc3545;
 }
 
-.card{  box-shadow: 0px 0px 10px 0px orange;  margin: 10px;
-  padding: 20px; border-radius: 30px;}
+.card {
+  box-shadow: 0px 0px 10px 0px orange;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 30px;
+}
+.back-arrow {
+  font-size: xx-large;
+}

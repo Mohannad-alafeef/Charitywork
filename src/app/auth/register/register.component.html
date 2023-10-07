@@ -1,9 +1,12 @@
 <body>
   <main>
     <div class="container">
+      
       <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
         <div class="container">
           <div class="row registration-card ">
+            <a routerLink="/" data-bs-toggle="tooltip" 
+            data-bs-placement="top" title="Back to home page"><i class="back-arrow bi bi-arrow-left"></i></a>
 
             <div class="col-lg-6 col-md-6 d-flex flex-column align-items-center justify-content-center">
               <a class="navbar-brand">GiveHope</a>
@@ -105,6 +108,9 @@
                 </form>
               </div>
               <hr>
+              <div class="col-12">
+                <p class="small mb-0">Already have one ? <a routerLink="/auth/login">Login</a></p>
+              </div>
             </div>
           </div>
         </div>
