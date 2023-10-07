@@ -38,14 +38,7 @@ export class UsersComponent implements OnInit,OnDestroy,AfterViewInit {
       }
     })
   }
-  // rerender(): void {
-  //   this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-  //     // Destroy the table first
-  //     dtInstance.destroy();
-  //     // Call the dtTrigger to rerender again
-  //     this.users.dtTrigger.next();
-  //   });
-  // }
+
   selectedUser:any;
   userDialog(user:any){
     this.selectedUser = user;
