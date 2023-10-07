@@ -180,7 +180,8 @@
                     <div class="row mb-3">
                       <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
                       <div class="col-md-8 col-lg-9">
-                        <input formControlName="currentPassword" name="currentPassword" type="password" class="form-control" id="currentPassword">
+                        <i class="bi  password-icon" [class]="{'bi-eye-fill':sCurrent,'bi-eye-slash-fill':!sCurrent}" (click)="sCurrent=togglePassword(sCurrent,currentPass)"></i>
+                        <input formControlName="currentPassword" name="currentPassword" #currentPass type="password" class="form-control" id="currentPassword">
                         <!-- Display error message for currentPassword -->
                         <div *ngIf="(isFormSubmitted) &&passwordChangeForm?.get('currentPassword')?.hasError('required')" class="text-danger">
                           Current Password is required.
@@ -191,7 +192,8 @@
                     <div class="row mb-3">
                       <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
                       <div class="col-md-8 col-lg-9">
-                        <input formControlName="newPassword" name="newPassword" type="password" class="form-control" id="newPassword">
+                         <i class="bi  password-icon" [class]="{'bi-eye-fill':sNew,'bi-eye-slash-fill':!sNew}" (click)="sNew=togglePassword(sNew,newPass)"></i>
+                        <input formControlName="newPassword" name="newPassword" #newPass type="password" class="form-control" id="newPassword">
                         <!-- Display error messages for newPassword -->
                         <div *ngIf="(isFormSubmitted) &&passwordChangeForm?.get('newPassword')?.hasError('required')" class="text-danger">
                           New Password is required.
@@ -205,7 +207,8 @@
                     <div class="row mb-3">
                       <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
                       <div class="col-md-8 col-lg-9">
-                        <input formControlName="renewPassword" name="renewPassword" type="password" class="form-control" id="renewPassword">
+                        <i class="bi  password-icon" [class]="{'bi-eye-fill':sRe,'bi-eye-slash-fill':!sRe}" (click)="sRe=togglePassword(sRe,rePass)"></i>
+                        <input formControlName="renewPassword" name="renewPassword" #rePass type="password" class="form-control" id="renewPassword">
                         <!-- Display error messages for renewPassword -->
                         <div *ngIf="(isFormSubmitted) &&passwordChangeForm?.get('renewPassword')?.hasError('required')" class="text-danger">
                           Re-enter New Password is required.

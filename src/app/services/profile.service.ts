@@ -24,8 +24,11 @@ export class ProfileService {
     }
 
     UpdateAccount(body:any){
-      //debugger
-      body.imagePath=this.display_image;
+      debugger
+      if(this.display_image!=null){
+
+        body.imagePath=this.display_image;
+      }
       this.spinner.show();
       this.http.post('https://localhost:7081/api/Account/update',body).subscribe((resp: any) =>
       {
