@@ -75,7 +75,7 @@ export class PaymentComponent implements OnInit{
      if(this.pay.value.visaCard.balance < this.pay.value.amount)
     {
       this.balanceCheck=true;
-        console.log('you dont Have enough balance');
+        this.toaster.error('Insufficient Balance')
     }
     else if(this.pay.value.visaCard.expDate < dateNow)
     {
