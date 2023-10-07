@@ -96,7 +96,7 @@ account:any=[{}];
         (err) => {
           //alert('somthing wrong');
           console.log(err.status);
-          this.toastr.error('Error', err.status);
+         // this.toastr.error('Error', err.status);
         }
       );
     })
@@ -128,7 +128,7 @@ account:any=[{}];
       (err) => {
         // alert('somthing wrong');
         console.log(err.status);
-        this.toastr.error('Error', err.status);
+        //this.toastr.error('Error', err.status);
       }
     );
 

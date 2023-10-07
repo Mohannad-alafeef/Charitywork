@@ -127,7 +127,7 @@ export class PaymentComponent implements OnInit{
       console.log('admin card beffor',this.charity.AdminCharityVisa[0].balance);
       this.charity.AdminCharityVisa[0].balance=this.charity.AdminCharityVisa[0].balance + this.constant.PaymntAmount;
       console.log('admin card after',this.charity.AdminCharityVisa[0].balance);
-      this.charity.updateVisaCard(this.charity.AdminCharityVisa);
+      this.charity.updateVisaCard(this.charity.AdminCharityVisa[0]);
 
       //user visacard
       console.log('visacard beffor',this.pay.value.visaCard);

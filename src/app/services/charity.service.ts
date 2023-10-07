@@ -167,7 +167,7 @@ export class CharityService {
         }
       });
     }, err => {
-      this.toastr.error('Error', err.status); 
+      //this.toastr.error('Error', err.status); 
     })
     
    // window.location.reload();
@@ -185,7 +185,7 @@ export class CharityService {
     debugger
     this.http.put('https://localhost:7081/api/Goal/update',body).subscribe((resp)=>{
    }, err => {
-     this.toastr.error('Error', err.status); 
+    // this.toastr.error('Error', err.status); 
    })
    
  }
@@ -196,7 +196,7 @@ export class CharityService {
 
     },err=>{
     
-      this.toastr.error('Error', err.status); 
+      //this.toastr.error('Error', err.status); 
     });
     }
 
@@ -216,7 +216,7 @@ export class CharityService {
     });
 
    }, err => {
-     this.toastr.error('Error', err.status); 
+     //this.toastr.error('Error', err.status); 
    })
    
  }
@@ -226,7 +226,7 @@ export class CharityService {
   {
        
   }, err => {
-    this.toastr.error('Error', err.status); 
+    //this.toastr.error('Error', err.status); 
   })
  }
 
@@ -238,7 +238,7 @@ export class CharityService {
 
      this.Visa = resp;
    }, err => {
-     this.toastr.error('Error', err.status);
+     //this.toastr.error('Error', err.status);
    })
  //console.log(this.Visa);
  }
@@ -252,7 +252,7 @@ export class CharityService {
 
      });
    }, err => {
-     this.toastr.error('Error', err.status);
+     //this.toastr.error('Error', err.status);
    })
  }
 
@@ -265,7 +265,7 @@ export class CharityService {
       return V.userId==user;
     })
    }, err => {
-     this.toastr.error('Error', err.status);
+    // this.toastr.error('Error', err.status);
    })
  }
 
@@ -278,7 +278,7 @@ export class CharityService {
       return V.cardNumber==Const.AdminCardNumber;
     })
    }, err => {
-     this.toastr.error('Error', err.status);
+     //this.toastr.error('Error', err.status);
    })
  }
 }
