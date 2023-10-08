@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Const } from '../shared/Const';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class HomeService {
   charityRecentObj:any=[];
   paymentsObj:any=[];
   numberOfCharities:number =0;
-  constructor(private http: HttpClient) {}
+  callback!:()=>void;
+  constructor(private http: HttpClient,private toastr:ToastrService) {}
 
   getAboutPage() {
      this.http.get('https://localhost:7081/api/aboutPage/1').subscribe({
@@ -76,7 +78,7 @@ export class HomeService {
   sendMessage(body:any) {
      this.http.post('https://localhost:7081/api/Contact',body).subscribe({
       next:(res:any)=>{
-
+        this.callback();
       }
     });
   }

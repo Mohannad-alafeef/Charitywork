@@ -95,7 +95,7 @@
   <div class="container">
     <div class="row mb-3 justify-content-center">
       <div class="col-md-8 text-center">
-        <h2>Latest Fundraisers</h2>
+        <p class="h3">Latest Fundraisers</p>
         <p class="lead">
           Explore our current fundraising campaigns and make a contribution.
         </p>
@@ -114,7 +114,7 @@
          
             <ng-template carouselSlide *ngFor="let obj of home.charityObj">
               
-              <div class="card fundraise-item">
+              <div class="card fundraise-item shadow">
                 <a ><img class="card-img-top" src="../../../assets/Images/{{obj.imagePath}}" alt="Image placeholder"></a>
                 <div class="card-body column-card h-100">
                   <h3 class="card-title"><a >{{obj.charityName}}</a></h3>
@@ -142,7 +142,7 @@
   <div class="container">
     <div class="row mb-3 justify-content-center">
       <div class="col-md-8 text-center">
-        <h2>Latest Donations</h2>
+        <p class="h3">Latest Donations</p>
         <p class="lead">
           See the latest donations made by generous supporters.
         </p>
@@ -213,7 +213,7 @@
   <div class="container-fluid">
     <div class="row mb-5">
       <div class="col-md-12 text-center">
-        <h2>{{home.testObj.title}}</h2>
+        <p class="h3">{{home.testObj.title}}</p>
       </div>
     </div>
   
@@ -346,4 +346,9 @@
     </div>
   </div>
 </div>
+<ng-template #snackBar>
+  <span class="snackbar-success" matSnackBarLabel>
+    Pizza party!!!
+  </span>
+</ng-template>
 <app-footer ></app-footer>

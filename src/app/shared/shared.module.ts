@@ -26,6 +26,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { NgxMapLibreGLModule } from '@maplibre/ngx-maplibre-gl';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SearchPipe } from '../pipes/search.pipe';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -58,7 +59,8 @@ import { SearchPipe } from '../pipes/search.pipe';
     MatTabsModule,
     GoogleMapsModule,
     NgxMapLibreGLModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatSnackBarModule
   ],
   exports:
   [
@@ -87,7 +89,8 @@ import { SearchPipe } from '../pipes/search.pipe';
     GoogleMapsModule,
     NgxMapLibreGLModule,
     NgxPaginationModule,
-    SearchPipe
+    SearchPipe,
+    MatSnackBarModule
   ],
 
   

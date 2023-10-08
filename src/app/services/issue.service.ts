@@ -73,11 +73,11 @@ GetUserById(userId: number) {
     this.http.delete('https://localhost:7081/api/IssuesReport/Delete/'+id).subscribe((resp:any)=>
     {
       this.toastr.success('Success'); 
+      window.location.reload();
     },
     err=>{
       this.toastr.error('Error', err.status); 
     })
-    window.location.reload();
   }
 
   send(body:any,id:number,index:number):Promise<any>{

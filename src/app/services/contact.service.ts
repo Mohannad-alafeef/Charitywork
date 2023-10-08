@@ -39,7 +39,7 @@ export class ContactService {
           positionClass:'toast-bottom-right'
         });
         
-        this.allContact = this.allContact.splice(index,1);
+        this.allContact.splice(index,1);
         this.recentContact = this.recentContact.filter((obj:any)=>obj.contactId !=id);
         
       }
