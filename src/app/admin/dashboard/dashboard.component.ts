@@ -274,7 +274,6 @@ export class DashboardComponent implements OnInit, AfterViewInit,OnDestroy {
         const mappedPayments:{x:string,y:number}[] = [];
         const mappedUsers:{x:string,y:number}[] = [];
         for (let index = 0; index < period.length-1; index++) {
-          debugger;
           const date1 = period[index];
           const date2 = period[index+1];
           const periodPayment = this.dashboard.payments.filter((v)=>new Date(v.paymentDate) >= new Date(date1) &&

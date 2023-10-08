@@ -9,6 +9,8 @@ import { Const } from '../shared/Const';
   providedIn: 'root',
 })
 export class AuthService {
+
+  callback!:(email:string,pass:string)=>void;
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -53,11 +55,12 @@ account:any=[{}];
           const responce = {
             token: resp.toString(), //save on localstorge
           };
-          localStorage.clear();
+          localStorage.removeItem('user');
+          localStorage.removeItem('token');
+          this.callback(body.email,body.password);
           localStorage.setItem('token', responce.token);
           let data: any = jwt_decode(responce.token);
           localStorage.setItem('user', JSON.stringify(data));
-
           debugger;
 
           if (data.roleId == Const.Admin) {
