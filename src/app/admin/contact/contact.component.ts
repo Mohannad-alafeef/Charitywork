@@ -65,6 +65,7 @@ export class ContactComponent {
     this.selectedId = id;
     this.currentIndex = index;
     console.log(id);
+    console.log(index);
     
     this.dialog.open(this.deleteDialog);
   }

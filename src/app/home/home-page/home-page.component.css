@@ -6,3 +6,6 @@
     white-space: normal;
     padding-bottom: 20px;
   }
+  .snackbar-success>.mdc-snackbar__surface{
+    background-color: green !important;
+  }

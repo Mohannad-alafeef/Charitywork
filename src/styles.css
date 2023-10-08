@@ -14,6 +14,10 @@ body {
 
  
 }
+.snackbar-panel .mdc-snackbar__surface{
+  background-color: green !important;
+  padding: 10px;
+}
 
 /* @import "~bootstrap-icons/font/bootstrap-icons.css";
 

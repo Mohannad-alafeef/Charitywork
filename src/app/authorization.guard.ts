@@ -12,24 +12,23 @@ export const authorizationGuard: CanActivateFn = (route, state) => {
     user = JSON.parse(user);
     if (state.url.indexOf('admin') >= 0) {
       if (user.roleId == Const.Admin) {
-       // toaster.success('Welcome on Admin Dashbord');
+        // toaster.success('Welcome on Admin Dashbord');
         //router.navigate(['admin']);
         return true;
       } else {
         router.navigate(['auth/login']);
         return false;
       }
-    }else if(state.url.indexOf('user')){
-      if(user.roleId == Const.User){
+    } else if (state.url.indexOf('user')) {
+      if (user.roleId == Const.User) {
         //router.navigate(['user']);
         return true;
-      }else{
+      } else {
         router.navigate(['auth/login']);
         return false;
       }
     }
-    console.log(state);
-    return false;
+    return true;
   } else {
     router.navigate(['auth/login']);
     toaster.warning('You are not Authorized');

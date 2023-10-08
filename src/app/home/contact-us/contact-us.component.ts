@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 import { HomeService } from 'src/app/services/home.service';
 
 declare function refresh(): any;
@@ -9,14 +14,28 @@ declare function refresh(): any;
   styleUrls: ['./contact-us.component.css']
 })
 export class ContactUsComponent implements OnInit{
+  horizontalPosition: MatSnackBarHorizontalPosition = 'start';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   contactForm:FormGroup=new FormGroup({
     senderName: new FormControl(null,[Validators.required]),
   senderEmail: new FormControl(null,[Validators.required,Validators.email]),
   contactSubject: new FormControl(null,[Validators.required]),
   contactContent: new FormControl(null,[Validators.required]),
   });
-  constructor(public home:HomeService){
-    
+  constructor(public home:HomeService,private _snackBar:MatSnackBar){
+    home.callback = () => {
+      this.contactForm.reset();
+      this.nameError();
+      this.subjectError();
+      this.contentError();
+      this.emailError();
+      _snackBar.open('Message Sent Successfully', undefined, {
+        duration: 3 * 1000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+        panelClass: ['snackbar-panel'],
+      });
+    };
   }
   ngOnInit(): void {
     refresh();
