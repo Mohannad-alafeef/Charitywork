@@ -59,26 +59,24 @@ record:any=[{}];
 emailcheck:any=false;
 userNameCheck:any=false;
 
-   checkEmailInRecords(records :any) {
-    
-debugger;
-    for (const record of records) {
-      if (record.email === this.CreateAccountForm.value.Email) {
-        this.emailcheck = true; 
-        
+checkEmailInRecords(records: any) {
+  debugger;
+  const emailToCheck = this.CreateAccountForm.value.Email.toLowerCase();
+  for (const record of records) {
+      if (record.email.toLowerCase() === emailToCheck) {
+          this.emailcheck = true;
       }
-      if (record.userName === this.CreateAccountForm.value.UserName)
-      {
-        this.userNameCheck=true;
+      if (record.userName === this.CreateAccountForm.value.UserName) {
+          this.userNameCheck = true;
       }
-    
-     
-    }
-    if(this.userNameCheck||this.emailcheck)
-      return true;
-    else
-      return false; 
   }
+  if (this.userNameCheck || this.emailcheck) {
+      return true;
+  } else {
+      return false;
+  }
+}
+
 
   CreateAccountBtn() {
 

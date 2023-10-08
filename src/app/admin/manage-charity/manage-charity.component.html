@@ -61,11 +61,10 @@
     <table class="table table-borderless datatable">
       <thead>
         <tr>
-          <th scope="col">#</th>
           <th scope="col">image</th>
           <th scope="col">charity Name</th>
           <th scope="col">status</th>
-          <th scope="col">mission</th>
+          <th scope="col">Creation Date</th>
           <th scope="col">Donation Goal</th>
           <th scope="col">Category</th>
           <th scope="col">Publisher</th>
@@ -74,7 +73,6 @@
       </thead>
       <tbody>
         <tr *ngFor="let ch of charity.charities|charityFilter:_filterText:filterradio:startDate:endDate:filterSelect">
-          <td scope="row"></td>
           <td><img src="../../../assets/Images/{{ch.imagePath}}"style="width: 90px;height: 50px;"></td>
           <td>{{ch.charityName}}</td>
           <td>
