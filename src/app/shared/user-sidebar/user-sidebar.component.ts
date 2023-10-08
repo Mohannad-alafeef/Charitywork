@@ -35,7 +35,8 @@ export class UserSidebarComponent {
   }
 
   logout() {
-    localStorage.clear();
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
 
 
     this.route.navigate(['']);

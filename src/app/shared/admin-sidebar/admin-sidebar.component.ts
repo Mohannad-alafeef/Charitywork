@@ -47,7 +47,8 @@ export class AdminSidebarComponent implements OnInit {
   }
 
   logout() {
-    localStorage.clear();
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
     this.route.navigate(['']);
   }
   getCurrentRoute(): string {
