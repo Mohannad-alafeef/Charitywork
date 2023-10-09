@@ -53,6 +53,7 @@ export class CategoriesService {
   }
 
   UpdateCategory(body:any){
+    if(this.display_image != null)
     body.imagePath=this.display_image;
     this.spinner.show();
     this.http.put('https://localhost:7081/api/Category/UpdateCategory',body).subscribe((resp: any) =>
